@@ -1,0 +1,1 @@
+[27-Feb-2018 16:18:07 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Serializer\Exception\Exception' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Serializer/Exception/ExceptionInterface.php on line 20

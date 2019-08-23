@@ -1,0 +1,62 @@
+{% extends 'sistemadmin.html.twig' %}
+
+{% block contenido %}
+           
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Corrección de errores del sistema (Algunas de estas acciones pueden tomar tiempo)</h3>  
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>Acción</th>
+                            <th>Ejecutar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ajuste de pagos general (Verifica que los pagos completos de una factura no generen deuda)</td>                                
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <td>
+                                    <a href="{{ path('error_pagos_general') }}"
+                                       class="sepV_a" title="Ejecutar">
+                                        <i class="glyphicon glyphicon-check"></i>
+                                    </a>
+                                </td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td>Invalidar deudas menores que 1 $</td>                                
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <td>
+                                    <a href="{{ path('error_deudas_general') }}"
+                                       class="sepV_a" title="Ejecutar">
+                                        <i class="glyphicon glyphicon-check"></i>
+                                    </a>
+                                </td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td>Quitar como deudores a clientes que deban menos de 1 $</td>                                
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <td>
+                                    <a href="{{ path('error_clientes_general') }}"
+                                       class="sepV_a" title="Ejecutar">
+                                        <i class="glyphicon glyphicon-check"></i>
+                                    </a>
+                                </td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>           
+            
+{% endblock %}
+
+
+

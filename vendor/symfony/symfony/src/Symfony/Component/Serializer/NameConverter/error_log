@@ -1,0 +1,1 @@
+[20-Jun-2018 10:45:27 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Serializer\NameConverter\NameConverterInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Serializer/NameConverter/CamelCaseToSnakeCaseNameConverter.php on line 20

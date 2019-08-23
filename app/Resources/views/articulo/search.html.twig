@@ -1,0 +1,90 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('articulo_index') }}">Artículo</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+    <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Lista de Artículos</h3>
+                </div>
+            </div>
+    <div class="row" >
+        <div class="col-sm-3 col-md-3 menu-acciones">
+            <a class="btn btn-success" href="{{ path('articulo_new') }}"><span class="glyphicon glyphicon-file"></span> Nuevo</a>
+        </div>
+        <div class="col-sm-9 col-md-9">
+                <form action="{{ path('buscar_articulos') }}" method="post" class="form-horizontal inherited form-inline">{#                <form action="{{ path('change_no_results') }}" method="post" class="inherited form-inline">#}
+                    <div class="col-sm-2">                 
+                    <button class="btn btn-primary" type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                        Buscar
+                    </button>
+                    </div>
+                    <div class="col-sm-3">
+                    <input type="search" name="buscar" id="buscar" placeholder="Introduzca el valor" class="form-control"/>  
+                   </div>
+                    <div class="col-sm-2">
+                    <select id="categoria" name="categoria" class="form-control">
+                        <option value="nombre">Nombre</option>
+                        <option value="marca">Marca</option>
+                        <option value="modelo">Modelo</option>
+                    </select>
+                    </div>
+                </form>
+            </div>
+    </div>
+            {% if articulos != null%}
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>P. costo</th>
+                            <th>P. venta</th>
+                            <th>P. x Mayor</th>
+                            <th width="100">Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for articulo in articulos %}
+                            <tr>
+                                <td>{{ articulo.nombre }}</td>
+                                <td>{{ articulo.preciodecompra }}</td>
+                                <td>{{ articulo.preciodeventa }}</td>
+                                <td>{{ articulo.precioventalpormayor }}</td>
+                                <td align="center">
+                                    <a href="{{ path('articulo_edit', { 'id': articulo.id }) }}"
+                                       class="sepV_a" title="Editar">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+                                    <a href="{{ path('articulo_show', { 'id': articulo.id }) }}"
+                                       class="sepV_a" title="Ver Detalles">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a>
+                                    {#<a id="choicetwo" data-toggle="modal" data-target="#myModal" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>#}
+                                    {#<a href="{{ path('articulo_delete', { 'id': articulo.id }) }}" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>#}
+                                    <a  href="#" class="eliminar_confirm" data-url="{{ path('articulo_delete', { 'id': articulo.id }) }}" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>
+                                </td>     
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+             <div class="row" >
+                {% include 'global/searcharticulopaginator.html.twig' %}
+            </div> 
+            {% endif %}
+
+               
+{% endblock %}

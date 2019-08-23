@@ -1,0 +1,1 @@
+[30-Aug-2018 09:40:03 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\EventDispatcher\EventSubscriberInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/EventListener/WebDebugToolbarListener.php on line 33

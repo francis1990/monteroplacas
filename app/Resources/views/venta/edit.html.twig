@@ -1,0 +1,152 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('venta_index') }}">Venta</a>
+    </li>
+    <li>
+        Editar
+    </li>
+{% endblock %}
+{% block contenido %}        
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Editar Venta</h3>
+                </div>
+            </div>
+             <div class="form_error">{{form_errors(form)}}</div>
+            <div class="row" id="content">
+                <div class="col-sm-12 col-md-12">
+                    {{ form_start(form,{'attr':{ 'class':'form-horizontal form_validation_reg','id':'#form-venta'}}) }}
+                    <div class="formSep">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <fieldset>
+                                    {#<div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.documento) }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.documento) }}
+                                            {{ form_errors(form.documento) }}
+                                        </div>
+                                    </div>#}
+                                   {# <div class="form-group">
+                                        <label class="control-label col-sm-2">Serie</label>
+                                        <div class="col-sm-8">
+                                            <select id="venta_seriedoc" class="form-control"></select>
+                                        </div>
+                                    </div>#}
+                                    {#<div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.seriedoc) }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.seriedoc) }}
+                                            {{ form_errors(form.seriedoc) }}
+                                        </div>
+                                    </div>#}
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">Serie-Número</label>
+                                        <div class="col-sm-4">
+                                            {{ form_widget(form.serie, { 'attr': {'readonly': 'true'}})  }}
+                                            {{ form_errors(form.serie) }}
+                                        </div>
+                                        <div class="col-sm-4" >
+                                            {{ form_widget(form.numerodedocumento, { 'attr': {'readonly': 'true'}})  }}
+                                            {{ form_errors(form.numerodedocumento) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.fecha) }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.fecha) }}
+                                            {{ form_errors(form.fecha) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.cliente) }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.cliente) }}
+                                            {{ form_errors(form.cliente) }}
+                                        </div>
+                                    </div><div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.vendedor) }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.vendedor) }}
+                                            {{ form_errors(form.vendedor) }}
+                                        </div>
+                                    </div>
+
+                                   
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.centrodecosto) }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.centrodecosto) }}
+                                            {{ form_errors(form.centrodecosto) }}
+                                        </div>
+                                    </div><div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.formadepago) }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.formadepago) }}
+                                            {{ form_errors(form.formadepago) }}
+                                        </div>
+                                    </div> <div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.observacion) }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.observacion) }}
+                                            {{ form_errors(form.observacion) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">Tipo Precio</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control chzn_b" name="" id="tipoprecio">
+                                                <option value="v">De venta</option>
+                                                <option value="m">Por Mayor</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    {% include 'articulo/add_articuloventa.html.twig' %}
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.montototalapagar) }}</label>
+                                        <div class="col-sm-4">
+                                            {{ form_widget(form.montototalapagar) }}
+                                            {{ form_errors(form.montototalapagar) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.cantidaddearticulos) }}</label>
+                                        <div class="col-sm-4">
+                                            {{ form_widget(form.cantidaddearticulos) }}
+                                            {{ form_errors(form.cantidaddearticulos) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.totalrecibido) }}</label>
+                                        <div class="col-sm-4">
+                                            {{ form_widget(form.totalrecibido) }}
+                                            {{ form_errors(form.totalrecibido) }}
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formSep form-actions">
+                        <a class="btn btn-default" href="{{ path('venta_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+                        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/sistemaadminbackend/js/app.js') }}"></script>
+    <script src="{{ asset('bundles/sistemaadminbackend/js/venta.js') }}"></script>
+
+{% endblock %}

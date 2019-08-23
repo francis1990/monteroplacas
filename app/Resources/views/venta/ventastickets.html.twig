@@ -1,0 +1,64 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('venta_index') }}">Venta</a>
+    </li>
+    <li>
+        Todas
+    </li>
+{% endblock %}
+{% block contenido %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading"> Tickets</h3>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <table class="table table-bordered table-striped table_vam" id="dt_a">
+                <thead>
+                <tr>
+                    <th>Documento</th>
+                    <th>Número</th>
+                    <th>Fecha</th>
+                    <th>Cliente</th>
+                    <th>Importe</th>
+                    <th>Forma de pago</th>
+                    {% if is_granted('ROLE_CAJA') or is_granted('ROLE_ADMIN') %}
+                    <th>Convertir en factura</th>
+                      {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for venta in ventas %}
+                    <tr>
+                        <td>{{ venta.documento.tipodocumento }}</td>
+                        <td>{{ venta.serie ~'-'~venta.numerodedocumento }}</td>
+                        <td>{% if venta.fecha %}{{ venta.fecha|date('d/m/Y') }}{% endif %}</td>
+                        <td>{{ venta.cliente }}</td>
+                        <td>{{ venta.montototalapagar }}</td>
+                        <td>{{ venta.formadepago }}</td>
+                        {% if is_granted('ROLE_CAJA') or is_granted('ROLE_ADMIN') %}
+                        <td>                            
+                            <a href="{{ path('ticket_convertir_factura', { 'id': venta.id }) }}"
+                               class="sepV_a" title="Convertir">
+                                <i class="glyphicon glyphicon-transfer"></i>
+                            </a>
+                        </td>
+                          {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        {% include 'global/paginator.html.twig' %}
+    </div>
+
+    
+
+{% endblock %}

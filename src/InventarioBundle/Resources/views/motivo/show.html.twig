@@ -1,0 +1,49 @@
+{% extends '::inventarioadmin.html.twig' %}
+{% block title_section %}
+    Inventario
+    <small>Motivo de movimiento</small>
+{% endblock %}
+{% block motivo_activo %}class="active"{% endblock %}
+{% block tree_mov %}active{% endblock %}
+{% block breadcrumb %}
+    <li class="">Inventario</li>
+    <li><a href="{{ path('motivo_index') }}">Motivo</a></li>
+    <li class="active">Detalle</li>
+{% endblock %}
+{% block main_content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <h3 class="box-title">Detalle</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>Nombre</dt>
+                        <dd> {{ motivo.nombre }}</dd>
+                        <dt>Abreviatura</dt>
+                        <dd> {{ motivo.abreviatura }}</dd>
+                        <dt>Descripción</dt>
+                        <dd> {{ motivo.descripcion }}</dd>
+                        <dt>Tipo</dt>
+                        <dd>{% if motivo.tipo == 1  %}Entrada{% else %}Salida{% endif %}</dd>
+                    </dl>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    {% if  motivo.conceptodefault ==0 %}
+                        <a href="{{ path('motivo_edit', { 'id': motivo.id }) }}" class="btn btn-success">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            Editar</a>
+                    {% endif %}
+                    <a href="{{ path('motivo_index') }}" class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        Volver</a>
+                </div>
+            </div><!-- /.box -->
+        </div><!-- ./col -->
+    </div>
+
+{% endblock %}
+

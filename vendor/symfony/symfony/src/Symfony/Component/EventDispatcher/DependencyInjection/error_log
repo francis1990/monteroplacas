@@ -1,0 +1,1 @@
+[27-Feb-2018 16:19:44 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/DependencyInjection/RegisterListenersPass.php on line 21

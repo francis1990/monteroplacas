@@ -1,0 +1,2 @@
+[20-Mar-2018 15:22:26 America/Chicago] PHP Fatal error:  Class 'Symfony\Bridge\Twig\TokenParser\TransTokenParser' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bridge/Twig/TokenParser/TransChoiceTokenParser.php on line 22
+[07-Apr-2018 02:36:29 America/Chicago] PHP Fatal error:  Class 'Twig_TokenParser' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bridge/Twig/TokenParser/TransDefaultDomainTokenParser.php on line 22

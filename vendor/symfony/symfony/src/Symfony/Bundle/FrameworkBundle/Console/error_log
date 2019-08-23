@@ -1,0 +1,3 @@
+[27-Feb-2018 16:19:12 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Console\Shell' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Console/Shell.php on line 24
+[31-Aug-2018 07:59:55 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Console\Shell' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Console/Shell.php on line 24
+[01-Sep-2018 00:23:02 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Console\Application' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Console/Application.php on line 29

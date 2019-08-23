@@ -1,0 +1,128 @@
+{% extends '::inventarioadmin.html.twig' %}
+{% block title %}Inventario | General{% endblock %}
+{% block title_section %}
+    Inventario general
+{% endblock %}
+{% block inve_general_activo %}class="active"{% endblock %}
+{% block tree_mov %}active{% endblock %}
+{% block breadcrumb %}
+    <li class="">Inventario general</li>
+{% endblock %}
+    {% block main_content %}
+        <div class="box">
+            <div class="box-header">
+
+                <div class="pull-right">
+                    <a href="#" class="btn btn-default collapsed" id="btn-filtrar" data-toggle="collapse" data-target="#panel-filtros"><span class="glyphicon glyphicon-filter"></span> Filtrar</a>
+                    <a href="{{ path('inventario_general_menu',{'fecha': 0,'seccion':0,'articulo':0}) }}"  class="btn btn-default " id="btn-limpiar" form="form-filtros" ><span class="fa fa-paint-brush"></span> Limpiar</a>
+
+                    <button type="submit" class="btn btn-default " id="invgeneral" title="Exportar"
+                            form="form-filtros">
+                        <span class="glyphicon glyphicon-print"></span>
+                        Exportar</button>                </div>
+            </div>
+
+            <div class="box-body">
+                <div class="row  ">
+
+                    <form name="form" action="{{ path('inventario_general') }}" id="form-filtros">
+                        <div class=" collapse " id="panel-filtros" >
+                            <p>Búsqueda</p>
+                            <div class="col-sm-4">
+                                Artículo
+                                {{ render(controller(
+                                    'BackendBundle:Articulo:listado'
+                                )) }}
+                            </div>
+                            <div class="col-sm-4">
+                                Sección
+                                {{ render(controller(
+                                    'InventarioBundle:Seccion:listado'
+                                )) }}
+                            </div>
+                            <div class="col-sm-4">
+                                Fecha inicio:
+                                <input type="text" id="min" name="min" value="{{ fecha | date('d/m/Y') }}"
+                                       class="form-control datepicker">
+                            </div>
+                            <div class="col-sm-12">
+                                <a href="#" id="btn-aceptar" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-ok"></span> Aceptar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <table id="tabla-datos" border="1" cellspacing="0" cellpadding="0"
+                       data-url="{{ path('inventario_general_menu',{'fecha': 0,'seccion':0,'articulo':0}) }}">
+                    <thead> <tr>
+                        <th  width="130" valign="top"><p align="center">Secci&oacute;n</p></th>
+                        <th class="th-blanco" id="td-seccion" width="482" colspan="5" valign="top"><p >&nbsp;</p></th>
+                    </tr>
+                    <tr>
+                        <th width="130" valign="top"><p align="center">Fecha</p></th>
+                        <th class="th-blanco" width="482" colspan="5" valign="top"><p >{{ fecha | date('d/m/Y') }}</p></th>
+                    </tr>
+                    <tr>
+                        <th width="200" valign="top"><p align="center" >Art&iacute;culo&nbsp; </p></th>
+                        <th width="200" valign="top"><p align="center">Almac&eacute;n </p></th>
+                        <th width="200" valign="top"><p align="center">Secci&oacute;n</p></th>
+                        <th width="104" valign="top"><p align="center">Cantidad</p></th>
+                        <th width="104" valign="top"><p align="center">Ingreso total</p></th>
+                        <th width="85" valign="top"><p align="center">Salida total</p></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for mov in movimientos %}
+
+                        <tr>
+                            <td width="200" valign="top"><p align="center">{{ mov[0] }}</p></td>
+                            <td width="102" valign="top"><p align="center">{{ mov[1] }}</p></td>
+                            <td width="102" valign="top"><p align="center">{{ mov[2] }}</p></td>
+                            <td width="102" valign="top"><p align="center">{{ mov[3] | number_format(2) }}</p></td>
+                            <td width="102" valign="top"><p align="center">{{ mov[4] | number_format(2) }}</p></td>
+                            <td width="102" valign="top"><p align="center">{{ mov[5]  | number_format(2) }}</p></td>
+                        </tr>
+                    {% endfor %}
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    {% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#btn-aceptar').on('click', null, function () {
+                var fecha=$('#min');
+                var tabla=$('#tabla-datos');
+                var sec=$('#filtro-seccion');
+                var art=$('#filtro-articulo');
+
+                var min = fecha.val() !== "" ? fecha.val().split('/') : "";
+                var href = tabla.data('url').split('/invgeneralmenu');
+                var minDate =min!==""? min[2]+'-'+min[1]+'-'+min[0]:0;
+                var seccion = sec.val() ? sec.val() : "";
+                var articulo = art.val() ? art.val() : "";
+                window.location= href[0] + '/invgeneralmenu/' + minDate + '/' + seccion+'/'+articulo;
+            });
+            $('.chosen-container').css("width",'95%');
+            {% if seccion != 0 %}
+            var fecha=$('#min');
+            var min = fecha.val() !== "" ? fecha.val().split('/') : "";
+            var minDate =min!==""? min[2]+'-'+min[1]+'-'+min[0]:0;
+            $('#filtro-seccion').val({{ seccion }}).trigger("chosen:updated");
+            $('#td-seccion p').text($('#filtro-seccion option:selected').get(0).text);
+            var hrefe = $('a#invgeneral').attr('href').split('/invgeneral');
+            $('a#invgeneral').attr('href',hrefe[0] + '/invgeneral/' +$('#filtro-seccion').val() +'/' +minDate);
+            $('a#invgeneral').attr('href',hrefe[0] + '/invgeneral/' +$('#filtro-seccion').val() +'/' +minDate);
+            {% endif %}
+
+
+
+        });
+
+    </script>
+
+
+{% endblock %}

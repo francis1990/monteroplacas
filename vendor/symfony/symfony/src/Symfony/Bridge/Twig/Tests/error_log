@@ -1,0 +1,2 @@
+[15-Jun-2018 18:13:13 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Tests/AppVariableTest.php on line 10
+[15-Jun-2018 19:30:38 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Tests/TwigEngineTest.php on line 18

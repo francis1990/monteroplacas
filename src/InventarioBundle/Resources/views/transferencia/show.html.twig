@@ -1,0 +1,55 @@
+{% extends '::inventarioadmin.html.twig' %}
+{% block title_section %}
+    Inventario
+    <small>Transferencia</small>
+{% endblock %}
+{% block trans_activo %}class="active"{% endblock %}
+{% block tree_mov %}active{% endblock %}
+{% block breadcrumb %}
+    <li class="">Inventario</li>
+    <li><a href="{{ path('transferencia_index') }}">Transferencia</a></li>
+    <li class="active">Detalle</li>
+{% endblock %}
+{% block main_content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <h3 class="box-title">Detalle</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>Fecha</dt>
+                        <dd>  {{ transferencium.fecha | date('d/m/Y') }} </dd>
+                        <dt>Artículo</dt>
+                        <dd> {{ transferencium.articulo }}</dd>
+                        <dt>Almacén inicial</dt>
+                        <dd> {{ transferencium.seccionini.almacen }}</dd>
+                        <dt>Sección inicial</dt>
+                        <dd> {{ transferencium.seccionini.nombre }}</dd>
+                        <dt>Almacén actual</dt>
+                        <dd> {{ transferencium.seccionfin.almacen }}</dd>
+                        <dt>Sección actual</dt>
+                        <dd> {{ transferencium.seccionfin.nombre }}</dd>
+                        <dt>Cantidad</dt>
+                        <dd> {{ transferencium.cantidad }}</dd>
+                    </dl>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+
+                    <a href="{{ path('transferencia_edit', { 'id': transferencium.id }) }}" class="btn btn-success">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        Editar</a>
+
+                    <a href="{{ path('transferencia_index') }}" class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        Volver</a>
+                </div>
+            </div><!-- /.box -->
+        </div><!-- ./col -->
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,144 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('compra_index') }}">Compra</a>
+    </li>
+    <li class="active">
+        Detalles
+    </li>
+{% endblock %}
+{% block contenido %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Compra</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+            <div class="formSep">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3">
+                                Tipo de Documento
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                Factura
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3">
+                                Número
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ compra.numerofactura }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3">
+                                Fecha
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {% if compra.fechacompra %}{{ compra.fechacompra|date('d/m/Y') }}{% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3">
+                                Proveedor
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ compra.proveedor }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3">
+                                Moneda
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ compra.moneda }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3">
+                                Centro de costo
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ compra.centrodecosto }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3">
+                                Forma de pago
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ compra.formadepago }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3">
+                                Monto total pagado
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ compra.montototalpagado }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3">
+                                Garantía
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ compra.garantia }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3">
+                                Tiempo de entrega
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ compra.tiempoentrega }}
+                            </div>
+                        </div>
+<diw class="row"></diw>
+                        <fieldset>
+                            <legend>Artículos</legend>
+                            <table class="table table-bordered table-striped table_vam" id="dt_a">
+                                <thead>
+                                <tr>
+                                    <th>Artículo</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Importe</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for articulo in compra.articulocompras %}
+                                    <tr>
+                                        <td>{{ articulo.articulo }}</td>
+                                        <td>{{ articulo.cantidad }}</td>
+                                        <td>{{ articulo.precio }}</td>
+                                        <td>{{ articulo.importe }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="formSep form-actions">
+
+                <a class="btn btn-default" href="{{ path('compra_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+
+                <a class="btn btn-default" href="{{ path('compra_edit', { 'id': compra.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+

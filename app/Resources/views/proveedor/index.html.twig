@@ -1,0 +1,66 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('proveedor_index') }}">Proveedor</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+       <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Lista de Proveedores</h3>
+                </div>
+            </div>
+           <div class="row" >
+        <div class="col-sm-12 col-md-12 menu-acciones">
+            <a class="btn btn-success" href="{{ path('proveedor_new') }}"><span class="glyphicon glyphicon-file"></span> Nuevo</a>
+
+        </div>
+    </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Número de serie</th>
+                                <th>Ruc</th>
+                                <th>Razón social</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for proveedor in proveedors %}
+                            <tr>
+                                <td>{{ proveedor.nombre }}</td>
+                                <td>{{ proveedor.numerodocumento }}</td>
+                                <td>{{ proveedor.ruc }}</td>
+                                <td>{{ proveedor.razonsocial }}</td>
+                                <td>
+                                    <a href="{{ path('proveedor_edit', { 'id': proveedor.id }) }}"
+                                       class="sepV_a" title="Editar">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+                                    <a href="{{ path('proveedor_show', { 'id': proveedor.id }) }}"
+                                       class="sepV_a" title="Ver Detalles">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a>
+                                   {# <a href="{{ path('proveedor_delete', { 'id': proveedor.id }) }}" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>#}
+                                   <a href="#" class="eliminar_confirm" data-url="{{ path('proveedor_delete', { 'id': proveedor.id }) }}" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">                
+                {% include 'global/paginator.html.twig' %}               
+            </div> 
+          
+
+{% endblock %}

@@ -1,0 +1,220 @@
+<?php
+
+namespace Sistemadmin\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use InventarioBundle\Entity\Seccion;
+
+/**
+ * ArticuloVenta
+ *
+ * @ORM\Table(name="articulo_venta")
+ * @ORM\Entity()
+ */
+class ArticuloVenta
+{
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Venta")
+     * @ORM\JoinColumn(name="venta_id", referencedColumnName="id",onDelete="cascade")
+     **/
+    protected $venta;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Articulo")
+     * @ORM\JoinColumn(name="articulo_id", referencedColumnName="id")
+     **/
+    protected $articulo;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="cantidad", type="float")
+     */
+    private $cantidad;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="precio", type="float")
+     */
+    private $precio;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="importe", type="float")
+     */
+    private $importe;
+
+    /**
+     * @var Seccion
+     * @ORM\ManyToOne(targetEntity="InventarioBundle\Entity\Seccion")
+     * @ORM\JoinColumn(name="seccion", referencedColumnName="id")
+     */
+    private $seccion;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cantidad
+     *
+     * @param integer $cantidad
+     * @return ArticuloVenta
+     */
+    public function setCantidad($cantidad)
+    {
+        $this->cantidad = $cantidad;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidad
+     *
+     * @return integer 
+     */
+    public function getCantidad()
+    {
+        return $this->cantidad;
+    }
+
+    /**
+     * Set precio
+     *
+     * @param float $precio
+     * @return ArticuloVenta
+     */
+    public function setPrecio($precio)
+    {
+        $this->precio = $precio;
+
+        return $this;
+    }
+
+    /**
+     * Get precio
+     *
+     * @return float 
+     */
+    public function getPrecio()
+    {
+        return $this->precio;
+    }
+
+    /**
+     * Set venta
+     *
+     * @param \Sistemadmin\BackendBundle\Entity\Venta $venta
+     * @return ArticuloVenta
+     */
+    public function setVenta(\Sistemadmin\BackendBundle\Entity\Venta $venta = null)
+    {
+        $this->venta = $venta;
+
+        return $this;
+    }
+
+    /**
+     * Get venta
+     *
+     * @return \Sistemadmin\BackendBundle\Entity\Venta 
+     */
+    public function getVenta()
+    {
+        return $this->venta;
+    }
+
+    /**
+     * Set articulo
+     *
+     * @param \Sistemadmin\BackendBundle\Entity\Articulo $articulo
+     * @return ArticuloVenta
+     */
+    public function setArticulo(\Sistemadmin\BackendBundle\Entity\Articulo $articulo = null)
+    {
+        $this->articulo = $articulo;
+
+        return $this;
+    }
+
+    /**
+     * Get articulo
+     *
+     * @return \Sistemadmin\BackendBundle\Entity\Articulo 
+     */
+    public function getArticulo()
+    {
+        return $this->articulo;
+    }
+
+   
+
+    /**
+     * Set importe
+     *
+     * @param float $importe
+     * @return ArticuloVenta
+     */
+    public function setImporte($importe)
+    {
+        $this->importe = $importe;
+
+        return $this;
+    }
+
+    /**
+     * Get importe
+     *
+     * @return float 
+     */
+    public function getImporte()
+    {
+        return $this->importe;
+//        if ($this->importe == null || $this->importe == 0) {
+//            return $this->precio * $this->cantidad;
+//        } else {
+//            return $this->importe;
+//        }
+    }
+
+    /**
+     * Set seccion
+     *
+     * @param \InventarioBundle\Entity\Seccion $seccion
+     * @return ArticuloVenta
+     */
+    public function setSeccion(\InventarioBundle\Entity\Seccion $seccion = null)
+    {
+        $this->seccion = $seccion;
+
+        return $this;
+    }
+
+    /**
+     * Get seccion
+     *
+     * @return \InventarioBundle\Entity\Seccion 
+     */
+    public function getSeccion()
+    {
+        return $this->seccion;
+    }
+}

@@ -1,0 +1,23 @@
+#treeGridCategoriesShow .jqx-grid-column-header, #treeGridCategoriesShow .jqx-grid-cell {
+    background-color: white;
+    border-color: white;
+}
+
+#treeGridCategoriesShow .jqx-widget-header {
+    display: none !important;
+}
+
+
+.btn{
+    float: right !important;
+    margin-right: 5px;
+}
+
+.col-xs-6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.col-xs-6 label {
+    color: #777;
+}

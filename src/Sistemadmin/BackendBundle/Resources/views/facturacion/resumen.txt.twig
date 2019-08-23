@@ -1,0 +1,7 @@
+{% for key, venta in ventas %}
+{% if venta.documento.igv %}
+{% if venta.documento.igv %}{% set igv= ((venta.montototalapagar/1.18)*0.18)|number_format(2, '.', '')   %}{% set total= venta.montototalapagar %}{% set subtotal= venta.montototalapagar/1.18|number_format(2, '.', '.')  %}{% else %}{% set igv= 0 %}{% set subtotal= venta.montototalapagar  %}{% endif %}{{ venta.fecha|date('Y-m-d') }}|{{ fechageneracion|date('Y-m-d') }}|03|{{['B',series[key],'-',numeraciones[key]]|join}}|{{codidentification[key]}}|{{identification[key]}}|PEN|{{subtotal|number_format(2, '.', '')}}|0.0|0.0|0.0|0.0|0.0|{{igv|number_format(2, '.', '')}}|0.0|{{total|number_format(2, '.', '')}}|-||||0.0|0.0|0.0|0.0|1|
+{% else %}
+{% if venta.documento.igv %}{% set igv= ((venta.montototalapagar/1.18)*0.18)|number_format(2, '.', '')   %}{% set total= venta.montototalapagar %}{% set subtotal= venta.montototalapagar/1.18|number_format(2, '.', '.')  %}{% else %}{% set igv= 0 %}{% set subtotal= venta.montototalapagar  %}{% endif %}{{ venta.fecha|date('Y-m-d') }}|{{ fechageneracion|date('Y-m-d') }}|03|{{['B',series[key],'-',numeraciones[key]]|join}}|{{codidentification[key]}}|{{identification[key]}}|PEN|0.0|{{total|number_format(2, '.', '')}}|0.0|0.0|{{total|number_format(2, '.', '')}}|0.0|0.0|0.0|{{total|number_format(2, '.', '')}}|-||||0.0|0.0|0.0|0.0|1|
+{% endif %}
+{% endfor %}

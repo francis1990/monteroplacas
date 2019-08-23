@@ -1,0 +1,106 @@
+{% extends '::inventarioadmin.html.twig' %}
+{% block title %}Inventario |
+    {% if compras is defined %}
+        Compras
+    {% elseif ventas is defined %}
+        Ventas
+    {% endif %}
+{% endblock %}
+{% block title_section %}
+    Inventario
+    <small>
+        {% if compras is defined %}
+            Compras
+        {% elseif ventas is defined %}
+            Ventas
+        {% endif %}
+    </small>
+{% endblock %}
+{% block inve_diario_activo %}class="active"{% endblock %}
+{% block tree_mov %}active{% endblock %}
+{% block breadcrumb %}
+    <li class="">Inventario diario</li>
+    <li class="active">
+        {% if compras is defined %}
+            Compras
+        {% elseif ventas is defined %}
+            Ventas
+        {% endif %}
+    </li>
+{% endblock %}
+{% block main_content %}
+    <div class="box">
+        <br>
+        <div class="box-body">
+            {% if compras is defined %}
+                <table class="table table-bordered table-striped todasTablas">
+                    <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Proveedor</th>
+                        <th>Moneda</th>
+                        <th>No Artículos</th>
+                        <th>Importe</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for compra in compras %}
+                        <tr>
+                            <td>{% if compra['fechacompra'] %}{{ compra['fechacompra']|date('d/m/Y') }}{% endif %}</td>
+                            <td>{{ compra['proveedor'] }}</td>
+                            <td>{{ compra['moneda'] }}</td>
+                            <td>{{ compra['cantidaddearticulo'] }}</td>
+                            <td>{{ compra['montototalpagado'] }}</td>
+                            <td>
+                                <a href="{{ path('compra_show', { 'id': compra['idcompra'] }) }}"
+                                   class="sepV_a" title="Mostrar detalles">
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% elseif ventas is defined %}
+                <table class="table table-bordered table-striped todasTablas">
+                    <thead>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Número</th>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Importe</th>
+                        <th>Forma de pago</th>
+                        <th>Cant. artículos</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for venta in ventas %}
+                        <tr>
+                            <td>{{ venta['tipodocumento'] }}</td>
+                            <td>{{ venta['serie'] ~'-'~venta['numerodedocumento'] }}</td>
+                            <td>{% if venta['fecha'] %}{{ venta['fecha']|date('d/m/Y') }}{% endif %}</td>
+                            <td>{{ venta['cliente'] }}</td>
+                            <td>{{ venta['montototalapagar'] }}</td>
+                            <td>{{ venta['formadepago'] }}</td>
+                            <td>{{ venta['cantidaddearticulos'] }}</td>
+                            <td>
+                                <a href="{{ path('venta_show', { 'id': venta['idventa'] }) }}"
+                                   class="sepV_a" title="Mostrar detalles">
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+            <a class="btn btn-default" href="{{ path('inventario_diario_menu',{'fecha': 0,'seccion':0, 'articulo':0}) }}"><span
+                        class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+

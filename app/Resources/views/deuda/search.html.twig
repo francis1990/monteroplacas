@@ -1,0 +1,124 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('deuda_index') }}">Deuda</a>
+    </li>
+    <li>
+        {% if dailydate != 1%} 
+           Resultados de la Búsqueda del día {{dailydate}}
+        {% else%} 
+            Resultados de la Búsqueda entre los días {{iniciodate}} y {{finaldate}}           
+        {% endif %} 
+    </li>
+{% endblock %}
+{% block contenido %}
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">
+                        {% if dailydate != 1%} 
+                            Informe de Deudas del día {{dailydate}}
+                        {% else%} 
+                            Informe de Deudas entre los días {{iniciodate}} y {{finaldate}}           
+                        {% endif %} 
+                    </h3>
+                    <div class="col-sm-6 col-md-4">
+                        <form action="{{ path('deuda_search') }}" method="post" > 
+                            <div class="row">
+                                <div class="col-sm-3 col-md-6">
+                                    <button class="btn btn-default" type="submit">
+                                        Informe de Deudas del Dia:
+                                    </button>
+                                </div>
+                                <div class="col-sm-3 col-md-5">
+                                    <input type="date" class="form-control" name="dailydate" required="true">  
+                                </div>
+                                <input class="hidden" id="daily" name="daily" value="day">
+                            </div>
+                        </form>
+                    </div>
+                    <vl/>
+                    <div class="col-sm-6 col-md-8">
+                        <form action="{{ path('deuda_search') }}" method="post" > 
+                            <div class="row">
+                                <div class="col-sm-3 col-md-3">
+                                    <button class="btn btn-default" type="submit">
+                                        Informe de Deudas. Rango:
+                                    </button>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="iniciodate" required="true">  
+                                </div>
+
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="finaldate" required="true">  
+                                </div>
+                                <input class="hidden" id="fechas" name="fechas" value="fechas">
+                            </div>
+                        </form>
+                    </div> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>Documento</th>
+                            <th>Número de factura</th>
+                            <th>Cliente</th>
+                            <th>Fecha inicio</th>
+                            <th>Fecha cancelación</th>
+                            <th>Total a pagar</th>
+                            <th>A/cuenta</th>
+                            <th>Deuda</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+    {% if deudas != null%}
+        {% for deuda in deudas %}
+                            <tr>
+                                <td>{{ deuda.tipodocumento }}</td>
+                                <td>{{ deuda.serie ~'-'~deuda.numerofactura }}</td>
+                                 <td>{{ deuda.cliente.nombre }}</td>
+                                <td>{% if deuda.fechainicio %}{{ deuda.fechainicio|date('d/m/Y') }}{% endif %}</td>
+                                <td>{% if deuda.fechacancelacion %}{{ deuda.fechacancelacion|date('d/m/Y') }}{% endif %}</td>
+                                <td>{{ deuda.totalapagar }}</td>
+                                <td>{{ deuda.totalapagar-deuda.deuda }}</td>
+                                <td>{{ deuda.deuda }}</td>
+                                <td>                                    
+                                    <a href="{{ path('deuda_show', { 'id': deuda.id }) }}"
+                                       class="sepV_a" title="Ver Detalles">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a> 
+                                       
+                                    <a  href="#" class="eliminar_confirm" data-url="{{ path('deuda_delete', { 'id': deuda.id }) }}" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+    {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">                
+                {% include 'global/searchdeudapaginator.html.twig' %}               
+            </div>       
+            <div class="row">                
+              {#  <div class="col-sm-3 col-md-3">
+                    <a class="btn btn-default" href="{{ path('venta_export', {  'dailydate': dailydate, 'iniciodate': iniciodate, 'finaldate': finaldate}) }}">Exportar Informe a Excel</a>
+                </div>  #} 
+            </div>          
+
+
+{% endblock %}

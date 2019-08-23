@@ -1,0 +1,4 @@
+[27-Feb-2018 16:12:32 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Process\Process' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Process/PhpProcess.php on line 26
+[15-Jun-2018 16:18:05 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Process\Process' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Process/PhpProcess.php on line 26
+[30-Aug-2018 06:37:35 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Process\Process' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Process/PhpProcess.php on line 26
+[02-Sep-2018 17:50:45 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Process\Process' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Process/PhpProcess.php on line 26

@@ -1,0 +1,2 @@
+[21-Jun-2018 12:01:12 America/Chicago] PHP Fatal error:  Class 'Twig_Extension' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Extension/ActionsExtension.php on line 26
+[01-Jul-2018 02:32:09 America/Chicago] PHP Fatal error:  Class 'Twig_Extension' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Extension/AssetsExtension.php on line 27

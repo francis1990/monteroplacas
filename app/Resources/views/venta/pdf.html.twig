@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style rel="stylesheet" type="text/css">
+       body{
+           font-family: Helvetica, Arial, sans-serif;
+           font-size: 8pt;
+       }
+        table{
+            width: 100%;
+        }
+        table.noventa{
+            width: 90%;
+        }
+       table td{
+
+           line-height: 2.3;
+        }
+        .texto-vertical span{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div class="logo">
+    <img width="100px"  src="{{asset('bundles/sistemaadminbackend/img/logonuevo.png')}}" alt=""/>
+</div>
+<h3 align="center">Stock de produccion de asfalto</h3>
+
+<div><table border="1"   >
+        <tr>
+            <td width="11%" >Producción</td>
+            <td colspan="12"></td>
+        </tr>
+        <tr>
+            <td>Contrata</td>
+            <td colspan="12"></td>
+        </tr>
+        <tr>
+            <td>Fecha</td>
+            <td colspan="12"></td>
+        </tr>
+        <tr>
+            <td rowspan="2">Material</td>
+            <td colspan="2" align="center" width="70px">Stock Anterior</td>
+            <td colspan="2" align="center" >Ingreso material</td>
+            <td colspan="2" align="center" >Total de material</td>
+            <td colspan="2" align="center" width="70px">Uso del dia</td>
+            <td colspan="2" align="center">Stock del dia</td>
+            <td align="center" width="65px">Procedencia</td>
+            <td align="center" >N˚ guia</td>
+        </tr>
+        <tr>
+            <td align="center">GLNS.</td>
+            <td align="center">M3</td>
+            <td align="center">GLNS.</td>
+            <td align="center">M3</td>
+            <td align="center">GLNS.</td>
+            <td align="center">M3</td>
+            <td align="center">GLNS.</td>
+            <td align="center">M3</td>
+            <td align="center">GLNS.</td>
+            <td align="center">M3</td>
+            <td align="center"></td>
+            <td align="center"></td>
+        </tr>
+        <tr>
+            <td>Pen 100/150</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Pen 60/70</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>cal-kg</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Fino-polvo</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Arena gruesa</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Piedra 1/2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>P.de asfalto</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table></div>
+<div><table class="noventa" border="1" >
+        <tr>
+            <td  align="center">Calentamiento de Pen</td>
+        </tr>
+    </table></div>
+
+<div><table width="100%" class="table-pintar">
+        <tr style="text-align: center">
+            <td  width="65" ></td>
+            <td colspan="5"  ></td>
+            <td colspan="2" width="70" style=" border: 1px solid black;">Temperatuta ˚C</td>
+            <td colspan="2" width="72" style=" border: 1px solid black;">Horario</td>
+            <td style=" border: 1px solid black;">Horas Maquinas</td>
+            <td width="70" style=" border: 1px solid black;">N˚ de vale combustible</td>
+        </tr>
+        <tr style="text-align: center">
+            <td  style=" border: 1px solid black;">Consumo diesel <br>D2</td>
+            <td style=" border: 1px solid black;">Stock  <br>Anterior-2 <br> GLNS </td>
+            <td style=" border: 1px solid black;">Ingreso D2 GLNS</td>
+            <td  class="texto-vertical" style=" border: 1px solid black;">
+                <span >T</span>
+                <span >o</span>
+                <span >t</span>
+                <span >a</span>
+                <span >l</span>
+            </td>
+            <td style=" border: 1px solid black;">Uso del dia <br> GLNS</td>
+            <td style=" border: 1px solid black;">Stock del dia</td>
+            <td style=" border: 1px solid black;">Actual</td>
+            <td style=" border: 1px solid black;">Final</td>
+            <td style=" border: 1px solid black;">Inicio</td>
+            <td style=" border: 1px solid black;">Termino</td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+        </tr>
+        <tr>
+            <td style=" border: 1px solid black;">Calentamiento</td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+        </tr>
+        <tr>
+            <td style=" border: 1px solid black;">Bunker 4</td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+        </tr>
+        <tr>
+            <td style=" border: 1px solid black;">Tanque de G.E</td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+        </tr>
+        <tr>
+            <td colspan="2" style=" border: 1px solid black;">Limpieza de planta</td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+            <td style=" border: 1px solid black;"></td>
+        </tr>
+    </table></div>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div class="logo">
+    <img width="100px"  src="{{asset('bundles/sistemaadminbackend/img/logonuevo.png')}}" alt=""/>
+</div>
+<div><table border="1"  class="noventa" >
+        <tr>
+            <td  align="center">Datos de maquinaria y operador</td>
+        </tr>
+    </table></div>
+
+
+<div><table border="1">
+        <tr>
+            <td>Fecha</td>
+            <td colspan="2"></td>
+            <td colspan="7"></td>
+
+        </tr>
+        <tr>
+            <td>Maquinaria</td>
+            <td>Cargador <br> Frontal</td>
+            <td colspan="2">Horometro</td>
+            <td>H-M-</td>
+            <td colspan="2">Horario</td>
+            <td>N˚ de parte diario</td>
+            <td rowspan="2" colspan="2">N˚ de combustible</td>
+
+        </tr>
+        <tr align="center">
+            <td>Unidad</td>
+            <td>OP.</td>
+            <td>Inicio</td>
+            <td>Final</td>
+            <td></td>
+            <td>Inicio</td>
+            <td>Final</td>
+            <td ></td>
+        </tr>
+        <tr>
+            <td><br></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td><br></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="2"></td>
+        </tr>
+    </table></div>
+
+<div><table border="1" class="noventa"  >
+        <tr>
+            <td  align="center">Ocurrencias</td>
+        </tr>
+    </table></div>
+
+<div><table  >
+        <tr align="center">
+            <td ></td>
+            <td style=" border: 1px solid black;" colspan="2">Horario</td>
+            <td ></td>
+        </tr>
+        <tr>
+            <td style=" border: 1px solid black;">Ocurrencias</td>
+            <td align="center" style=" border: 1px solid black;">Inicio</td>
+            <td align="center" style=" border: 1px solid black;">Final</td>
+            <td align="center" style=" border: 1px solid black;">Merma M3</td>
+        </tr>
+        <tr>
+            <td  style=" border: 1px solid black;">Parada de planta</td>
+            <td align="center" style=" border: 1px solid black;"></td>
+            <td align="center" style=" border: 1px solid black;"></td>
+            <td align="center" style=" border: 1px solid black;" ></td>
+        </tr>
+        <tr>
+            <td style=" border: 1px solid black;">Parada de planta</td>
+            <td align="center" style=" border: 1px solid black;"></td>
+            <td align="center" style=" border: 1px solid black;"></td>
+            <td align="center" style=" border: 1px solid black;"></td>
+        </tr>
+        <tr>
+            <td style=" border: 1px solid black;">Parada de planta</td>
+            <td align="center" style=" border: 1px solid black;"></td>
+            <td align="center" style=" border: 1px solid black;"></td>
+            <td align="center" style=" border: 1px solid black;"></td>
+        </tr>
+    </table></div>
+
+<div><table border="1"  class="noventa" >
+        <tr>
+            <td  align="center">Abastecimiento de Volquetes</td>
+        </tr>
+    </table></div>
+
+<div><table border="1" >
+        <tr>
+            <td>Total de Volquetes</td>
+            <td>Asfalto Total despachado M3</td>
+            <td>Hora Inicio produccion</td>
+            <td>Hora termino de Produccion</td>
+            <td>Total en horas</td>
+        </tr>
+        <tr>
+            <td><br> </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table></div>
+
+<div><table border="1" >
+        <tr>
+            <td width="10%" rowspan="2"></td>
+            <td width="90%"><br></td>
+
+        </tr>
+        <tr>
+            <td ><br></td>
+        </tr>
+    </table></div>
+
+</body>
+</html>

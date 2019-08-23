@@ -1,0 +1,15 @@
+[13-Jun-2018 05:48:18 Europe/London] PHP Fatal error:  Class 'PHPExcel_Writer_OpenDocument' not found in /home1/mp/public_html/monteroplacas/vendor/phpexcel/Classes/PHPExcel/IOFactory.php on line 141
+[16-Jun-2018 11:41:02 Europe/London] PHP Warning:  require_once(../Build/PHPExcel.phar): failed to open stream: No such file or directory in /home1/mp/public_html/monteroplacas/vendor/phpexcel/Examples/01pharSimple.php on line 37
+[16-Jun-2018 11:41:02 Europe/London] PHP Fatal error:  require_once(): Failed opening required '../Build/PHPExcel.phar' (include_path='.:/opt/php56/lib/php') in /home1/mp/public_html/monteroplacas/vendor/phpexcel/Examples/01pharSimple.php on line 37
+[17-Jul-2018 10:02:20 Europe/London] PHP Fatal error:  Uncaught exception 'PHPExcel_Writer_Exception' with message 'Error zipping files : PCLZIP_ERR_READ_OPEN_FAIL (-2) : Unable to open temporary file '/tmppclzip-5b4db09cd73a2.tmp' in binary write mode' in /home1/mp/public_html/monteroplacas/vendor/phpexcel/Classes/PHPExcel/Shared/ZipArchive.php:108
+Stack trace:
+#0 /home1/mp/public_html/monteroplacas/vendor/phpexcel/Classes/PHPExcel/Writer/Excel2007.php(278): PHPExcel_Shared_ZipArchive->addFromString('_rels/.rels', '<?xml version="...')
+#1 /home1/mp/public_html/monteroplacas/vendor/phpexcel/Examples/01simplePCLZip.php(91): PHPExcel_Writer_Excel2007->save('/home1/mp/publi...')
+#2 {main}
+  thrown in /home1/mp/public_html/monteroplacas/vendor/phpexcel/Classes/PHPExcel/Shared/ZipArchive.php on line 108
+[19-Jul-2018 22:29:42 Europe/London] PHP Fatal error:  Uncaught exception 'PHPExcel_Writer_Exception' with message 'Error zipping files : PCLZIP_ERR_READ_OPEN_FAIL (-2) : Unable to open temporary file '/tmppclzip-5b5102c6bf3aa.tmp' in binary write mode' in /home1/mp/public_html/monteroplacas/vendor/phpexcel/Classes/PHPExcel/Shared/ZipArchive.php:108
+Stack trace:
+#0 /home1/mp/public_html/monteroplacas/vendor/phpexcel/Classes/PHPExcel/Writer/Excel2007.php(278): PHPExcel_Shared_ZipArchive->addFromString('_rels/.rels', '<?xml version="...')
+#1 /home1/mp/public_html/monteroplacas/vendor/phpexcel/Examples/01simplePCLZip.php(91): PHPExcel_Writer_Excel2007->save('/home1/mp/publi...')
+#2 {main}
+  thrown in /home1/mp/public_html/monteroplacas/vendor/phpexcel/Classes/PHPExcel/Shared/ZipArchive.php on line 108

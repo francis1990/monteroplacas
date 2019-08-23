@@ -1,0 +1,1 @@
+[31-Aug-2018 01:56:11 America/Chicago] PHP Fatal error:  Class 'Psr\Log\Test\LoggerInterfaceTest' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Console/Tests/Logger/ConsoleLoggerTest.php on line 26

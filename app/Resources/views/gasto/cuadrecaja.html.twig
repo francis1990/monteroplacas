@@ -1,0 +1,51 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('venta_index') }}">Venta</a>
+    </li>
+    <li>
+        Venta por Vendedor
+    </li>
+{% endblock %}
+{% block contenido %}
+      
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Venta por Vendedor</h3>
+                </div>
+            </div>
+           <div class="form_error">{{form_errors(form)}}</div>
+            <div class="row" id="content">
+                <div class="col-sm-12 col-md-12">
+                    {{ form_start(form,{'attr':{ 'class':'form-horizontal form_validation_reg','id':'#form-venta'}}) }}                     
+                    <div class="formSep">                        
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.fechainicio) }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.fechainicio) }}
+                                            {{ form_errors(form.fechainicio) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2">{{ form_label(form.fechafin) }}</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(form.fechafin) }}
+                                            {{ form_errors(form.fechafin) }}
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formSep form-actions">
+                        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-print"></span> Obtener</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+{% endblock %}

@@ -1,0 +1,1 @@
+[30-Aug-2018 11:05:44 America/Chicago] PHP Fatal error:  Interface 'Symfony\Bundle\SecurityBundle\DependencyInjection\Security\UserProvider\UserProviderFactoryInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bridge/Doctrine/DependencyInjection/Security/UserProvider/EntityFactory.php on line 26

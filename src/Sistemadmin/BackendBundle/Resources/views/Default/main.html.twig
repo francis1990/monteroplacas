@@ -1,0 +1,36 @@
+{% extends 'sistemadmin.html.twig' %}
+
+{% block panelcentral %}
+
+
+    <div id="submenu" class="col-sm-12">
+        <ul class="dshb_icoNav clearfix">
+            {% if is_granted('ROLE_CAJA') %}
+            <li><a href="{{ path('cliente_index') }}" style="background-image: url({{asset('bundles/sistemaadminbackend/img/gCons/multi-agents.png')}})"><span class="label label-info">+10</span> Clientes</a></li>
+
+            <li><a href="{{ path('proveedor_index') }}" style="background-image: url({{asset('bundles/sistemaadminbackend/img/gCons/van.png')}})">Proveedores</a></li>
+
+            <li><a href="{{ path('vendedor_index') }}" style="background-image: url({{asset('bundles/sistemaadminbackend/img/gCons/male-user.png')}})">Vendedores</a></li>
+
+            <li><a href="{{ path('compra_index') }}"   style="background-image: url({{asset('bundles/sistemaadminbackend/img/gCons/dollar.png')}})">Compras</a>
+
+            </li><li><a href="{{ path('venta_index') }}" style="background-image: url( {{asset('bundles/sistemaadminbackend/img/gCons/bar-chart.png')}})"><span class="label label-success">$2851</span> Ventas</a></li>
+
+
+            <li><a href="javascript:void(0)" style="background-image: url({{asset('bundles/sistemaadminbackend/img/gCons/calculator.png')}})">Caja chica</a></li>
+
+            <li><a href="{{ path('articulo_index') }}" style="background-image: url({{asset('bundles/sistemaadminbackend/img/gCons/umbrella.png')}})"> Artículos</a></li>
+            {% elseif  is_granted('ROLE_VENTA') %}
+                <li><a href="{{ path('cliente_index') }}" style="background-image: url({{asset('bundles/sistemaadminbackend/img/gCons/multi-agents.png')}})"><span class="label label-info">+10</span> Clientes</a></li>
+                <li><a href="{{ path('proveedor_index') }}" style="background-image: url({{asset('bundles/sistemaadminbackend/img/gCons/van.png')}})">Proveedores</a></li>
+                <li><a href="{{ path('articulo_index') }}" style="background-image: url({{asset('bundles/sistemaadminbackend/img/gCons/umbrella.png')}})"> Artículos</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+
+
+{% endblock %}
+
+
+

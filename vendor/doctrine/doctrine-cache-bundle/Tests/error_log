@@ -1,0 +1,4 @@
+[27-Feb-2018 16:09:39 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/doctrine-cache-bundle/Tests/TestCase.php on line 28
+[27-Feb-2018 16:10:31 America/Chicago] PHP Fatal error:  Class 'Doctrine\Bundle\DoctrineCacheBundle\Tests\TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/doctrine-cache-bundle/Tests/FunctionalTestCase.php on line 28
+[30-Aug-2018 09:48:40 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/doctrine-cache-bundle/Tests/TestCase.php on line 28
+[31-Aug-2018 06:05:46 America/Chicago] PHP Fatal error:  Class 'Doctrine\Bundle\DoctrineCacheBundle\Tests\TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/doctrine-cache-bundle/Tests/FunctionalTestCase.php on line 28

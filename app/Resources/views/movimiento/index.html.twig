@@ -1,0 +1,42 @@
+{% extends 'inventarioadmin.html.twig' %}
+{% block content %}
+    <h1>Movimiento list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Cantidad</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for movimiento in movimientos %}
+            <tr>
+                <td><a href="{{ path('movimiento_show', { 'id': movimiento.id }) }}">{{ movimiento.id }}</a></td>
+                <td>{{ movimiento.nombre }}</td>
+                <td>{{ movimiento.descripcion }}</td>
+                <td>{{ movimiento.cantidad }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('movimiento_show', { 'id': movimiento.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('movimiento_edit', { 'id': movimiento.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('movimiento_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

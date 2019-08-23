@@ -1,0 +1,388 @@
+<?php
+
+namespace Sistemadmin\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * Proveedor
+ *
+ * @ORM\Table(name="proveedor")
+ * @ORM\Entity(repositoryClass="Sistemadmin\BackendBundle\Repository\ProveedorRepository")
+ */
+class Proveedor
+{
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=255)
+     */
+    private $nombre;    
+
+    /**
+
+     * @var int
+
+     * @ORM\Column(name="numerodocumento", type="bigint", nullable=true )
+     */
+    private $numerodocumento;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ruc", type="bigint" , nullable=true)
+     */
+    private $ruc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="razonsocial", type="string", length=255, nullable=true)
+     */
+    private $razonsocial;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="direccion", type="string", length=255, nullable=true)
+     */
+    private $direccion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="correo", type="string", length=255, nullable=true)
+     */
+    private $correo;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono", type="integer", nullable=true)
+     */
+    private $telefono;
+    
+    /**
+     * @var boolean $utilizado
+     *
+     * @ORM\Column(name="utilizado", type="boolean", nullable=true)
+     */
+    protected $utilizado; 
+
+    public function __construct()
+    {
+
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set codigo
+     *
+     * @param bigint $numerodocumento
+     * @return Proveedor
+     */
+    public function setNumerodocumento($numerodocumento)
+    {
+        $this->numerodocumento = $numerodocumento;
+
+        return $this;
+    }
+
+    /**
+     * Get numerodocumento
+     *
+     * @return bigint
+     */
+    public function getNumerodocumento()
+    {
+        return $this->numerodocumento;
+    }
+
+    /**
+     * Set ruc
+     *
+     * @param integer $ruc
+     * @return Proveedor
+     */
+    public function setRuc($ruc)
+    {
+        $this->ruc = $ruc;
+
+        return $this;
+    }
+
+    /**
+     * Get ruc
+     *
+     * @return integer
+     */
+    public function getRuc()
+    {
+        return $this->ruc;
+    }
+
+    /**
+     * Set razonsocial
+     *
+     * @param string $razonsocial
+     * @return Proveedor
+     */
+    public function setRazonsocial($razonsocial)
+    {
+        $this->razonsocial = $razonsocial;
+
+        return $this;
+    }
+
+    /**
+     * Get razonsocial
+     *
+     * @return string
+     */
+    public function getRazonsocial()
+    {
+        return $this->razonsocial;
+    }
+
+
+    /**
+     * Set moneda
+     *
+     * @param string $direccion
+     * @return Proveedor
+     */
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * Get moneda
+     *
+     * @return string
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+
+
+
+    /**
+     * Set telefono
+     *
+     * @param integer $telefono
+     * @return Proveedor
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get telefonocelular
+     *
+     * @return string
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Proveedor
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set distrito
+     *
+     * @param string $distrito
+     * @return Proveedor
+     */
+    public function setDistrito($distrito)
+    {
+        $this->distrito = $distrito;
+
+        return $this;
+    }
+
+    /**
+     * Get distrito
+     *
+     * @return string
+     */
+    public function getDistrito()
+    {
+        return $this->distrito;
+    }
+
+    /**
+     * Set provincia
+     *
+     * @param string $provincia
+     * @return Proveedor
+     */
+    public function setProvincia($provincia)
+    {
+        $this->provincia = $provincia;
+
+        return $this;
+    }
+
+    /**
+     * Get provincia
+     *
+     * @return string
+     */
+    public function getProvincia()
+    {
+        return $this->provincia;
+    }
+
+    /**
+     * Set departamento
+     *
+     * @param string $departamento
+     * @return Proveedor
+     */
+    public function setDepartamento($departamento)
+    {
+        $this->departamento = $departamento;
+
+        return $this;
+    }
+
+    /**
+     * Get departamento
+     *
+     * @return string
+     */
+    public function getDepartamento()
+    {
+        return $this->departamento;
+    }
+
+    /**
+     * Set otrosdatos
+     *
+     * @param string $otrosdatos
+     * @return Proveedor
+     */
+    public function setOtrosdatos($otrosdatos)
+    {
+        $this->otrosdatos = $otrosdatos;
+
+        return $this;
+    }
+
+    /**
+     * Get otrosdatos
+     *
+     * @return string
+     */
+    public function getOtrosdatos()
+    {
+        return $this->otrosdatos;
+    }
+
+
+
+    public function __toString()
+    {
+        return $this->nombre."-". $this->ruc;
+
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Proveedor
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set correo
+     *
+     * @param string $correo
+     * @return Proveedor
+     */
+    public function setCorreo($correo)
+    {
+        $this->correo = $correo;
+
+        return $this;
+    }
+
+    /**
+     * Get correo
+     *
+     * @return string 
+     */
+    public function getCorreo()
+    {
+        return $this->correo;
+    }
+}

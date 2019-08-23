@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ArticuloVenta list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for articuloVentum in articuloVentas %}
+            <tr>
+                <td><a href="{{ path('articuloventa_show', { 'id': articuloVentum.id }) }}">{{ articuloVentum.id }}</a></td>
+                <td>{{ articuloVentum.cantidad }}</td>
+                <td>{{ articuloVentum.precio }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('articuloventa_show', { 'id': articuloVentum.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('articuloventa_edit', { 'id': articuloVentum.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('articuloventa_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

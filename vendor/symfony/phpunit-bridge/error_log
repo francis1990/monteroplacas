@@ -1,0 +1,1 @@
+[27-Feb-2018 16:00:15 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_BaseTestListener' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/phpunit-bridge/SymfonyTestsListener.php on line 22

@@ -1,0 +1,7 @@
+<select id="filtro-seccion" class="chosen-select form-control" name="seccion"
+       >
+    <option value="0">Seleccione...</option>
+    {% for sec in seccions %}
+        <option value="{{ sec.id }}">{{ sec.almacen~"-"~ sec.nombre }}</option>
+    {% endfor %}
+</select>

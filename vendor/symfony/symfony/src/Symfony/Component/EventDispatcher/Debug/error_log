@@ -1,0 +1,1 @@
+[20-Mar-2018 12:59:20 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\EventDispatcher\EventDispatcherInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/EventDispatcher/Debug/TraceableEventDispatcherInterface.php on line 20

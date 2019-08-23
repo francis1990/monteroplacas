@@ -1,0 +1,2 @@
+[29-Aug-2018 10:01:31 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\HttpKernel\DependencyInjection\Extension' not found in /home1/mp/public_html/monteroplacas/vendor/whiteoctober/tcpdf-bundle/WhiteOctober/TCPDFBundle/DependencyInjection/WhiteOctoberTCPDFExtension.php on line 15
+[29-Aug-2018 10:04:23 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Config\Definition\ConfigurationInterface' not found in /home1/mp/public_html/monteroplacas/vendor/whiteoctober/tcpdf-bundle/WhiteOctober/TCPDFBundle/DependencyInjection/Configuration.php on line 10

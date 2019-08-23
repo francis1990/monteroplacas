@@ -1,0 +1,9 @@
+{{'FTHeader|'~nombre~'|'~ venta.fecha|date('Y-m-d')~'|'~ venta.fecha|date('h:i:s')~'|'~tipo~'|PEN|||||VENTA GRAVADA' ~'\r\n'}}
+{{'FTSupplier|'~ruc~'|6|Bertha|Montero placas|||LIMA|LIMA|LIMA|Distrito Villa María del triunfo|PE|0001'~'\r\n'}}
+{{'FTCustomer|'~ruccliente~'|'~tipocliente~'|'~venta.cliente.nombre|upper~'|||||||PE||'~'\r\n'}}
+{% for art in venta.articuloventas %}
+{{'FTDetail|'~ loop.index ~'|NIU|'~art.cantidad~'||||'~art.articulo.nombre~'|'~ (art.precio /1.18)~'|'~(art.importe)~'|01|||'~(art.importe/ 1.18 * 0.18)~'|'~(art.importe/ 1.18 * 0.18)~'|10|1000|IGV|VAT|18||||||||||||||'~(art.importe / 1.18)~'|||||||||||||||||'~'\r\n'}}
+{% endfor %}
+{{'FTTotals|||1001|'~subtotal~'||||||||0||||'~igv~'|'~igv~'|1000|IGV|VAT|||||||||||||'~venta.montototalapagar~'|1005|'~subtotal~'\r\n'}}
+{{'FTLegends|||||0101'~'\r\n'}}
+{{'FTInfo||||||||||||||||||||'}}

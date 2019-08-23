@@ -1,0 +1,2 @@
+[27-Feb-2018 16:04:53 America/Chicago] PHP Fatal error:  Class 'PHPUnit_TextUI_Command' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/phpunit-bridge/TextUI/Command.php on line 18
+[27-Feb-2018 16:05:07 America/Chicago] PHP Fatal error:  Class 'PHPUnit_TextUI_TestRunner' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/phpunit-bridge/TextUI/TestRunner.php on line 20

@@ -1,0 +1,130 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('notacredito_index') }}">Notas de Crédito</a>
+    </li>
+{% endblock %}
+
+{% block contenido %}
+
+	<div class="row">
+	    <div class="col-sm-12 col-md-12">
+	        <h3 class="heading">Buscar Notas de Crédito</h3>
+	    </div>
+	</div>
+	{#<form action="{{ path('notacredito_buscar') }}" method="post" >#}
+	    <div class="search-element" style="height: 250px; justify-content: flex-start;">
+	        <div id="group-box" class="search-element">
+	        	<div id="date-range" class="search-element" style="margin-left: 10px">
+	        		<div class="search-element">
+	        			<div style="margin-right: 10px;">Desde:</div> 
+	        			<div class="">
+	        			    <input type="date" class="form-control" name="desdedate" required="false" style="width: 150px">
+	        			</div>
+	        		</div>
+	        		<div class="search-element">
+	        			<div style="margin-right: 10px;">Hasta:</div> 
+	        			<div>
+	        			    <input type="date" class="form-control" name="hastadate" required="false" style="width: 150px">
+	        			</div>
+	        		</div>
+	        	</div>
+	        	<div id="otros-criterios">
+	        		<div class="search-element">
+	        			<div class="text-block">Tipo de nota:</div>
+	        			<select id="categoria" name="categoria" class="form-control">
+	                        <option value="a">Número de factura</option>
+	                        <option value="b">Importe</option>
+                    	</select>
+	        		</div>
+	        		<div class="search-element">
+	        			<div class="text-block">Número de NC:</div>
+	        			<input type="search" class="form-control">
+	        		</div>
+	        		<div class="search-element">
+	        			<div class="text-block">Estado:</div>
+		        		<select id="categoria" name="categoria" class="form-control">
+	                        <option value="c">Número de factura</option>
+	                        <option value="d">Importe</option>
+	                    </select>
+	        		</div>
+	        		<div class="search-element">
+	        			<div class="text-block">Número de factura:</div>
+	        			<input type="search" class="form-control">
+	        		</div>
+	        	</div>
+	        </div>
+	        <div id="search-btns">
+	        	<div style="margin-right: 10px;">
+	        		<a class="btn btn-default" href="{{ path('venta_todas') }}" ><span class="glyphicon glyphicon-search"></span> Buscar</a>
+	        	</div>
+                <div>
+                	<a class="btn btn-default" href="{{ path('venta_todas') }}"><span class="glyphicon glyphicon-delete"></span>Eliminar</a>
+                </div>
+	        </div>
+	    </div>
+	{#</form>#}
+	<div class="row">
+		<div class="col-sm-3 col-md-3" style=" margin-bottom: 10px;">
+			<a class="btn btn-default" href="{{ path('venta_todas') }}"><span class="glyphicon"></span>Exportar a Excel</a>
+		</div>
+		<div class="col-sm-12 col-md-12">
+            <table class="table-bordered table-striped allTables hover" >
+                <thead>
+                    <tr>
+                        <th>Número de NC</th>
+                        <th>Tipo de Nota</th>
+                        <th>Fecha</th>
+                        <th>Documento</th>
+                        <th>Número de Factura</th>
+                        <th>Cliente</th>
+                        <th>Motivo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Número de NC</th>
+                        <th>Tipo de Nota</th>
+                        <th>Fecha</th>
+                        <th>Documento</th>
+                        <th>Número de Factura</th>
+                        <th>Cliente</th>
+                        <th>Motivo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </tfoot>
+                <tbody>        
+                {% for notacredito in buscado %}
+                    <tr>
+                        <td>{{ notacredito.codigo }}</td>
+                        <td>{{ notacredito.tipodocumento }}</td>
+                        <td>{{ notacredito.numerodelineas }}</td>
+                        <td>
+                            <a href="{{ path('documento_show', { 'id': documento.id }) }}"
+                               class="sepV_a" title="Mostrar detalles">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </a>
+                            <a href="{{ path('documento_edit', { 'id': documento.id }) }}"
+                               class="sepV_a" title="Editar documento">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                            <a href="{{ path('venta_export_pdf', { 'id': venta.id }) }}" target="_blank"
+                               title="Exportar">
+                                <i class="glyphicon glyphicon-print"></i>
+                            </a>
+                           {# <a id="choicetwo" data-toggle="modal" data-target="#myModal" title="Eliminar">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>#}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>        
+            </table>         
+        </div>
+	</div>
+
+{% endblock %}

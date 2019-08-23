@@ -1,0 +1,13 @@
+{% extends '::sistemadmin.html.twig' %}
+
+{% block titulo_cont_excep %}
+
+{% endblock %}
+
+{% block icono_error %} <i class="fa fa-warning text-danger"></i> {% endblock %}
+
+{% block codigo_error %} <h1 class="headline text-danger"> Error 500 </h1> {% endblock %}
+
+{% block mensaje_notif %} Se ha producido un error grave en el servidor. {% endblock %}
+
+{% block mensaje_solucion %} Intente recargar esta página dentro de unos minutos o <a href="{{ path('main') }}"> vuelva a la portada del sitio. </a>{% endblock %}

@@ -1,0 +1,1 @@
+[30-Aug-2018 18:41:56 America/Chicago] PHP Fatal error:  Class 'Doctrine\Common\Cache\ArrayCache' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/doctrine-cache-bundle/Tests/DependencyInjection/Fixtures/Cache/MyCustomType.php on line 17

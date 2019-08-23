@@ -1,0 +1,6 @@
+[31-Aug-2018 05:02:39 America/Chicago] PHP Fatal error:  Class 'Twig_Node' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Node/Include.php on line 18
+[31-Aug-2018 05:34:25 America/Chicago] PHP Fatal error:  Class 'Twig_Node' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Node/Set.php on line 18
+[31-Aug-2018 05:36:46 America/Chicago] PHP Fatal error:  Class 'Twig_Node' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Node/Text.php on line 18
+[31-Aug-2018 05:55:35 America/Chicago] PHP Fatal error:  Class 'Twig_Node' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Node/Module.php on line 23
+[01-Sep-2018 02:27:30 America/Chicago] PHP Fatal error:  Class 'Twig_Node' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Node/Expression.php on line 19
+[01-Sep-2018 06:55:29 America/Chicago] PHP Fatal error:  Class 'Twig_Node_Print' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Node/SandboxedPrint.php on line 23

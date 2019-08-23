@@ -1,0 +1,61 @@
+
+{% extends 'inventarioadmin.html.twig' %}
+{% block title %}Inventario | Motivo movimiento{% endblock %}
+{% block title_section %}
+    Inventario
+    <small>Motivo movimiento</small>
+{% endblock %}
+{% block motivo_activo %}class="active"{% endblock %}
+{% block tree_mov %}active{% endblock %}
+{% block breadcrumb %}
+    <li class="">Inventario</li>
+    <li class="active">Motivo movimiento</li>
+{% endblock %}
+{% block main_content %}
+    <div class="box">
+        <br>
+        <div class="box-header">
+            <h3 class="box-title">Lista de motivos de movimiento</h3>
+            <div class="pull-right">
+                    <a href="{{ path('motivo_new') }}" title="Adicionar" id="btn_adicionar"
+                       class="btn  btn-primary">
+                        <span class="glyphicon glyphicon-file "></span> Adicionar</a>
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <table class="table table-bordered table-striped todasTablas">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Abreviatura</th>
+                    <th>Tipo</th>
+
+                    <th width="100">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for dat in motivos %}
+                    <tr id="{{ dat.id }}">
+                        <td>{{ dat.nombre }}</td>
+                        <td>{{ dat.abreviatura }}</td>
+                        <td>{% if dat.tipo == 1  %}Entrada{% else %}Salida{% endif %}</td>
+                        <td align="center">
+                            <a title="Mostrar detalle" class="text-black" href="{{ path('motivo_show', { 'id': dat.id }) }}"><span
+                                        class="glyphicon glyphicon-eye-open"></span></a>&emsp;
+                            {% if dat.conceptodefault ==0 %}
+                                <a title="Editar elemento" class="text-blue" href="{{ path('motivo_edit', { 'id': dat.id }) }}"><span
+                                            class="glyphicon glyphicon-pencil"></span></a>
+                                &emsp;
+                               <a title="Eliminar elemento"  href="#" class="text-red btn_eliminar"
+                                   data-url="{{ path('motivo_delete') }}"><span
+                                            class="glyphicon glyphicon-trash"></span></a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+

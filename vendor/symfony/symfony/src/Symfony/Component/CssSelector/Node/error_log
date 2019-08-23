@@ -1,0 +1,2 @@
+[27-Feb-2018 16:18:52 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\CssSelector\Node\AbstractNode' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/CssSelector/Node/PseudoNode.php on line 25
+[20-Mar-2018 16:12:52 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\CssSelector\Node\AbstractNode' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/CssSelector/Node/HashNode.php on line 25

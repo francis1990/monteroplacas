@@ -1,0 +1,2 @@
+[30-Aug-2018 01:02:28 America/Chicago] PHP Fatal error:  Interface 'Doctrine\Common\Collections\Collection' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/collections/lib/Doctrine/Common/Collections/ArrayCollection.php on line 34
+[30-Aug-2018 01:03:13 America/Chicago] PHP Fatal error:  Interface 'Doctrine\Common\Collections\Collection' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/collections/lib/Doctrine/Common/Collections/AbstractLazyCollection.php on line 31

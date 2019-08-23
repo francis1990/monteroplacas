@@ -1,0 +1,6 @@
+[27-Feb-2018 15:58:07 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Security\Acl\Dbal\AclProvider' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/security-acl/Dbal/MutableAclProvider.php on line 34
+[27-Feb-2018 15:58:11 America/Chicago] PHP Fatal error:  Class 'Doctrine\DBAL\Schema\Schema' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/security-acl/Dbal/Schema.php on line 23
+[27-Feb-2018 15:58:13 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Security\Acl\Model\AclProviderInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/security-acl/Dbal/AclProvider.php on line 38
+[30-Aug-2018 07:46:23 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Security\Acl\Model\AclProviderInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/security-acl/Dbal/AclProvider.php on line 38
+[30-Aug-2018 07:48:11 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Security\Acl\Dbal\AclProvider' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/security-acl/Dbal/MutableAclProvider.php on line 34
+[30-Aug-2018 07:50:01 America/Chicago] PHP Fatal error:  Class 'Doctrine\DBAL\Schema\Schema' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/security-acl/Dbal/Schema.php on line 23

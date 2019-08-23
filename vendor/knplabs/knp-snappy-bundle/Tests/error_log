@@ -1,0 +1,5 @@
+[27-Feb-2018 16:04:49 America/Chicago] PHP Warning:  require(vendor/autoload.php): failed to open stream: No such file or directory in /home1/mp/public_html/monteroplacas/vendor/knplabs/knp-snappy-bundle/Tests/bootstrap.php.dist on line 3
+[27-Feb-2018 16:04:49 America/Chicago] PHP Warning:  require(vendor/autoload.php): failed to open stream: No such file or directory in /home1/mp/public_html/monteroplacas/vendor/knplabs/knp-snappy-bundle/Tests/bootstrap.php.dist on line 3
+[27-Feb-2018 16:04:49 America/Chicago] PHP Fatal error:  require(): Failed opening required 'vendor/autoload.php' (include_path='.:/opt/php56/lib/php') in /home1/mp/public_html/monteroplacas/vendor/knplabs/knp-snappy-bundle/Tests/bootstrap.php.dist on line 3
+[27-Feb-2018 16:05:01 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\HttpKernel\Kernel' not found in /home1/mp/public_html/monteroplacas/vendor/knplabs/knp-snappy-bundle/Tests/TestKernel.php on line 9
+[27-Feb-2018 16:05:29 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/knplabs/knp-snappy-bundle/Tests/FunctionalTest.php on line 8

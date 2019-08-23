@@ -1,0 +1,16 @@
+[27-Feb-2018 16:10:33 America/Chicago] PHP Fatal error:  Interface 'Twig_FunctionInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Function.php on line 23
+[27-Feb-2018 16:10:36 America/Chicago] PHP Fatal error:  Interface 'Twig_NodeInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Node.php on line 19
+[27-Feb-2018 16:10:42 America/Chicago] PHP Fatal error:  Interface 'Twig_ExtensionInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Extension.php on line 12
+[30-Aug-2018 10:11:22 America/Chicago] PHP Fatal error:  Interface 'Twig_FunctionInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Function.php on line 23
+[30-Aug-2018 13:39:51 America/Chicago] PHP Fatal error:  Interface 'Twig_CompilerInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Compiler.php on line 19
+[30-Aug-2018 13:43:37 America/Chicago] PHP Fatal error:  Interface 'Twig_ExtensionInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Extension.php on line 12
+[30-Aug-2018 23:31:18 America/Chicago] PHP Fatal error:  Interface 'Twig_NodeInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Node.php on line 19
+[31-Aug-2018 00:21:19 America/Chicago] PHP Fatal error:  Interface 'Twig_TestInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Test.php on line 21
+[31-Aug-2018 01:52:01 America/Chicago] PHP Fatal error:  Interface 'Twig_FilterInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Filter.php on line 23
+[31-Aug-2018 02:10:08 America/Chicago] PHP Fatal error:  Interface 'Twig_CompilerInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Compiler.php on line 19
+[31-Aug-2018 02:15:25 America/Chicago] PHP Fatal error:  Interface 'Twig_TokenParserBrokerInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/TokenParserBroker.php on line 21
+[31-Aug-2018 02:17:52 America/Chicago] PHP Fatal error:  Interface 'Twig_NodeVisitorInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/BaseNodeVisitor.php on line 18
+[31-Aug-2018 02:30:11 America/Chicago] PHP Fatal error:  Interface 'Twig_TokenParserInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/TokenParser.php on line 18
+[31-Aug-2018 02:52:23 America/Chicago] PHP Fatal error:  Interface 'Twig_TemplateInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Template.php on line 19
+[31-Aug-2018 04:07:07 America/Chicago] PHP Fatal error:  Interface 'Twig_LexerInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Lexer.php on line 19
+[31-Aug-2018 05:45:12 America/Chicago] PHP Fatal error:  Interface 'Twig_ParserInterface' not found in /home1/mp/public_html/monteroplacas/vendor/twig/twig/lib/Twig/Parser.php on line 19

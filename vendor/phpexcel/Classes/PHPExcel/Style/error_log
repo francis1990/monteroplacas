@@ -1,0 +1,1 @@
+[25-Jun-2018 02:59:35 America/Chicago] PHP Fatal error:  Class 'PHPExcel_Style_Supervisor' not found in /home1/mp/public_html/monteroplacas/vendor/phpexcel/Classes/PHPExcel/Style/NumberFormat.php on line 36

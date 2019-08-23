@@ -1,0 +1,1 @@
+[01-Sep-2018 02:01:30 America/Chicago] PHP Fatal error:  Class 'Twig_TokenParser' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/TokenParser/RenderTokenParser.php on line 24

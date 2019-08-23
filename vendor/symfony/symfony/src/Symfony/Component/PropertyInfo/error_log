@@ -1,0 +1,2 @@
+[27-Feb-2018 16:13:26 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\PropertyInfo\PropertyTypeExtractorInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/PropertyInfo/PropertyInfoExtractorInterface.php on line 21
+[27-Feb-2018 16:14:02 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\PropertyInfo\PropertyInfoExtractorInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/PropertyInfo/PropertyInfoExtractor.php on line 20

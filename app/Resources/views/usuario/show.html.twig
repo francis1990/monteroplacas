@@ -1,0 +1,65 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('usuario_index') }}">Usuario</a>
+    </li>
+    <li>
+        Detalles
+    </li>
+
+{% endblock %}
+{% block contenido %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Usuario</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+            <div class="formSep">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Usuario
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ usuario.username }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Roles
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ usuario.roles|join(', ') }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Activo
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {% if usuario.activo %}Yes{% else %}No{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+            <div class="formSep form-actions">
+
+                <a class="btn btn-default" href="{{ path('usuario_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+
+                <a class="btn btn-default" href="{{ path('usuario_edit', { 'id': usuario.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+
+            </div>{% endif %}
+        </div>
+    </div>
+
+
+{% endblock %}

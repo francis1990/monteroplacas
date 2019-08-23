@@ -1,0 +1,46 @@
+{% extends '::inventarioadmin.html.twig' %}
+{% block title_section %}
+    Inventario
+    <small>Sección</small>
+{% endblock %}
+{% block seccion_activo %}class="active"{% endblock %}
+{% block tree_alm %}active{% endblock %}
+{% block breadcrumb %}
+    <li class="">Inventario</li>
+    <li><a href="{{ path('seccion_index') }}">Sección</a></li>
+    <li class="active">Detalle</li>
+{% endblock %}
+{% block main_content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <i class="glyphicon glyphicon-list"></i>
+                    <h3 class="box-title">Detalle</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>Denominación:</dt>
+                        <dd> {{ seccion.nombre }}</dd>
+                        <dt>Almacén:</dt>
+                        <dd> {{ seccion.almacen }}</dd>
+
+                    </dl>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+
+                    <a href="{{ path('seccion_edit', { 'id': seccion.id }) }}" title="Editar sección" class="btn btn-success">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        Editar</a>
+
+                    <a href="{{ path('seccion_index') }}" class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                        Volver</a>
+                </div>
+            </div><!-- /.box -->
+        </div><!-- ./col -->
+    </div>
+
+{% endblock %}
+

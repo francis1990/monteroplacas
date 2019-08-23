@@ -1,0 +1,2 @@
+[30-Aug-2018 07:44:40 America/Chicago] PHP Fatal error:  Interface 'Doctrine\Common\Persistence\Mapping\ClassMetadataFactory' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/AbstractClassMetadataFactory.php on line 40
+[30-Aug-2018 08:37:51 America/Chicago] PHP Fatal error:  Interface 'Doctrine\Common\Persistence\Mapping\ReflectionService' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/common/lib/Doctrine/Common/Persistence/Mapping/RuntimeReflectionService.php on line 34

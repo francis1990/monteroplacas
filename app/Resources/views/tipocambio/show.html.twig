@@ -1,0 +1,49 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('tipocambio_index') }}">Tipo de cambio</a>
+    </li>
+    <li>
+        Detalles
+    </li>
+{% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Tipo de Cambio</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Fecha de inicio
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {% if tipoCambio.fecha %}{{ tipoCambio.fecha|date('Y-m-d') }}{% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Compra
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ tipoCambio.compra }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Venta
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ tipoCambio.venta }}
+        </div>
+    </div>
+
+<div class="row">
+
+</div>
+    <div class="formSep form-actions">
+        <a class="btn btn-default" href="{{ path('tipocambio_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+    </div>
+{% endblock %}

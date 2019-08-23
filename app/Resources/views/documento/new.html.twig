@@ -1,0 +1,108 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('documento_index') }}">Documento</a>
+    </li>
+    <li>
+        Nuevo
+    </li>
+
+{% endblock %}
+{% block contenido %}
+ 
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Documento</h3>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-12 col-md-12">
+    {{ form_start(form,{'attr':{ 'class':'form-horizontal form_validation_reg'}}) }}
+    <div class="formSep">
+    <div class="row">
+    <div class="col-xs-12">
+        <fieldset>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(form.codigo) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.codigo) }}
+                    {{ form_errors(form.codigo) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(form.tipodocumento) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.tipodocumento) }}
+                    {{ form_errors(form.tipodocumento) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(form.serie1) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.serie1) }}
+                    {{ form_errors(form.serie1) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(form.serie2) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.serie2) }}
+                    {{ form_errors(form.serie2) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(form.serie3) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.serie3) }}
+                    {{ form_errors(form.serie3) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(form.numero1) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.numero1) }}
+                    {{ form_errors(form.numero1) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(form.numero2) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.numero2) }}
+                    {{ form_errors(form.numero2) }}
+                </div>
+            </div><div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(form.numero3) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.numero3) }}
+                    {{ form_errors(form.numero3) }}
+                </div>
+            </div><div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(form.numerodelineas) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(form.numerodelineas) }}
+                    {{ form_errors(form.numerodelineas) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(form.igv) }}</label>
+                <div class="col-sm-1">
+                    {{ form_widget(form.igv) }}
+                    {{ form_errors(form.igv) }}
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    </div>
+    </div>
+    <div class="formSep form-actions">
+        <a class="btn btn-default" href="{{ path('documento_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+    </div>
+    {{ form_end(form) }}
+    </div>
+
+
+    </div>
+{% endblock %}

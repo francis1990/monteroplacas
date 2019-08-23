@@ -1,0 +1,127 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('cliente_index') }}">Cliente</a>
+    </li>
+    <li class="active">
+        Detalles
+    </li>
+{% endblock %}
+{% block contenido %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <h3 class="heading">Cliente</h3>
+    </div>
+</div>
+<div class="row">
+<div class="col-sm-12 col-md-12">
+
+<div class="formSep">
+<div class="row">
+<div class="col-xs-12">
+
+    
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Dni
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ cliente.dni }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Ruc
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ cliente.ruc }}
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Nombre
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ cliente.nombre }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Razón social
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ cliente.razonsoc }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Tipo
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ cliente.tipo }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Email
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ cliente.email }}
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2">
+                Dirección
+            </div>
+            <div class="col-sm-4 col-md-4">
+                {{ cliente.direccion }}
+            </div>
+        </div>
+         <div class="row">
+             <div class="col-sm-2 col-md-2">
+                 Teléfono
+             </div>
+             <div class="col-sm-4 col-md-4">
+                 {{ cliente.telefono }}
+             </div>
+         </div>
+
+        <div class="row">
+             <div class="col-sm-2 col-md-2">
+                 Deuda
+             </div>
+             <div class="col-sm-4 col-md-4">
+                 {% if cliente.deuda %}Si{% else %}No{% endif %}
+             </div>
+         </div><div class="row">
+             <div class="col-sm-2 col-md-2">
+                 Monto deuda
+             </div>
+             <div class="col-sm-4 col-md-4">
+                 {{ cliente.montodeuda }}
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-sm-2 col-md-2">
+                 Fecha cancelación
+             </div>
+             <div class="col-sm-4 col-md-4">
+                 {% if cliente.fechacancelacion %}{{ cliente.fechacancelacion|date('d/m/Y') }}{% endif %}
+             </div>
+         </div>
+</div>
+</div>
+</div>
+    <div class="formSep form-actions">
+
+                <a class="btn btn-default" href="{{ path('cliente_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+
+                <a class="btn btn-default" href="{{ path('cliente_edit', { 'id': cliente.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+            </div>
+</div>
+</div>
+
+
+{% endblock %}

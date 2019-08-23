@@ -1,0 +1,92 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('pago_index') }}">Pago</a>
+    </li>
+    <li>
+        Detalles
+    </li>
+
+{% endblock %}
+{% block contenido %}      
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Pago</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+
+                    <div class="formSep">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-sm-2 col-md-2">
+                                        Cliente
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        {{ pago.cliente }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2 col-md-2">
+                                        Factura
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        {{ pago.numerofactura }}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-2 col-md-2">
+                                        Total a pagar
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        {{ pago.totalapagar }}
+                                    </div>
+                                </div><div class="row">
+                                    <div class="col-sm-2 col-md-2">
+                                        Monto pagado
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        {{ pago.montopagado }}
+                                    </div>
+                                </div><div class="row">
+                                    <div class="col-sm-2 col-md-2">
+                                        Fecha de pago
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        {% if pago.fechapago %}{{ pago.fechapago|date('Y-m-d') }}{% endif %}
+                                    </div>
+                                </div><div class="row">
+                                    <div class="col-sm-2 col-md-2">
+                                        Fecha de cancelación
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <td>{% if pago.fechacancelacion %}{{ pago.fechacancelacion|date('Y-m-d') }}{% endif %}</td>
+                                    </div>
+                                </div><div class="row">
+                                    <div class="col-sm-2 col-md-2">
+                                        Tiene deuda
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <td>{% if pago.tienedeuda %}Yes{% else %}No{% endif %}</td>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formSep form-actions">
+
+                        <a class="btn btn-default" href="{{ path('pago_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+
+{#
+                        <a class="btn btn-default" href="{{ path('pago_edit', { 'id': pago.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+#}
+                    </div>
+                </div>
+            </div>
+
+
+{% endblock %}

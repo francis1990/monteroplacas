@@ -1,0 +1,13 @@
+{% extends '::sistemadmin.html.twig' %}
+
+{% block titulo_cont_excep %}
+
+{% endblock %}
+
+{% block icono_error %} <i class="fa fa-warning text-danger"></i> {% endblock %}
+
+{% block codigo_error %} <h1 class="headline text-danger"> Error 404 </h1> {% endblock %}
+
+{% block mensaje_notif %} No hemos podido encontrar la página solicitada. {% endblock %}
+
+{% block mensaje_solucion %} Compruebe que la dirección de la página está bien escrita o <a href="{{ path('main') }}"> vuelva a la portada.</a> {% endblock %}

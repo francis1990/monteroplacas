@@ -1,0 +1,1 @@
+[27-Feb-2018 16:10:46 America/Chicago] PHP Fatal error:  Class 'Swift_DependencyContainer' not found in /home1/mp/public_html/monteroplacas/vendor/swiftmailer/swiftmailer/lib/dependency_maps/cache_deps.php on line 3

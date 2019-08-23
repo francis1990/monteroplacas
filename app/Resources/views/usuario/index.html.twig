@@ -1,0 +1,72 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('usuario_index') }}">Usuarios</a>
+    </li>
+
+{% endblock %}
+{% block contenido %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Lista de usuarios</h3>
+        </div>
+    </div>
+
+
+    <div class="row" >
+        <div class="menu-acciones">
+            <a class="btn btn-success" href="{{ path('usuario_new') }}"><span class="glyphicon glyphicon-file"></span> Nuevo</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Roles</th>
+                    <th>Activo</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for usuario in usuarios %}
+                    <tr>
+                        <td>{{ usuario.username }}</td>
+                        <td>{{ usuario.roles|join(', ') }}</td>
+                        <td>{% if usuario.activo %}Si{% else %}No{% endif %}</td>
+                        <td>
+                            <a href="{{ path('usuario_edit', { 'id': usuario.id }) }}"
+                               class="sepV_a" title="Editar">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                            <a href="{{ path('usuario_reset', { 'id': usuario.id }) }}"
+                               class="sepV_a" title="Cambiar clave">
+                                <i class="glyphicon glyphicon-lock"></i>
+                            </a>
+                            <a href="{{ path('usuario_show', { 'id': usuario.id }) }}"
+                               class="sepV_a" title="Ver Detalles">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </a>
+                            {% if app.user.id != usuario.id %}
+                             <a  href="#" class="eliminar_confirm" data-url="{{ path('usuario_delete', { 'id': usuario.id }) }}" {#id="choicetwo" data-toggle="modal" data-target="#myModal"#} title="Eliminar">
+                                 <i class="glyphicon glyphicon-trash"></i>
+                             </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        {% include 'global/paginator.html.twig' %}
+    </div>
+
+
+{% endblock %}
+
+

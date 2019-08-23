@@ -1,0 +1,59 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block contenido %}
+
+      
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Lista de Clientes con Deuda</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <table class="table table-bordered table-striped table_vam" id="dt_a">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>RUC</th>
+                        <th>Razonsoc</th>
+                        <th>Direccion</th>
+                        <th>DNI</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Monto de la Deuda</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                        <tr>
+                            <td>{{ cliente.nombre }}</td>
+                            <td>{{ cliente.ruc }}</td>
+                            <td>{{ cliente.razonsoc }}</td>
+                            <td>{{ cliente.direccion }}</td>
+                            <td>{{ cliente.dni }}</td>
+                            <td>{{ cliente.telefono }}</td>
+                            <td>{{ cliente.email }}</td>
+                            <td>{{ cliente.montodeuda }}</td>                                
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">                
+        {% include 'global/paginator.html.twig' %}
+    </div>             
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            <a class="btn btn-success" href="{{ path('cliente_index') }}">Ir atrás</a>
+        </div>
+        {#<div class="col-sm-3 col-md-3">
+            <a class="btn btn-default" href="#">Buscar Cliente</a>
+        </div>#}
+    </div>
+
+{% endblock %}

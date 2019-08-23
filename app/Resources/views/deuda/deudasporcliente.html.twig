@@ -1,0 +1,116 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('deuda_index') }}">Deuda</a>
+    </li>
+    <li>
+        Deudas del cliente {{clientename}}
+    </li>
+{% endblock %}
+{% block contenido %}
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h3 class="heading">
+                    Deudas del cliente {{clientename}}
+                </h3>
+            </div>
+        </div>
+        {% if deudas != null%}      
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    Deudas activas
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>Documento</th>
+                            <th>Número de factura</th>
+                            <th>Fecha inicio</th>
+                            <th>Fecha cancelación</th>
+                            <th>Total a pagar</th>
+                            <th>A/cuenta</th>
+                            <th>Deuda</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for deuda in deudas %}
+                            <tr>
+                                <td>{{ deuda.tipodocumento }}</td>
+                                <td>{{ deuda.serie ~'-'~deuda.numerofactura }}</td>
+                                <td>{% if deuda.fechainicio %}{{ deuda.fechainicio|date('d/m/Y') }}{% endif %}</td>
+                                <td>{% if deuda.fechacancelacion %}{{ deuda.fechacancelacion|date('d/m/Y') }}{% endif %}</td>
+                                <td>{{ deuda.totalapagar }}</td>
+                                <td>{{ deuda.totalapagar-deuda.deuda }}</td>
+                                <td>{{ deuda.deuda }}</td>
+                                <td>                                    
+                                    <a href="{{ path('deuda_show', { 'id': deuda.id }) }}"
+                                       class="sepV_a" title="Ver Detalles">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a> 
+                                       
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>    
+                         {% endif %} 
+            <div class="row">                
+              {#  <div class="col-sm-3 col-md-3">
+                    <a class="btn btn-default" href="{{ path('venta_export', {  'dailydate': dailydate, 'iniciodate': iniciodate, 'finaldate': finaldate}) }}">Exportar Informe a Excel</a>
+                </div>  #} 
+            </div>      
+            <hl/>
+         {% if deudasinactivas != null%}   
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    Deudas inactivas
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>Número de factura</th>
+                            <th>Fecha inicio</th>
+                            <th>Fecha cancelación</th>
+                            <th>Total a pagar</th>
+                            <th>A/cuenta</th>
+                            <th>Deuda</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for deuda in deudasinactivas %}
+                            <tr>
+                                <td>{{ deuda.serie ~'-'~deuda.numerofactura }}</td>
+                                <td>{% if deuda.fechainicio %}{{ deuda.fechainicio|date('d/m/Y') }}{% endif %}</td>
+                                <td>{% if deuda.fechacancelacion %}{{ deuda.fechacancelacion|date('d/m/Y') }}{% endif %}</td>
+                                <td>{{ deuda.totalapagar }}</td>
+                                <td>{{ deuda.totalapagar-deuda.deuda }}</td>
+                                <td>{{ deuda.deuda }}</td>
+                                <td>                                    
+                                    <a href="{{ path('deuda_show', { 'id': deuda.id }) }}"
+                                       class="sepV_a" title="Ver Detalles">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a> 
+                                       
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>   
+       {% endif %}    
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<div class="col-sm-12 col-md-12">
+    <ul class="pagination">
+        {% if paginator.numpages > 1 %}
+            {% if paginator.currentpage != 1 %}
+                <li> <a class="previous" href="{{ path( pathern, {  'page': paginator.currentpage-1 }) }}">Atras</a>
+                {% endif %}
+                {% for i in 1..paginator.numpages%}
+                    {% if paginator.range.0 > 2 and i == paginator.range.0 %}
+                        ...
+                    {% endif %}
+
+                    {%  if(i==1 or i==paginator.numpages or i in paginator.range) %}
+                        {% if i==paginator.currentpage %}
+                        <li><a class="active" href="{{ path(pathern, {  'page': i })}}">{{i}}</a></li>
+                        {% else %}
+                        <li><a href="{{ path(pathern, {  'page': i  }) }}"> {{i}}</a></li>
+                        {% endif %}
+                    {% endif %}
+
+                {% if paginator.range[paginator.midrange -1] < paginator.numpages -1 and i == paginator.range[paginator.midrange-1] %}
+                    ...
+                {% endif %}
+            {% endfor %}
+            {% if paginator.numpages != paginator.currentpage %}
+            <li> <a class="next" href="{{ path(pathern, {  'page': paginator.currentpage+1  }) }}">Siguiente</a>
+                {% endif %}
+            {% endif %}
+    </ul>
+</div>

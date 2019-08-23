@@ -1,0 +1,72 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('gasto_index') }}">Gasto</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Lista de Gastos</h3>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-sm-12 col-md-12 menu-acciones">
+            <a class="btn btn-success" href="{{ path('gasto_new') }}"><span class="glyphicon glyphicon-file"></span> Nuevo</a>
+        </div>
+    </div>
+    {% if gastos != null%}
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <table class="table table-bordered table-striped table_vam" id="dt_a">
+                    <thead>
+                    <tr>
+                        <th>Motivo</th>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Cantidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for gasto in gastos %}
+                        <tr>
+
+                            <td>{{ gasto.motivo }}</td>
+                            <td>{{ gasto.nombre }}</td>
+                            <td>{% if gasto.fecha %}{{ gasto.fecha|date('d/m/Y') }}{% endif %}</td>
+                            <td>{{ gasto.cantidad }}</td>
+                            <td>
+                                <a href="{{ path('gasto_edit', { 'id': gasto.id }) }}"
+                                   class="sepV_a" title="Editar">
+                                    <i class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                                <a href="{{ path('gasto_show', { 'id': gasto.id }) }}"
+                                   class="sepV_a" title="Ver Detalles">
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                </a>
+                                <a href="{{ path('gasto_delete', { 'id': gasto.id }) }}" title="Eliminar">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            {% include 'global/paginator.html.twig' %}
+        </div>
+    {% endif %}
+
+   {# <div class="row">
+        <div class="col-sm-3 col-md-3">
+            <a class="btn btn-default" href="{{ path('gasto_export') }}">Exportar a Excel</a>
+        </div>
+    </div>#}
+
+
+{% endblock %}

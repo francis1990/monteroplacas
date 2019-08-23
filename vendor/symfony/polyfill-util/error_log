@@ -1,0 +1,2 @@
+[27-Feb-2018 15:59:17 America/Chicago] PHP Fatal error:  Class 'Symfony\Polyfill\Util\BinaryOnFuncOverload' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/polyfill-util/Binary.php on line 15
+[27-Feb-2018 15:59:50 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_TestSuite' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/polyfill-util/TestListener.php on line 17

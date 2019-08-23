@@ -1,0 +1,6 @@
+<select id="filtro-motivo" name="motivo" class="chosen-select form-control">
+    <option value="0">Seleccione...</option>
+    {% for mot in motivos %}
+        <option value="{{ mot.id }}">{{ mot.nombre }}</option>
+    {% endfor %}
+</select>

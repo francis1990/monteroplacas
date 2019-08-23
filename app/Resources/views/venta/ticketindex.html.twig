@@ -1,0 +1,88 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('venta_index') }}">Venta</a>
+    </li>
+    <li>
+        <a href="{{ path('ticket_index') }}">Preventa</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+           
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Lista de Preventas</h3>                       
+                </div>
+            </div>
+            <div class="row" >
+                {% if is_granted('ROLE_VENTA') or is_granted('ROLE_ADMIN') %}
+                    <div class="menu-acciones">
+                        <a class="btn btn-success" href="{{ path('venta_partial_new') }}"><span class="glyphicon glyphicon-file"></span> Nuevo</a>
+                    </div>
+                {% endif %}
+    </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>Documento</th>
+                            <th>Número</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Importe</th>    
+                            {% if is_granted('ROLE_VENTA') or is_granted('ROLE_ADMIN') %}
+                            <th>Acciones</th>
+                            {% else %}
+                             <th>Completar preventa</th>
+                             {% endif %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for venta in ventas %}
+                            <tr>
+                                <td>{{ venta.documento.tipodocumento }}</td>
+                                <td>{{ venta.serie ~'-'~venta.numerodedocumento }}</td>
+                                <td>{% if venta.fecha %}{{ venta.fecha|date('d/m/Y') }}{% endif %}</td>
+                                <td>{{ venta.cliente }}</td>
+                                <td>{{ venta.montototalapagar }}</td>
+                                {% if is_granted('ROLE_VENTA') or is_granted('ROLE_ADMIN') %}
+                                <td>
+                                    <a href="{{ path('ticket_edit', { 'id': venta.id }) }}"
+                                       class="sepV_a" title="Editar">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a> 
+                                    <a href="{{ path('ticket_export_pdf', { 'id': venta.id }) }}" target="_blank" title="Exportar">
+                                        <i class="glyphicon glyphicon-print"></i>
+                                    </a>
+                                    {#<a id="choicetwo" data-toggle="modal" data-target="#myModal" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>#}
+                                    {#<a href="{{ path('ticket_delete', { 'id': venta.id }) }}" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>#}
+                                    <a  href="#" class="eliminar_confirm" data-url="{{ path('ticket_delete', { 'id': venta.id }) }}" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>
+                                </td>
+                                {% else %}
+                                    <td>
+                                    <a href="{{ path('venta_edit', { 'id': venta.id }) }}"
+                                       class="sepV_a" title="Completar">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                    </a>                                   
+                                </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+             <div class="row">                
+                {% include 'global/ticketpaginator.html.twig' %}               
+            </div>             
+
+{% endblock %}

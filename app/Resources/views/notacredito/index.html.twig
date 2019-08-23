@@ -1,0 +1,151 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('notacredito_index') }}">Notas de Crédito</a>
+    </li>
+
+{% endblock %}
+{% block contenido %}
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Lista de Notas de Crédito</h3>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-sm-12 col-md-12 menu-acciones">
+                    {#<a class="btn btn-primary" href="{{ path('notacredito_buscar') }}"><span class="glyphicon glyphicon-search"></span> Búsqueda Personalizada</a>#}
+                    <a class="btn btn-success" href="{{ path('notacredito_new') }}"><span class="glyphicon glyphicon-file"></span> Adicionar</a>
+                    <div class="col-sm-6 col-md-10">
+                        <form action="{{ path('notacredito_search') }}" method="post">
+                            <div class="row">
+                                <div class="col-sm-3 col-md-3">
+                                    <button class="btn btn-default" type="submit">
+                                        Buscar por Rango de fechas:
+                                    </button>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="iniciodate" required="true">
+                                </div>
+
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="finaldate" required="true">
+                                </div>
+                                <input class="hidden" id="fechas" name="fechas" value="fechas">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>  
+    
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table-bordered table-striped allTables hover" >
+                        <thead>
+                            <tr>
+                                <th>Número de NC</th>
+                                <th>Tipo de Nota</th>
+                                <th>Fecha</th>
+                                <th>Documento</th>
+                                <th>Número de Factura</th>
+                                <th>Cliente</th>
+                                <th>Motivo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Número de NC</th>
+                                <th>Tipo de Nota</th>
+                                <th>Fecha</th>
+                                <th>Documento</th>
+                                <th>Número de Factura</th>
+                                <th>Cliente</th>
+                                <th>Motivo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                        {% for notacredito in notascredito %}
+                            <tr>
+                                <td>{{ notacredito.numerodedocumento }}</td>
+                                <td>{{ notacredito.tipo }}</td>                                
+                                <td>{% if notacredito.fecha %}{{ notacredito.fecha|date('d/m/Y') }}{% endif%}</td>
+                                <td>Venta</td>
+                                <td>{% if notacredito.venta %}{{ notacredito.venta.numerodedocumento }}{% endif%}</td>
+                                <td>{% if notacredito.venta %}{{ notacredito.venta.cliente }}{% endif%}</td>
+                                <td>{{ notacredito.motivo }}</td>
+                                <td>Emitida</td>
+                                <td>
+                                    <a href="{{ path('notacredito_show', { 'id': notacredito.id }) }}"
+                                       class="sepV_a" title="Mostrar detalles">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a>
+                                    <a href="{{ path('notacredito_export_pdf', { 'id': notacredito.id }) }}" target="_blank"
+                                       title="Exportar">
+                                        <i class="glyphicon glyphicon-print"></i>
+                                    </a>
+                                   {# <a id="choicetwo" data-toggle="modal" data-target="#myModal" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>#}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>                        
+                    </table> 
+                </div>
+                <div>
+                </div>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Eliminar Documento</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="confirm_dialog" class="cbox_content">
+                                <div class="sepH_c tac"><strong>¿Está seguro de eliminar estos registros?</strong></div>
+                                <div class="tac">
+                                    <a href="http://moguwsolutions.com/monteroplacas/admin/cliente_eliminar.html"
+                                       class="btn btn-gebo confirm_yes btn-default">Si</a>
+                                    <a data-dismiss="modal" class="btn confirm_no btn-default">No</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- hide elements-->
+            <div class="hide">
+                <!-- actions for datatables -->
+                <!-- confirmation box -->
+                <div id="confirm_dialog" class="cbox_content">
+                    <div class="sepH_c tac"><strong>¿Está seguro de eliminar estos registros?</strong></div>
+                    <div class="tac">
+                        <a href="#" class="btn btn-gebo confirm_yes btn-default">Si</a>
+                        <a href="#" class="btn confirm_no btn-default">No</a>
+                    </div>
+                </div>
+
+            </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('.allTables').DataTable();
+            table.draw();
+        });
+
+    </script>
+{% endblock %}
+

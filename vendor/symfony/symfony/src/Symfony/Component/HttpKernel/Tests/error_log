@@ -1,0 +1,2 @@
+[27-Feb-2018 16:17:39 America/Chicago] PHP Fatal error:  Interface 'Psr\Log\LoggerInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Tests/Logger.php on line 17
+[29-Aug-2018 10:46:17 America/Chicago] PHP Fatal error:  Interface 'Psr\Log\LoggerInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/HttpKernel/Tests/Logger.php on line 17

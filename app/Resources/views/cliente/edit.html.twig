@@ -1,0 +1,94 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('cliente_index') }}">Cliente</a>
+    </li>
+    <li class="active">
+        Editar
+    </li>
+{% endblock %}
+{% block contenido %}
+       <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Cliente</h3>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-12 col-md-12">
+    {{ form_start(edit_form,{'attr':{ 'class':'form-horizontal form_validation_reg'}}) }}
+    <div class="formSep">
+    <div class="row">
+    <div class="col-xs-12">
+        <fieldset>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(edit_form.nombre) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(edit_form.nombre) }}
+                    {{ form_errors(edit_form.nombre) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(edit_form.dni) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(edit_form.dni) }}
+                    {{ form_errors(edit_form.dni) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(edit_form.razonsoc) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(edit_form.razonsoc) }}
+                    {{ form_errors(edit_form.razonsoc) }}
+                </div>
+            </div><div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(edit_form.ruc) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(edit_form.ruc) }}
+                    {{ form_errors(edit_form.ruc) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(edit_form.email) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(edit_form.email) }}
+                    {{ form_errors(edit_form.email) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(edit_form.tipo) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(edit_form.tipo) }}
+                    {{ form_errors(edit_form.tipo) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(edit_form.telefono) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(edit_form.telefono) }}
+                    {{ form_errors(edit_form.telefono) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">{{ form_label(edit_form.direccion) }}</label>
+                <div class="col-sm-8">
+                    {{ form_widget(edit_form.direccion) }}
+                    {{ form_errors(edit_form.direccion) }}
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    </div>
+    </div>
+    <div class="formSep form-actions">
+        <a class="btn btn-default" href="{{ path('cliente_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+    </div>
+
+
+    {{ form_end(edit_form) }}
+    </div>
+    </div>
+   
+ 
+{% endblock %}

@@ -1,0 +1,39 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+        Sistemadmin\AdminBundle\Entity\Usuario: sha512
+
+    providers:
+        our_db_provider:
+            entity:
+                class: sistAdminBundle:Usuario
+                property: username
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER, ROLE_CAJA]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN]
+    firewalls:
+        main:
+            pattern:    ^/
+            anonymous: ~
+            form_login:
+                check_path: /login_check
+                login_path: /login
+                default_target_path: /main
+                always_use_default_target_path: true
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path: /logout
+                target: /login
+            remember_me:
+                secret: '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: /main
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/*, roles: IS_AUTHENTICATED_FULLY }
+
+    access_decision_manager:
+        strategy: unanimous

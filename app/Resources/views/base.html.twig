@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Montero Placas!{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/bootstrap/css/bootstrap.min.css')}}" />
+
+        <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/lib/jquery-ui/css/Aristo/Aristo.css')}}" />
+
+        <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/lib/jBreadcrumbs/css/BreadCrumb.css')}}" />
+
+        <link rel="stylesheet" href=" {{asset('bundles/sistemaadminbackend/lib/qtip2/jquery.qtip.min.css')}}" />
+
+        <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/lib/colorbox/colorbox.css')}}" />
+
+            <link rel="stylesheet" href=" {{asset('bundles/sistemaadminbackend/lib/google-code-prettify/prettify.css')}}" />
+
+            <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/lib/sticky/sticky.css')}}" />
+
+            <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/img/splashy/splashy.css')}}" />
+
+            <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/img/flags/flags.css')}}" />
+
+            <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/lib/datatables/extras/TableTools/media/css/TableTools.css')}}">
+
+            <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/css/style.css')}}" />
+
+            <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/css/blue.css')}}" id="link_theme" />
+
+            <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{{ asset('bundles/sistemaadminbackend/lib/chosen/chosen.css')}}">
+            <link rel="shortcut icon" href="{{asset('bundles/sistemaadminbackend/favicon.ico')}}" />
+
+            <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/css/ie.css')}}" />
+
+            <script src=" {{asset('bundles/sistemaadminbackend/js/ie/html5.js')}}"></script>
+
+        <script src="{{asset('bundles/sistemaadminbackend/js/ie/respond.min.js')}}"></script>
+
+        <script src="{{asset('bundles/sistemaadminbackend/lib/flot/excanvas.min.js')}}"></script>
+        
+        
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="full_width">
+
+        {% block body %}
+
+        {% endblock %}
+
+
+        {% block javascripts %}
+
+            <script src=" {{asset('bundles/sistemaadminbackend/js/jquery.min.js')}}"></script>
+
+            <script src="{{asset('bundles/sistemaadminbackend/js/jquery-migrate.min.js')}}"></script>
+
+            <script src="{{asset('bundles/sistemaadminbackend/lib/jquery-ui/jquery-ui-1.10.0.custom.min.js')}}"></script>
+
+            <!-- touch events for jquery ui-->
+            <script src="{{asset('bundles/sistemaadminbackend/js/forms/jquery.ui.touch-punch.min.js')}}"></script>
+
+            <!-- easing plugin -->
+            <script src="{{asset('bundles/sistemaadminbackend/js/jquery.easing.1.3.min.js')}}"></script>
+
+
+            <!-- smart resize event -->
+            <script src="{{asset('bundles/sistemaadminbackend/js/jquery.debouncedresize.min.js')}}"></script>
+
+            <!-- js cookie plugin -->
+            <script src="{{asset('bundles/sistemaadminbackend/js/jquery_cookie_min.js')}}"></script>
+
+            <!-- main bootstrap js -->
+            <script src="{{asset('bundles/sistemaadminbackend/bootstrap/js/bootstrap.min.js')}}"></script>
+
+            <!-- bootstrap plugins -->
+            <script src="{{asset('bundles/sistemaadminbackend/js/bootstrap.plugins.min.js')}}"></script>
+
+            <!-- typeahead -->
+            <script src="{{asset('bundles/sistemaadminbackend/lib/typeahead/typeahead.min.js')}}"></script>
+
+            <!-- code prettifier -->
+            <script src="{{asset('bundles/sistemaadminbackend/lib/google-code-prettify/prettify.min.js')}}"></script>
+
+            <!-- sticky messages -->
+            <script src="{{asset('bundles/sistemaadminbackend/lib/sticky/sticky.min.js')}}"></script>
+
+            <!-- lightbox -->
+            <script src="{{asset('bundles/sistemaadminbackend/lib/colorbox/jquery.colorbox.min.js')}}"></script>
+
+            <!-- jBreadcrumbs -->
+            <script src="{{asset('bundles/sistemaadminbackend/lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js')}}"></script>
+
+            <!-- hidden elements width/height -->
+            <script src="{{asset('bundles/sistemaadminbackend/js/jquery.actual.min.js')}}"></script>
+
+            <!-- custom scrollbar -->
+            <script src=" {{asset('bundles/sistemaadminbackend/lib/slimScroll/jquery.slimscroll.js')}}"></script>
+
+            <!-- fix for ios orientation change -->
+            <script src="{{asset('bundles/sistemaadminbackend/js/ios-orientationchange-fix.js')}}"></script>
+
+            <!-- to top -->
+            <script src=" {{asset('bundles/sistemaadminbackend/lib/UItoTop/jquery.ui.totop.min.js')}}"></script>
+
+            <!-- mobile nav -->
+            <script src="{{asset('bundles/sistemaadminbackend/js/selectNav.js')}}"></script>
+
+            <!-- moment.js date library -->
+            <script src="{{asset('bundles/sistemaadminbackend/lib/moment/moment.min.js')}}"></script>
+
+
+            <!-- common functions -->
+            <script src="{{asset('bundles/sistemaadminbackend/js/pages/gebo_common.js')}}"></script>
+            <script src="{{ asset('bundles/sistemaadminbackend/lib/chosen/chosen.jquery.min.js') }}"></script>
+            <script src="{{ asset('bundles/sistemaadminbackend/lib/validation/jquery.validate.min.js') }}"></script>
+            <script src="{{ asset('bundles/sistemaadminbackend/lib/validation/localization/messages_es.js') }}"></script>
+            <script src="{{ asset('bundles/sistemaadminbackend/lib/qtip2/jquery.qtip.min.js') }}"></script>
+            <!-- timepicker -->
+            <script src="{{ asset('bundles/sistemaadminbackend/lib/timepicker/js/bootstrap-timepicker.min.js') }}"></script>
+            <!-- tag handler -->
+            <script src="{{ asset('bundles/sistemaadminbackend/lib/tag_handler/jquery.taghandler.min.js') }}"></script>
+            <script src="{{ asset('bundles/sistemaadminbackend/js/pages/gebo_validation.js') }}"></script>
+
+                <script src="{{ asset('bundles/sistemaadminbackend/lib/plupload/js/plupload.full.js') }}"></script>
+            <script src="{{ asset('bundles/sistemaadminbackend/lib/plupload/js/jquery.plupload.queue/jquery.plupload.queue.full.js') }}"></script>
+            <script src="{{ asset('bundles/sistemaadminbackend/js/pages/gebo_forms.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('bundles/sistemaadminbackend/js/bootbox/bootbox.min.js') }}"></script>
+                        
+                         <script src="{{ asset('bundles/sistemaadminbackend/js/montero.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

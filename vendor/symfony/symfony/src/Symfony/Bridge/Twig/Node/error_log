@@ -1,0 +1,2 @@
+[01-Sep-2018 21:20:10 America/Chicago] PHP Fatal error:  Class 'Twig_Node_Expression_Function' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Node/SearchAndRenderBlockNode.php on line 18
+[04-Sep-2018 16:36:01 America/Chicago] PHP Fatal error:  Class 'Twig_Node' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Node/StopwatchNode.php on line 20

@@ -1,0 +1,107 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('notadebito_index') }}">Notas de Débito</a>
+    </li>
+    <li>
+        Búsqueda
+    </li>
+{% endblock %}
+{% block contenido %}
+       {% if notadebitos != null%}       
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Informe de Notas de Débito</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table-bordered table-striped allTables hover">
+                        <thead>
+                            <tr>
+                                <th>Número de NC</th>
+                                <th>Tipo de Nota</th>
+                                <th>Fecha</th>
+                                <th>Documento</th>
+                                <th>Número de Factura</th>
+                                <th>Cliente</th>
+                                <th>Motivo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Número de NC</th>
+                                <th>Tipo de Nota</th>
+                                <th>Fecha</th>
+                                <th>Documento</th>
+                                <th>Número de Factura</th>
+                                <th>Cliente</th>
+                                <th>Motivo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                        {% for notadebito in notadebitos %}
+                            <tr>
+                                <td>{{ notadebito.numerodedocumento }}</td>
+                                <td>{{ notadebito.tipo }}</td>                                
+                                <td>{% if notadebito.fecha %}{{ notadebito.fecha|date('d/m/Y') }}{% endif%}</td>
+                                <td>Venta</td>
+                                <td>{% if notadebito.venta %}{{ notadebito.venta.numerodedocumento }}{% endif%}</td>
+                                <td>{% if notadebito.venta %}{{ notadebito.venta.cliente }}{% endif%}</td>
+                                <td>{{ notadebito.motivo }}</td>
+                                <td>Emitida</td>
+                                <td>
+                                    <a href="{{ path('notadebito_show', { 'id': notadebito.id }) }}"
+                                       class="sepV_a" title="Mostrar detalles">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a>
+                                    <a href="{{ path('notadebito_export_pdf', { 'id': notadebito.id }) }}" target="_blank"
+                                       title="Exportar">
+                                        <i class="glyphicon glyphicon-print"></i>
+                                    </a>
+                                   {# <a id="choicetwo" data-toggle="modal" data-target="#myModal" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>#}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          {#  <div class="row">                
+                {% include 'global/searchventapaginator.html.twig' %}               
+            </div>      
+            <div class="row">                
+                <div class="col-sm-3 col-md-3">
+                    <a class="btn btn-default" href="{{ path('venta_export', {  'dailydate': dailydate, 'iniciodate': iniciodate, 'finaldate': finaldate}) }}">Exportar Informe a Excel</a>
+                </div>    
+                <div class="col-sm-3 col-md-3">
+                    <a class="btn btn-default" href="{{ path('venta_export_sindeuda', {  'dailydate': dailydate, 'iniciodate': iniciodate, 'finaldate': finaldate}) }}">Exportar Informe con Ventas sin deuda</a>
+                </div> 
+            </div>   #}        
+       {% endif %}    
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('.allTables').DataTable();
+            table.draw();
+        });
+
+    </script>
+{% endblock %}

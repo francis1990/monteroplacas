@@ -1,0 +1,1 @@
+[28-Feb-2018 02:03:58 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Config\Definition\ConfigurationInterface' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/doctrine-cache-bundle/DependencyInjection/Configuration.php on line 33

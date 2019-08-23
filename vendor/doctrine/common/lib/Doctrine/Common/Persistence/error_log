@@ -1,0 +1,2 @@
+[30-Aug-2018 04:45:56 America/Chicago] PHP Fatal error:  Interface 'Doctrine\Common\Persistence\ObjectManager' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/common/lib/Doctrine/Common/Persistence/ObjectManagerDecorator.php on line 31
+[30-Aug-2018 04:46:01 America/Chicago] PHP Fatal error:  Interface 'Doctrine\Common\Persistence\ObjectManagerAware' not found in /home1/mp/public_html/monteroplacas/vendor/doctrine/common/lib/Doctrine/Common/Persistence/PersistentObject.php on line 58

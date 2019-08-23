@@ -1,0 +1,129 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('compra_index') }}">Compra</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+
+    <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">{{ title }}</h3>
+                    <div class="col-sm-6 col-md-4">
+                        <form action="{{ path('deuda_search') }}" method="post" >
+                            <div class="row">
+                                <div class="col-sm-3 col-md-6">
+                                    <button class="btn btn-default" type="submit">
+                                        Deudas del Dia:
+                                    </button>
+                                </div>
+                                <div class="col-sm-3 col-md-5">
+                                    <input type="date" class="form-control" name="dailydate" required="true" value="{{ dailydate }}">
+                                </div>
+                                <input class="hidden" id="daily" name="daily" value="day">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-sm-6 col-md-8">
+                        <form action="{{ path('compra_search') }}" method="post" >
+                            <div class="row">
+                                <div class="col-sm-3 col-md-3">
+                                    <button class="btn btn-default" type="submit">
+                                        Deudas por Rango:
+                                    </button>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="iniciodate"  value="{{ iniciodate }}"  required="true">
+                                </div>
+
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="finaldate"  value="{{ finaldate }}"  required="true">
+                                </div>
+                                <input class="hidden" id="fechas" name="fechas" value="fechas">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+    <div class="row" >      
+        <div class="col-sm-9 col-md-9">
+            <form action="{{ path('buscar_deudas') }}" method="post" class="form-horizontal inherited form-inline">{#  <form action="{{ path('change_no_results') }}" method="post" class="inherited form-inline">#}
+                <div class="col-sm-2">                 
+                    <button class="btn btn-primary" type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                        Buscar
+                    </button>
+                </div>
+                <div class="col-sm-3">
+                    <input type="search" name="buscar" id="buscar" placeholder="Introduzca el valor" class="form-control"/>  
+                </div>
+                <div class="col-sm-2">
+                    <select id="categoria" name="categoria" class="form-control">
+                        <option value="numerofactura">Número de factura</option>
+                        <option value="totalapagar">Monto total a pagar</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                <thead>
+                <tr>
+                    <th>Documento</th>
+                    <th>Número de factura</th>
+                    <th>Cliente</th>
+                    <th>Fecha inicio</th>
+                    <th>Fecha cancelación</th>
+                    <th>Total a pagar</th>
+                    <th>A/cuenta</th>
+                    <th>Deuda</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for deuda in deudas %}
+                        <tr>
+                            <td>{{ deuda.tipodocumento }}</td>
+                            <td>{{ deuda.serie ~'-'~deuda.numerofactura }}</td>
+                            <td>{{ deuda.cliente.nombre }}</td>
+                            <td>{% if deuda.fechainicio %}{{ deuda.fechainicio|date('d/m/Y') }}{% endif %}</td>
+                            <td>{% if deuda.fechacancelacion %}{{ deuda.fechacancelacion|date('d/m/Y') }}{% endif %}</td>
+                            <td>{{ deuda.totalapagar }}</td>
+                            <td>{{ deuda.totalapagar-deuda.deuda }}</td>
+                            <td>{{ deuda.deuda }}</td>
+                            <td>                                    
+                                <a href="{{ path('deuda_show', { 'id': deuda.id }) }}"
+                                   class="sepV_a" title="Ver Detalles">
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                </a> 
+
+                                <a  href="#" class="eliminar_confirm" data-url="{{ path('deuda_delete', { 'id': deuda.id }) }}" title="Eliminar">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+	<div class="row">                
+                 {% include 'global/buscardeudapaginator.html.twig' %}
+            </div>
+       
+{% endblock %}
+
+
+
+
+
+
+
+
+

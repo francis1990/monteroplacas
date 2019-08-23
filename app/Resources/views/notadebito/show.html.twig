@@ -1,0 +1,213 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('notadebito_index') }}">Notas de Débito</a>
+    </li>
+    <li>
+        Detalles
+    </li>
+{% endblock %}
+{% block contenido %}
+  
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Nota de Débito</h3>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+            <div class="row">
+                <div class="col-sm-2 col-md-2">
+                    Número
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    {{ notadebito.serie ~'-'~ notadebito.numerodedocumento }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+            <div class="row">
+                <div class="col-sm-2 col-md-2">
+                    Motivo
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    {{ notadebito.motivo}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+            <div class="row">
+                <div class="col-sm-2 col-md-2">
+                    Tipo
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    {{ notadebito.tipo }}
+                </div>
+            </div>
+        </div>
+        </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Venta</h3>
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="col-sm-12 col-md-12">
+
+    <div class="formSep">
+    <div class="row">
+    <div class="col-xs-12">
+
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Tipo de Documento
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ ventum.documento.tipodocumento }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+           Número
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ ventum.serie ~'-'~ ventum.numerodedocumento }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Fecha
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {% if ventum.fecha %}{{ ventum.fecha|date('d/m/Y') }}{% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Cliente
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ ventum.cliente }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Vendedor
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ ventum.vendedor }}
+        </div>
+    </div>
+       
+        
+
+        <div class="row">
+            <div class="col-sm-2 col-md-2">
+                Centro de costo
+            </div>
+            <div class="col-sm-4 col-md-4">
+                {{ ventum.centrodecosto }}
+            </div>
+        </div>
+      
+        <div class="row">
+            <div class="col-sm-2 col-md-2">
+                Forma de pago
+            </div>
+            <div class="col-sm-4 col-md-4">
+                {{ ventum.formadepago }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-md-2">
+                Monto total a pagar
+            </div>
+            <div class="col-sm-4 col-md-4">
+                {{ ventum.montototalapagar }}
+            </div>
+        </div>
+    <div class="row">
+            <div class="col-sm-2 col-md-2">
+                Total recibido
+            </div>
+            <div class="col-sm-4 col-md-4">
+                {{ ventum.totalrecibido }}
+            </div>
+        </div>
+   <div class="row">
+            <div class="col-sm-2 col-md-2">
+                Observación
+            </div>
+            <div class="col-sm-4 col-md-4">
+                {{ ventum.observacion }}
+            </div>
+        </div>
+<div class="row"></div>
+    <fieldset>
+        <legend>Artículos</legend>
+        <table class="table-bordered table-striped table_vam allTables hover" id="dt_a">
+            <thead>
+            <tr>
+                <th>Sección</th>
+                <th>Artículo</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Importe</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for articulo in notadebito.articulonotadebitos %}
+            <tr>
+                {% if articulo.seccion is not null  %} 
+                    <td>{{ articulo.seccion }}</td>
+                {% else %} 
+                    <td>-</td>
+                {% endif %}
+                <td>{{ articulo.articulo }}</td>
+                <td>{{ articulo.cantidad }}</td>
+                <td>{{ articulo.precio }}</td>
+                <td>{{ articulo.importe }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </fieldset>
+    </div>
+    </div>
+    </div>
+    <div class="formSep form-actions">
+
+        <a class="btn btn-default" href="{{ path('notadebito_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+
+        {% if is_granted('ROLE_CAJA') or is_granted('ROLE_ADMIN') %}
+        {#{% if ventum.anulada != true %}
+        <a class="btn btn-default" href="{{ path('venta_edit', { 'id': ventum.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+        {% endif %}#}
+         {% endif %}
+    </div>
+    </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('.allTables').DataTable();
+            table.draw();
+        });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,1 @@
+[01-Jul-2018 19:56:42 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Console\Helper\QuestionHelper' not found in /home1/mp/public_html/monteroplacas/vendor/sensio/generator-bundle/Command/Helper/QuestionHelper.php on line 23

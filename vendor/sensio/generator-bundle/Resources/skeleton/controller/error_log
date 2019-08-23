@@ -1,0 +1,3 @@
+[20-Jul-2018 11:19:08 America/Chicago] PHP Fatal error:  Call to a member function extend() on null in /home1/mp/public_html/monteroplacas/vendor/sensio/generator-bundle/Resources/skeleton/controller/Template.html.php.twig on line 1
+[20-Jul-2018 11:19:41 America/Chicago] PHP Parse error:  syntax error, unexpected '}', expecting \\ (T_NS_SEPARATOR) in /home1/mp/public_html/monteroplacas/vendor/sensio/generator-bundle/Resources/skeleton/controller/Controller.php.twig on line 3
+[20-Jul-2018 11:19:43 America/Chicago] PHP Parse error:  syntax error, unexpected '}', expecting \\ (T_NS_SEPARATOR) in /home1/mp/public_html/monteroplacas/vendor/sensio/generator-bundle/Resources/skeleton/controller/ControllerTest.php.twig on line 3

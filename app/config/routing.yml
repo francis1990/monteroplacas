@@ -1,0 +1,76 @@
+inventario:
+    resource: "@InventarioBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+sist_admin_rol:
+    resource: "@sistAdminBundle/Controller/RolController.php"
+    type:     annotation
+
+sist_admin_usuario:
+    resource: "@sistAdminBundle/Controller/UsuarioController.php"
+    type:     annotation
+
+backend_tipo_cambio:
+    resource: "@BackendBundle/Controller/TipoCambioController.php"
+    type:     annotation
+
+backend_proveedor:
+    resource: "@BackendBundle/Controller/ProveedorController.php"
+    type:     annotation
+
+backend_articulo:
+    resource: "@BackendBundle/Controller/ArticuloController.php"
+    type:     annotation
+
+backend_venta:
+    resource: "@BackendBundle/Controller/VentaController.php"
+    type:     annotation
+
+backend_vendedor:
+    resource: "@BackendBundle/Controller/VendedorController.php"
+    type:     annotation
+
+backend_deuda:
+    resource: "@BackendBundle/Controller/DeudaController.php"
+    type:     annotation
+
+backend_pago:
+    resource: "@BackendBundle/Controller/PagoController.php"
+    type:     annotation
+
+backend_cliente:
+    resource: "@BackendBundle/Controller/ClienteController.php"
+    type:     annotation
+
+backend_compra:
+    resource: "@BackendBundle/Controller/CompraController.php"
+    type:     annotation
+
+sist_admin:
+    resource: "@sistAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+pweb_frontend:
+    resource: "@pwebFrontendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+backend:
+    resource: "@BackendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+login_path:
+  path: /login
+
+check_path:
+  path: /login_check
+
+logout:
+  path: /logout

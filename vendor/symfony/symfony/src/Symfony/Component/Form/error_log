@@ -1,0 +1,3 @@
+[20-Mar-2018 14:27:18 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Form\FormExtensionInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Form/AbstractExtension.php on line 21
+[21-Mar-2018 20:28:59 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Form\FormConfigInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Form/FormConfigBuilderInterface.php on line 21
+[20-Jun-2018 10:18:41 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Form\FormFactoryBuilderInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Form/FormFactoryBuilder.php on line 20

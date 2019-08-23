@@ -1,0 +1,1 @@
+[20-Mar-2018 17:57:53 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Finder\Adapter\AbstractAdapter' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Finder/Tests/FakeAdapter/DummyAdapter.php on line 20

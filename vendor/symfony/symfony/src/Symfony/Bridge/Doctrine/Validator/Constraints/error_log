@@ -1,0 +1,2 @@
+[30-Aug-2018 03:22:48 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Validator\Constraint' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bridge/Doctrine/Validator/Constraints/UniqueEntity.php on line 25
+[30-Aug-2018 03:25:41 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Validator\ConstraintValidator' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bridge/Doctrine/Validator/Constraints/UniqueEntityValidator.php on line 27

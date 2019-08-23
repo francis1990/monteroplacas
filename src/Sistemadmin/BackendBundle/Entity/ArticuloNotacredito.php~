@@ -1,0 +1,100 @@
+<?php
+
+namespace Sistemadmin\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use InventarioBundle\Entity\Seccion;
+
+/**
+ * ArticuloNotacredito
+ *
+ * @ORM\Table(name="articulo_notacredito")
+ * @ORM\Entity(repositoryClass="Sistemadmin\BackendBundle\Repository\ArticuloNotacreditoRepository")
+ */
+class ArticuloNotacredito
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+        /**
+     * @ORM\ManyToOne(targetEntity="Notacredito")
+     * @ORM\JoinColumn(name="notacredito_id", referencedColumnName="id",onDelete="cascade")
+     **/
+    protected $notacredito;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Articulo")
+     * @ORM\JoinColumn(name="articulo_id", referencedColumnName="id")
+     **/
+    protected $articulo;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="cantidad", type="float")
+     */
+    private $cantidad;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="precio", type="float")
+     */
+    private $precio;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="importe", type="float")
+     */
+    private $importe;
+
+    /**
+     * @var Seccion
+     * @ORM\ManyToOne(targetEntity="InventarioBundle\Entity\Seccion")
+     * @ORM\JoinColumn(name="seccion", referencedColumnName="id")
+     */
+    private $seccion;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cantidad
+     *
+     * @param integer $cantidad
+     * @return ArticuloNotacredito
+     */
+    public function setCantidad($cantidad)
+    {
+        $this->cantidad = $cantidad;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidad
+     *
+     * @return integer 
+     */
+    public function getCantidad()
+    {
+        return $this->cantidad;
+    }
+}

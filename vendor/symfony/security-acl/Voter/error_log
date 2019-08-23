@@ -1,0 +1,1 @@
+[27-Feb-2018 15:58:34 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Security\Core\Authorization\Voter\VoterInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/security-acl/Voter/AclVoter.php on line 31

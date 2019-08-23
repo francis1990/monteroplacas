@@ -1,0 +1,148 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('venta_index') }}">Venta</a>
+    </li>
+    <li>
+        Todas
+    </li>
+{% endblock %}
+{% block contenido %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Lista de Todas las Ventas</h3>
+
+            <div class="col-sm-6 col-md-4">
+                <form action="{{ path('venta_search') }}" method="post">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-6">
+                            <button class="btn btn-default" type="submit">
+                                Informe de Ventas del Dia:
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-5">
+                            <input type="date" class="form-control" name="dailydate" required="true">
+                        </div>
+                        <input class="hidden" id="daily" name="daily" value="day">
+                    </div>
+                </form>
+            </div>
+            <vl/>
+            <div class="col-sm-6 col-md-8">
+                <form action="{{ path('venta_search') }}" method="post">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3">
+                            <button class="btn btn-default" type="submit">
+                                Informe de Ventas. Rango:
+                            </button>
+                        </div>
+                        <div class="col-sm-3 col-md-3">
+                            <input type="date" class="form-control" name="iniciodate" required="true">
+                        </div>
+
+                        <div class="col-sm-3 col-md-3">
+                            <input type="date" class="form-control" name="finaldate" required="true">
+                        </div>
+                        <input class="hidden" id="fechas" name="fechas" value="fechas">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <table class="table-bordered table-striped table_vam allTables hover" id="dt_a">
+                <thead>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Número</th>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Importe</th>
+                        <th>Forma de pago</th>
+                        {% if is_granted('ROLE_CAJA') or is_granted('ROLE_ADMIN') %}
+                        <th>Acciones</th>
+                          {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                {% for venta in ventas %}
+                    <tr>
+                        <td>{{ venta.documento.tipodocumento }}</td>
+                        <td>{{ venta.serie ~'-'~venta.numerodedocumento }}</td>
+                        <td>{% if venta.fecha %}{{ venta.fecha|date('d/m/Y') }}{% endif %}</td>
+                        <td>{{ venta.cliente }}</td>
+                        <td>{{ venta.montototalapagar }}</td>
+                        <td>{{ venta.formadepago }}</td>
+                        {% if is_granted('ROLE_CAJA') or is_granted('ROLE_ADMIN') %}
+                        <td>
+                            <a href="{{ path('venta_edit', { 'id': venta.id }) }}"
+                               class="sepV_a" title="Editar venta">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                            <a href="{{ path('venta_show', { 'id': venta.id }) }}"
+                               class="sepV_a" title="Mostrar detalles">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </a>
+
+                            {# <a href="{{ path('venta_export_pdf', { 'id': venta.id }) }}" target="_blank" title="Exportar">
+                                        <i class="glyphicon glyphicon-print"></i>
+                                    </a>#}
+                                    <a href="{{ path('venta_enviardmf', { 'id': venta.id }) }}"
+                                       class="sepV_a" title="Enviar al facturador">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                    </a>
+                                    <a href="{{ path('venta_bajarpdf', { 'id': venta.id }) }}"
+                                       title="Exportar">
+                                        <i class="glyphicon glyphicon-print"></i>
+                                    </a>
+
+                            <a  href="#" class="eliminar_confirm" data-url="{{ path('venta_delete', { 'id': venta.id }) }}" title="Eliminar venta">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                             </a>
+                        </td>
+                          {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Número</th>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Importe</th>
+                        <th>Forma de pago</th>
+                        {% if is_granted('ROLE_CAJA') or is_granted('ROLE_ADMIN') %}
+                        <th>Acciones</th>
+                          {% endif %}
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    {#<div class="row">
+        {% include 'global/paginator.html.twig' %}
+    </div>#}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('.allTables').DataTable();
+            table.draw();
+        });
+
+    </script>
+{% endblock %}

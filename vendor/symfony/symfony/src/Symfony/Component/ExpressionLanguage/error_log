@@ -1,0 +1,1 @@
+[27-Feb-2018 16:13:24 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\ExpressionLanguage\Expression' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/ExpressionLanguage/ParsedExpression.php on line 22

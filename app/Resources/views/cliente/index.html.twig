@@ -1,0 +1,97 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('cliente_index') }}">Cliente</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Lista de Clientes</h3>
+                </div>
+            </div>
+    <div class="row" >
+        <div class="col-sm-12 col-md-12 menu-acciones">
+             <div class="col-sm-3">
+            <a class="btn btn-success" href="{{ path('cliente_new') }}"><span class="glyphicon glyphicon-file"></span> Nuevo</a>
+            {#<a class="btn btn-default" href="{{ path('cliente_condeuda') }}"><span class="glyphicon glyphicon-search"></span> Clientes con Deuda</a>#}
+            </div>
+            <div class="col-sm-9">
+                <form action="{{ path('buscar_clientes') }}" method="post" class="form-horizontal inherited form-inline">{#                <form action="{{ path('change_no_results') }}" method="post" class="inherited form-inline">#}
+                    <div class="col-sm-2">                 
+                    <button class="btn btn-primary" type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                        Buscar
+                    </button>
+                    </div>
+                    <div class="col-sm-3">
+                    <input type="search" name="buscar" id="buscar" placeholder="Introduzca el valor" class="form-control"/>  
+                   </div>
+                    <div class="col-sm-2">
+                    <select id="categoria" name="categoria" class="form-control">
+                        <option value="nombre">Nombre</option>
+                        <option value="ruc">RUC</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-3 form-group"> 
+                        <label class="col-sm-6 ">Con deuda</label>
+                    <select id="deuda" name="deuda" class="form-control col-sm-6">
+                        <option value="0">No</option>
+                        <option value="1">Sí</option>
+                    </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>Nombre/Razón social</th>
+                            <th>Dirección</th>
+                            <th width="150">Dni/Ruc</th>
+                            <th width="150">Teléfono</th>
+                            <th width="70">Deuda</th>
+                            <th width="100">Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for cliente in clientes %}
+                            <tr>
+                                <td>{{ cliente.nombre }}</td>
+                                <td>{{ cliente.direccion }}</td>
+                                <td>{{ cliente.ruc }}</td>
+                                <td>{{ cliente.telefono }}</td>
+                                <td>{% if cliente.deuda %}Sí{% else %}No{% endif %}</td>
+                                <td align="center">
+                                    <a href="{{ path('cliente_edit', { 'id': cliente.id }) }}"
+                                       class="sepV_a" title="Editar">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+                                    <a href="{{ path('cliente_show', { 'id': cliente.id }) }}"
+                                       class="sepV_a" title="Ver Detalles">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a>
+                                    {#<a href="{{ path('cliente_delete', { 'id': cliente.id }) }}" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>#}
+                                    <a href="#" class="eliminar_confirm"
+                               data-url="{{ path('cliente_delete', { 'id': cliente.id }) }}" title="Eliminar">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">                
+                 {% include 'global/paginator.html.twig' %}
+            </div>             
+
+            
+{% endblock %}

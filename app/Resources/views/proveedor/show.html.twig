@@ -1,0 +1,91 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('proveedor_index') }}">Proveedor</a>
+    </li>
+    <li>
+        Detalles
+    </li>
+
+{% endblock %}
+{% block contenido %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Proveedor</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+            <div class="formSep">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                               Nombre
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ proveedor.nombre }}
+                            </div>
+                        </div><div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Número de serie
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ proveedor.numerodocumento }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                               Ruc
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ proveedor.ruc }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Razón social
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ proveedor.razonsocial }}
+                            </div>
+                        </div><div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Dirección
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ proveedor.direccion }}
+                            </div>
+                        </div><div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Correo
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ proveedor.correo }}
+                            </div>
+                        </div><div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Teléfono
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ proveedor.telefono }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="formSep form-actions">
+
+                <a class="btn btn-default" href="{{ path('proveedor_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+
+                <a class="btn btn-default" href="{{ path('proveedor_edit', { 'id': proveedor.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

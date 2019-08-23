@@ -1,0 +1,2 @@
+[30-Aug-2018 14:40:15 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Security\Core\Encoder\BasePasswordEncoder' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Encoder/BCryptPasswordEncoder.php on line 21
+[31-Aug-2018 04:26:10 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Security\Core\Encoder\BasePasswordEncoder' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Encoder/Pbkdf2PasswordEncoder.php on line 30

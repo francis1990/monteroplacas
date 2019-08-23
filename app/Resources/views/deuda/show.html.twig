@@ -1,0 +1,79 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('deuda_index') }}">Deuda</a>
+    </li>
+    <li>
+        <a href="#">Detalle</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+   <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Deuda</h3>
+        </div>
+    </div>
+   
+     <div class="row">
+        <div class="col-sm-3 col-md-3">
+            Número de factura
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{deuda.serie~ deuda.numerofactura }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            Cliente
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {% if deuda.cliente is not null %} {{ deuda.cliente  }}{% endif %}
+        </div>
+    </div>
+
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+            Fecha de inicio
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {% if deuda.fechainicio %}{{ deuda.fechainicio|date('d/m/Y') }}{% endif %}
+        </div>
+    </div>  
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+             Fecha de cancelación
+        </div>
+        <div class="col-sm-4 col-md-4">
+           {% if deuda.fechacancelacion %}{{ deuda.fechacancelacion|date('d/m/Y') }}{% endif %}
+        </div>
+    </div>  
+      <div class="row">
+        <div class="col-sm-3 col-md-3">
+             Plazo para pagar
+        </div>
+        <div class="col-sm-4 col-md-4">
+           {% if deuda.plazoparapagar %}{{ deuda.plazoparapagar|date('d/m/Y') }}{% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            Total a pagar
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ deuda.totalapagar }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            Deuda
+        </div>
+        <div class="col-sm-4 col-md-4">
+           {% if deuda.tienedeuda %} {{ deuda.deuda }}{% else %}No{% endif %}
+        </div>
+    </div>
+            
+   <div class="formSep form-actions">
+            <a class="btn btn-default" href="{{ path('deuda_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+    </div>
+{% endblock %}

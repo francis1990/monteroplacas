@@ -1,0 +1,96 @@
+
+{# Personalización al mostrar el formulario de #}
+{% block _venta_articuloventas_entry_widget %}
+    <tr>
+         <td class="form-group">
+            {{ form_widget(form.seccion) }}
+            {{ form_errors(form.seccion) }}
+        </td>
+        <td class="form-group">
+            {{ form_widget(form.articulo) }}
+            {{ form_errors(form.articulo) }}
+        </td>
+
+        <td class="form-group">
+            {{ form_widget(form.precio) }}
+            {{ form_errors(form.precio) }}
+        </td>
+        <td class="form-group">
+            {{ form_widget(form.cantidad) }}
+            {{ form_errors(form.cantidad) }}
+        </td>
+        <td class="form-group">
+            {{ form_widget(form.importe) }}
+            {{ form_errors(form.importe) }}
+        </td>
+        {% if form.parent.vars.allow_delete -%}
+            <td>
+                <button type="button" title="{{ 'Eliminar artículo'|trans }}" class="remove-form-embedded"><i
+                            class="glyphicon glyphicon-trash"></i></button>
+            </td>
+        {%- endif -%}
+    </tr>
+{% endblock %}
+    
+{# Personalización al mostrar el formulario de #}
+{% block _ticket_articuloventas_entry_widget %}
+    <tr>
+         <td class="form-group">
+            {{ form_widget(form.seccion) }}
+            {{ form_errors(form.seccion) }}
+        </td>
+        <td class="form-group">
+            {{ form_widget(form.articulo) }}
+            {{ form_errors(form.articulo) }}
+        </td>
+        <td class="form-group">
+            {{ form_widget(form.precio) }}
+            {{ form_errors(form.precio) }}
+        </td>
+        <td class="form-group">
+            {{ form_widget(form.cantidad) }}
+            {{ form_errors(form.cantidad) }}
+        </td>
+        <td class="form-group">
+            {{ form_widget(form.importe) }}
+            {{ form_errors(form.importe) }}
+        </td>
+        {% if form.parent.vars.allow_delete -%}
+            <td>
+                <button type="button" title="{{ 'Eliminar artículo'|trans }}" class="remove-form-embedded"><i
+                            class="glyphicon glyphicon-trash"></i></button>
+            </td>
+        {%- endif -%}
+    </tr>
+{% endblock %}
+
+{% block _compra_articulocompras_entry_widget %}
+    <tr>
+        <td class="form-group">
+            {{ form_widget(form.seccion) }}
+            {{ form_errors(form.seccion) }}
+        </td>
+        <td class="form-group">
+            {{ form_widget(form.articulo) }}
+            {{ form_errors(form.articulo) }}
+        </td>
+        <td class="form-group">
+            {{ form_widget(form.precio) }}
+            {{ form_errors(form.precio) }}
+        </td>
+        <td class="form-group">
+            {{ form_widget(form.cantidad) }}
+            {{ form_errors(form.cantidad) }}
+        </td>
+        <td class="form-group">
+            {{ form_widget(form.importe) }}
+            {{ form_errors(form.importe) }}
+        </td>
+        {% if form.parent.vars.allow_delete -%}
+            <td>
+                <button type="button" title="{{ 'Eliminar artículo'|trans }}" class="remove-form-embedded"><i
+                            class="glyphicon glyphicon-trash"></i></button>
+            </td>
+        {%- endif -%}
+    </tr>
+{% endblock %}

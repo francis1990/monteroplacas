@@ -1,0 +1,2 @@
+[28-Feb-2018 02:02:44 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Config\Definition\ConfigurationInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/monolog-bundle/DependencyInjection/Configuration.php on line 252
+[28-Feb-2018 18:00:17 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\HttpKernel\DependencyInjection\Extension' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/monolog-bundle/DependencyInjection/MonologExtension.php on line 30

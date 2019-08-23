@@ -1,0 +1,1 @@
+[27-Feb-2018 16:16:56 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Serializer\Encoder\EncoderInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Serializer/Encoder/ChainEncoder.php on line 24

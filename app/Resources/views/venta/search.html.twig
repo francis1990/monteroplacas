@@ -1,0 +1,123 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('venta_index') }}">Venta</a>
+    </li>
+    <li>
+        Búsqueda
+    </li>
+{% endblock %}
+{% block contenido %}
+       {% if ventas != null%}       
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Informe de Ventas - Vendido: {{vendido}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table-bordered table-striped table_vam allTables hover" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>Tipo Documento</th>
+                            <th>Número</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Grabado</th>
+                            <th>Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for venta in ventas %}
+                            <tr>
+                                <td>{{ venta.documento.tipodocumento }}</td>
+                                <td>{{ venta.serie ~'-'~venta.numerodedocumento }}</td>
+                                <td>{% if venta.fecha %}{{ venta.fecha|date('d/m/Y') }}{% endif %}</td>
+                                <td>{{ venta.cliente }}</td>
+                                <td>{{ venta.montototalapagar }}</td>
+                                <td>{{ venta.montototalapagar }}</td>    
+                                {% if is_granted('ROLE_CAJA') or is_granted('ROLE_ADMIN') %}
+                                    <td>
+
+                                        <a href="{{ path('venta_show', { 'id': venta.id }) }}"
+                                           class="sepV_a" title="Mostrar detalles">
+                                            <i class="glyphicon glyphicon-eye-open"></i>
+                                        </a><a href="{{ path('venta_edit', { 'id': venta.id }) }}"
+                                               class="sepV_a" title="Editar venta">
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                        </a>
+
+                                        {# <a href="{{ path('venta_export_pdf', { 'id': venta.id }) }}" target="_blank" title="Exportar">
+                                        <i class="glyphicon glyphicon-print"></i>
+                                    </a>#}
+                                    <a href="{{ path('venta_enviardmf', { 'id': venta.id }) }}"
+                                       class="sepV_a" title="Enviar al facturador">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                    </a>
+                                    <a href="{{ path('venta_bajarpdf', { 'id': venta.id }) }}"
+                                       title="Exportar">
+                                        <i class="glyphicon glyphicon-print"></i>
+                                    </a>
+
+                                        <a  href="#" class="eliminar_confirm" data-url="{{ path('venta_delete', { 'id': venta.id }) }}" title="Eliminar venta">
+                                            <i class="glyphicon glyphicon-trash"></i>
+                                        </a>
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        <a href="{{ path('venta_show', { 'id': venta.id }) }}"
+                                           class="sepV_a" title="Mostrar detalles">
+                                            <i class="glyphicon glyphicon-eye-open"></i>
+                                        </a>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Tipo Documento</th>
+                                <th>Número</th>
+                                <th>Fecha</th>
+                                <th>Cliente</th>
+                                <th>Grabado</th>
+                                <th>Total</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+          {#  <div class="row">                
+                {% include 'global/searchventapaginator.html.twig' %}               
+            </div> #}      
+            <div class="row">                
+                <div class="col-sm-3 col-md-3">
+                    <a class="btn btn-default" href="{{ path('venta_export', {  'dailydate': dailydate, 'iniciodate': iniciodate, 'finaldate': finaldate}) }}">Exportar Informe a Excel</a>
+                </div>    
+                <div class="col-sm-3 col-md-3">
+                    <a class="btn btn-default" href="{{ path('venta_export_sindeuda', {  'dailydate': dailydate, 'iniciodate': iniciodate, 'finaldate': finaldate}) }}">Exportar Informe con Ventas sin deuda</a>
+                </div> 
+            </div>          
+       {% endif %}    
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('.allTables').DataTable();
+            table.draw();
+        });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,3 @@
+[27-Feb-2018 16:13:12 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Routing\RouterInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Routing/Router.php on line 34
+[27-Feb-2018 16:14:19 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Routing\Matcher\UrlMatcherInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Routing/RouterInterface.php on line 24
+[27-Feb-2018 16:14:28 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Routing\RouteCompilerInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Routing/RouteCompiler.php on line 21

@@ -1,0 +1,73 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('gasto_index') }}">Gasto</a>
+    </li>
+    <li>
+        Detalles
+    </li>
+
+{% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Gasto</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+            <div class="formSep">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Motivo
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ gasto.motivo }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Nombre
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ gasto.nombre }}
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Cantidad
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ gasto.cantidad }}
+                            </div>
+                        </div>
+                       <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Fecha
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {% if gasto.fecha %}{{ gasto.fecha|date('Y-m-d') }}{% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="formSep form-actions">
+                <a class="btn btn-default" href="{{ path('gasto_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+
+
+                                        <a class="btn btn-default" href="{{ path('gasto_edit', { 'id': gasto.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

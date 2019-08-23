@@ -1,0 +1,140 @@
+{% extends '::inventarioadmin.html.twig' %}
+{% block title %}Inventario | Diario{% endblock %}
+{% block title_section %}
+    Inventario diario
+{% endblock %}
+{% block inve_diario_activo %}class="active"{% endblock %}
+{% block tree_mov %}active{% endblock %}
+{% block breadcrumb %}
+    <li class="">Inventario diario</li>
+{% endblock %}
+    {% block main_content %}
+        <div class="box">
+            <br>
+            <div class="box-body">
+                <div class="busqueda">
+                    <div class="col-sm-4">
+                        <div class="col-sm-3"> Sección</div>
+                        <div class="col-sm-9">   {{ render(controller(
+                                'InventarioBundle:Seccion:listado'
+                            )) }}</div>
+                    </div>
+                    <div class=" col-sm-4">
+                        <div class="col-sm-3"> Artículo</div>
+                        <div class="col-sm-9"> {{ render(controller(
+                                'BackendBundle:Articulo:listado'
+                            )) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="col-sm-3"> Fecha</div>
+                        <div class="col-sm-9">
+                            <input type="text" id="min" name="min" value="{{ fecha | date('d/m/Y') }}"
+                                   class="form-control datepicker"></div>
+                    </div>
+                    <div class="col-sm-12">
+                        <a class="btn btn-default pull-right" id="invgeneral" title="Exportar"
+                           href="{{ path('inventario_diario', {  'sec':seccion,'fecha': fecha|date('Y-m-d'),'articulo':articulo}) }}">
+                            <span class="glyphicon glyphicon-print"></span>
+                            Exportar</a>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <table border="1" cellspacing="0" cellpadding="0" align="center" id="tabla-datos"
+                       data-url="{{ path('inventario_diario_menu', {  'seccion':seccion,'fecha':fecha|date('Y-m-d'),'articulo':articulo}) }}">
+                    <thead>
+                    <tr>
+                        <th width="102" valign="top"><p>Secci&oacute;n</p></th>
+                        <th width="714" class="th-blanco" id="td-seccion" colspan="7" valign="top"><p>&nbsp;</p></th>
+                        <th width="102"  class="th-blanco" valign="top"><p>&nbsp;</p></th>
+                    </tr>
+                    <tr>
+                        <th width="102" valign="top"><p>Contrata</p></th>
+                        <th width="714" class="th-blanco" colspan="7" valign="top"><p>&nbsp;</p></th>
+                        <th width="102" class="th-blanco" valign="top"><p>&nbsp;</p></th>
+                    </tr>
+                    <tr>
+                        <th width="102" valign="top"><p>Fecha</p></th>
+                        <th width="817" class="th-blanco" colspan="8" valign="top"><p> {{ fecha | date('d/m/Y') }}</p></th>
+                    </tr>
+
+
+                    <tr>
+                        <td width="200" valign="top"><p align="center">Material</p></td>
+                        <td width="102" valign="top"><p align="center">Stock Anterior</p></td>
+                        <td width="115" valign="top"><p align="center">Ingreso Material</p></td>
+                        <td width="104" valign="top"><p align="center">Total material</p></td>
+                        <td width="87" valign="top"><p align="center">Uso del d&iacute;a</p></td>
+                        <td width="102" valign="top"><p align="center">Stock del d&iacute;a</p></td>
+                        <td width="102" valign="top"><p align="center">Proveedores</p></td>
+                        <td width="102" valign="top"><p align="center">Id proveedor</p></td>
+                        <td width="102" valign="top"><p align="center">Acciones</p></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for mov in movimientos %}
+                        <tr>
+                            <td width="200" valign="top"><p align="center">{{ mov[0] }}</p></td>
+                            <td width="102" valign="top"><p align="center">{{ mov[1] | number_format(2) }}</p></td>
+                            <td width="115" valign="top"><p align="center">{{ mov[2]| number_format(2) }}</p></td>
+                            <td width="104" valign="top"><p align="center">{{ mov[3]| number_format(2) }}</p></td>
+                            <td width="87" valign="top"><p align="center">{{ mov[4]| number_format(2) }}</p></td>
+                            <td width="102" valign="top"><p align="center">{{ mov[5]| number_format(2) }}</p></td>
+                            <td width="102" valign="top"><p align="center">{{ mov[6] }}</p></td>
+                            <td width="102" valign="top"><p align="center">&nbsp;</p></td>
+                            <td width="102" valign="top">
+
+                                    <a style="padding-left: 10px" href="{{ path('compra_inventario_diario_menu', {  'idart': mov[7] }) }}">
+                                        Compra</a>
+                                <br>
+
+                                    <a style="padding-left: 10px" href="{{ path('venta_inventario_diario_menu', {  'idart': mov[7] }) }}"> Venta</a>
+
+
+                            </td>
+                        </tr>
+
+
+                    {% endfor %}</tbody>
+                </table>
+            </div>
+        </div>
+    {% endblock %}
+{% block js %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#min,#filtro-seccion,#filtro-articulo').on('change', null, function () {
+
+                var fecha=$('#min');
+                var tabla=$('#tabla-datos');
+                var sec=$('#filtro-seccion');
+                var art=$('#filtro-articulo');
+
+                var min = fecha.val() !== "" ? fecha.val().split('/') : "";
+                var href = tabla.data('url').split('/invdiariomenu');
+                var minDate =min!==""? min[2]+'-'+min[1]+'-'+min[0]:0;
+                var seccion = sec.val() ? sec.val() : "";
+                var articulo = art.val() ? art.val() : "";
+                window.location= href[0] + '/invdiariomenu/' + minDate + '/' + seccion+'/'+articulo;
+
+            });
+
+            {% if seccion != 0 or articulo!= 0 %}
+            var fecha=$('#min');
+            var min = fecha.val() !== "" ? fecha.val().split('/') : "";
+            var minDate =min!==""? min[2]+'-'+min[1]+'-'+min[0]:0;
+            $('#filtro-seccion').val({{ seccion }}).trigger("chosen:updated");
+            {% if articulo !=0 %}
+            $('#filtro-articulo').val({{ articulo }}).trigger("chosen:updated");
+            {% endif %}
+            $('#td-seccion p').text($('#filtro-seccion option:selected').get(0).text);
+            var hrefe = $('a#invgeneral').attr('href').split('/invdiario');
+            $('a#invgeneral').attr('href',hrefe[0] + '/invdiario/' +$('#filtro-seccion').val() +'/' +minDate+'/'+articulo);
+            {% endif %}
+        });
+
+    </script>
+
+{% endblock %}

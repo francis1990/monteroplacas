@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+
+
+.imagen_no_pantalla{    
+	display: none !important;
+}
+
+.imprimir_no_pantalla{    
+    
+	display: none !important;
+}
+
+.loading{
+    background-image: url('../img/loading.gif');
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 300px;
+/*	margin-left:150px !important;*/
+	margin-top:25px !important;
+	float:left;
+}

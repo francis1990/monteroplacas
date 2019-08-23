@@ -1,0 +1,253 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('notacredito_index') }}">Notas de Crédito</a>
+    </li>
+    <li>
+        Nuevo
+    </li>
+
+{% endblock %}
+{% block contenido %}
+ 
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Nueva Nota de Crédito</h3>
+        </div>
+    </div>    
+    <div class="form_error">{{form_errors(form)}}</div>
+    <div class="row" id="content">
+        <div class="col-sm-12 col-md-12">
+            {{ form_start(form,{'attr':{ 'class':'form-horizontal form_validation_reg','id':'#form-notacredito'}}) }}
+            <div class="formSep">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <label style="font-family: 'PT Sans', sans-serif; font-weight:400; font-size: 15px">Datos de la nota de crédito</label>
+                    </div>
+                    <div class="col-xs-12">
+                        <div style="border: 1px solid #ccc; border-radius: 4px;">
+                            <fieldset style="margin-top: 14px;">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">{{ form_label(form.serie)}}</label>
+                                    <div class="col-sm-2">
+                                        {{ form_widget(form.serie) }}
+                                        {{ form_errors(form.serie) }}
+                                    </div>
+                                    <div class="col-sm-2">
+                                        {{ form_widget(form.numerodedocumento) }}
+                                        {{ form_errors(form.numerodedocumento) }}                                    
+                                    </div>
+                                    <label class="control-label col-sm-2">{{ form_label(form.fecha) }}</label>
+                                    <div class="col-sm-2">
+                                        {{ form_widget(form.fecha) }}
+                                        {{ form_errors(form.fecha) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">{{ form_label(form.tipo)}}</label>
+                                    <div class="col-sm-8">
+                                         {{ form_widget(form.tipo) }}
+                                         {{ form_errors(form.tipo) }}
+                                     </div>                                 
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">{{ form_label(form.motivo)}}</label>
+                                    <div class="col-sm-8">
+                                         {{ form_widget(form.motivo) }}
+                                         {{ form_errors(form.motivo) }}
+                                     </div>                                 
+                                </div>                                
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12" style="margin-top: 20px">
+                        <label style="font-family: 'PT Sans', sans-serif; font-weight:400; font-size: 15px">Datos de la factura a la cual asociará la nota de crédito</label>
+                    </div>
+                    <div class="col-xs-12" id="content">                       
+                        <div style="border: 1px solid #ccc; border-radius: 4px;">
+                            <fieldset style="margin-top: 14px;">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">{{ form_label(form.venta) }}</label>
+                                    <div class="col-sm-4">
+                                        {{ form_widget(form.venta) }}
+                                    </div>
+                                    <div id="aceptarBtn-div" class="col-sm-4">
+                                        <a id="aceptarBtn" class="btn btn-primary" href="{{ path('venta_show', { 'id' : 0} ) }}">
+                                            <span class="glyphicon"></span> Mostrar Factura
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Fecha</label>
+                                    <div class="col-sm-8">
+                                        <input id="venta-fecha" type="text" class="form-control" readonly="true">
+                                        </input>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Cliente</label>
+                                    <div class="col-sm-8">
+                                        <input id="venta-cliente" type="text" class="form-control" readonly="true">
+                                        </input>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Vendedor</label>
+                                    <div class="col-sm-8">
+                                        <input id="venta-vendedor" type="text" class="form-control" readonly="true">
+                                        </input>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Centro de Costo</label>
+                                    <div class="col-sm-8">
+                                        <input id="venta-centrodecosto" type="text" class="form-control" readonly="true"></input>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Forma de pago</label>
+                                    <div class="col-sm-8">
+                                        <input id="venta-formadepago" type="text" class="form-control" readonly="true">
+                                        </input>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Observación</label>
+                                    <div class="col-sm-8">
+                                        <textarea id="venta-observacion" type="text" class="form-control" readonly="true">
+                                        </textarea>
+                                    </div>
+                                </div>                                
+                                <br/>
+                                {#<div id="table-div" class="col-sm-12 col-md-12">
+                                    <label>Artículos:</label>
+                                    <br/>
+                                    <table id="otherTable" class="table-bordered table-responsive table-striped hover"> 
+                                        <thead>
+                                            <tr>
+                                                <th>Sección</th>
+                                                <th>Artículo</th>
+                                                <th>Precio</th>
+                                                <th>Cantidad</th>
+                                                <th>Importe</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                    <br/>
+                                    <br/>
+                                </div>#}
+                                <div class="{%- if not form.articulonotacreditos.vars.valid %} has-error{% endif %}">
+
+                                    {#<div class="caption">{{ form_label(form.articulonotacreditos) }}</div>#}
+                                    {#<div class="actions pull-right">
+                                        <a href="#" class="btn btn-default add-form-embedded"
+                                                data-container="#articulonotacreditos-tbody">
+                                            <i class="fa fa-plus"></i>
+                                            Adicionar Artículo
+                                        </a>
+                                    </div>#}
+                                </div>
+                                <div class=" col-xs-12" style="margin-top: 5px">
+                                    {{ form_errors(form.articulonotacreditos) }}
+                                    {#<ul id="articulonotacreditos-tbody" class="tag" 
+                                           data-prototype="{{ form_widget(form.articulonotacreditos.vars.prototype)|e }}"
+                                           data-index="{{ form.articulonotacreditos|length }}">
+                                    </ul> #}
+                                    <table class="table table-striped table-hover table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>Sección</th>
+                                            <th>Artículo</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th>Importe</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="articulonotacreditos-tbody" class="tag" 
+                                           data-prototype="{{ form_widget(form.articulonotacreditos.vars.prototype)|e }}"
+                                           data-index="{{ form.articulonotacreditos|length }}">
+
+                                               {% for articulo in form.articulonotacreditos %}
+                                                   <tr>
+                                                        <td>{{ form_widget(articulo.cantidad) }}</td>
+                                                        <td>{{ form_widget(articulo.precio) }}</td>
+                                                        <td>{{ form_widget(articulo.articulo) }}</td>
+                                                        <td>{{ form_widget(articulo.seccion) }}</td>
+                                                        <td>{{ form_widget(articulo.importe) }}</td>
+                                                   </tr>
+                                               {% endfor %}
+                                        </tbody>                                        
+                                    </table>
+
+                                    {#{{ form_widget(form.articulonotacreditos) }} Para que no se muestre nuevamente el texto components #}
+                                </div>
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="form-group">                                    
+                                        <label class="control-label col-sm-1">Cant/Artículos:</label>
+                                        <div class="col-sm-2">
+                                            <input id="cantArticulos-input" type="text" class="form-control" readonly="true"></input>
+                                        </div>
+                                        <div>
+                                            <label class="control-label col-sm-2">Sub-Total:</label>
+                                            <div class="col-sm-2">
+                                                <input id="subtotal" type="text" class="form-control" readonly="true"></input>
+                                            </div>
+                                        </div>
+                                        {#<label class="control-label col-sm-2" style="color : red;">Recibido:</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" class="form-control" readonly="true"></input>
+                                        </div>#}
+                                    </div>
+                                    <div class="form-group">                                    
+                                        <label class="control-label col-sm-1">I.G.V (18%):</label>
+                                        <div class="col-sm-2">
+                                            <input id="igv" type="text" class="form-control" readonly="true"></input>
+                                        </div>
+                                        <label class="control-label col-sm-2">Total a pagar:</label>
+                                        <div class="col-sm-2">
+                                            <input id="total" type="text" class="form-control" readonly="true"></input>
+                                        </div>
+                                        {#<label class="control-label col-sm-2" style="color : blue;">Vuelto:</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" class="form-control" readonly="true"></input>
+                                        </div>#}
+                                    </div>
+                                    {#<div class="form-group">  
+                                        
+                                        <div class="col-sm-4">
+                                            <a id="aceptarBtn" class="btn btn-primary" href="{{ path('prueba') }}">
+                                                <span class="glyphicon"></span> Probando
+                                            </a>
+                                        </div>
+                                    </div>#}
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="formSep form-actions">
+        <button title="Aceptar" class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
+        <a class="btn btn-default" title="Cerrar" href="{{ path('notacredito_index') }}"><span class="glyphicon glyphicon-remove"></span> Cerrar</a>
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    {#<script src="{{ asset('bundles/sistemaadminbackend/js/app.js') }}"></script>#}
+    <script src="{{ asset('bundles/sistemaadminbackend/js/notacredito.js') }}"></script>
+
+
+{% endblock %}

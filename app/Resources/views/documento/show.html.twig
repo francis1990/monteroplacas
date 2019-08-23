@@ -1,0 +1,114 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('documento_index') }}">Documento</a>
+    </li>
+    <li>
+        Detalles
+    </li>
+
+{% endblock %}
+{% block contenido %}
+   
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Documento</h3>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-sm-12 col-md-12">
+
+    <div class="formSep">
+    <div class="row">
+    <div class="col-xs-12">
+
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Código
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ documento.codigo }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Tipo documento
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ documento.tipodocumento }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Serie 1
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ documento.serie1 }}
+        </div>
+    </div><div class="row">
+        <div class="col-sm-2 col-md-2">
+            Serie 2
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ documento.serie2 }}
+        </div>
+    </div><div class="row">
+        <div class="col-sm-2 col-md-2">
+            Serie 3
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ documento.serie3 }}
+        </div>
+    </div><div class="row">
+        <div class="col-sm-2 col-md-2">
+            Número 1
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ documento.numero1 }}
+        </div>
+    </div><div class="row">
+        <div class="col-sm-2 col-md-2">
+            Número 2
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ documento.numero2 }}
+        </div>
+    </div><div class="row">
+        <div class="col-sm-2 col-md-2">
+            Número 3
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ documento.numero3 }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Número de lineas
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {{ documento.numerodelineas }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2">
+            Igv
+        </div>
+        <div class="col-sm-4 col-md-4">
+            {% if documento.igv %}Yes{% else %}No{% endif %}
+        </div>
+    </div>
+        </div>
+    </div>
+    </div>
+    <div class="formSep form-actions">
+
+        <a class="btn btn-default" href="{{ path('documento_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+
+        <a class="btn btn-default" href="{{ path('documento_edit', { 'id': documento.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+    </div>
+    </div>
+    </div>
+
+
+{% endblock %}

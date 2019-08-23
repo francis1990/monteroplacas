@@ -1,0 +1,1 @@
+[30-Aug-2018 13:15:56 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\PropertyInfo\PropertyListExtractorInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/PropertyInfo/Tests/Fixtures/DummyExtractor.php on line 23

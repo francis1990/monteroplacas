@@ -1,0 +1,6 @@
+<select id="filtro-articulo" class="chosen-select form-control" name="articulo">
+    <option value="0">Seleccione...</option>
+    {% for art in articulos %}
+        <option value="{{ art.id }}">{{  art.nombre }}</option>
+    {% endfor %}
+</select>

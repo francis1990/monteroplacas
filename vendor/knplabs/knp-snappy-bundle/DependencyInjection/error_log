@@ -1,0 +1,1 @@
+[28-Feb-2018 17:59:33 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Config\Definition\ConfigurationInterface' not found in /home1/mp/public_html/monteroplacas/vendor/knplabs/knp-snappy-bundle/DependencyInjection/Configuration.php on line 12

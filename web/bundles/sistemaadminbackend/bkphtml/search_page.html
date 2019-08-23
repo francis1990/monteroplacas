@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gebo Admin v3.1</title>
+
+        <!-- Bootstrap framework -->
+            <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+        <!-- jQuery UI theme -->
+            <link rel="stylesheet" href="lib/jquery-ui/css/Aristo/Aristo.css" />
+        <!-- breadcrumbs -->
+            <link rel="stylesheet" href="lib/jBreadcrumbs/css/BreadCrumb.css" />
+        <!-- tooltips-->
+            <link rel="stylesheet" href="lib/qtip2/jquery.qtip.min.css" />
+		<!-- colorbox -->
+            <link rel="stylesheet" href="lib/colorbox/colorbox.css" />
+        <!-- code prettify -->
+            <link rel="stylesheet" href="lib/google-code-prettify/prettify.css" />
+        <!-- sticky notifications -->
+            <link rel="stylesheet" href="lib/sticky/sticky.css" />
+        <!-- aditional icons -->
+            <link rel="stylesheet" href="img/splashy/splashy.css" />
+		<!-- flags -->
+            <link rel="stylesheet" href="img/flags/flags.css" />
+        <!-- datatables -->
+            <link rel="stylesheet" href="lib/datatables/extras/TableTools/media/css/TableTools.css">
+
+
+        <!-- main styles -->
+            <link rel="stylesheet" href="css/style.css" />
+		<!-- theme color-->
+            <link rel="stylesheet" href="css/blue.css" id="link_theme" />
+
+            <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- favicon -->
+            <link rel="shortcut icon" href="favicon.ico" />
+
+        <!--[if lte IE 8]>
+            <link rel="stylesheet" href="css/ie.css" />
+        <![endif]-->
+
+        <!--[if lt IE 9]>
+			<script src="js/ie/html5.js"></script>
+			<script src="js/ie/respond.min.js"></script>
+			<script src="lib/flot/excanvas.min.js"></script>
+        <![endif]-->    </head>
+    <body class="full_width">
+        <div class="style_switcher">
+			<div class="sepH_c">
+				<p>Colors:</p>
+				<div class="clearfix">
+					<a href="javascript:void(0)" class="style_item jQclr blue_theme style_active" title="blue">blue</a>
+					<a href="javascript:void(0)" class="style_item jQclr dark_theme" title="dark">dark</a>
+					<a href="javascript:void(0)" class="style_item jQclr green_theme" title="green">green</a>
+					<a href="javascript:void(0)" class="style_item jQclr brown_theme" title="brown">brown</a>
+					<a href="javascript:void(0)" class="style_item jQclr eastern_blue_theme" title="eastern_blue">eastern blue</a>
+					<a href="javascript:void(0)" class="style_item jQclr tamarillo_theme" title="tamarillo">tamarillo</a>
+				</div>
+			</div>
+			<div class="sepH_c">
+				<p>Backgrounds:</p>
+				<div class="clearfix">
+					<span class="style_item jQptrn style_active ptrn_def" title=""></span>
+					<span class="ssw_ptrn_a style_item jQptrn" title="ptrn_a"></span>
+					<span class="ssw_ptrn_b style_item jQptrn" title="ptrn_b"></span>
+					<span class="ssw_ptrn_c style_item jQptrn" title="ptrn_c"></span>
+					<span class="ssw_ptrn_d style_item jQptrn" title="ptrn_d"></span>
+					<span class="ssw_ptrn_e style_item jQptrn" title="ptrn_e"></span>
+				</div>
+			</div>
+			<div class="sepH_c">
+				<p>Layout:</p>
+				<div class="clearfix">
+					<label class="radio-inline"><input name="ssw_layout" id="ssw_layout_fluid" value="" checked="" type="radio"> Fluid</label>
+					<label class="radio-inline"><input name="ssw_layout" id="ssw_layout_fixed" value="gebo-fixed" type="radio"> Fixed</label>
+				</div>
+			</div>
+			<div class="sepH_c">
+				<p>Sidebar position:</p>
+				<div class="clearfix">
+					<label class="radio-inline"><input name="ssw_sidebar" id="ssw_sidebar_left" value="" checked="" type="radio"> Left</label>
+					<label class="radio-inline"><input name="ssw_sidebar" id="ssw_sidebar_right" value="sidebar_right" type="radio"> Right</label>
+				</div>
+			</div>
+			<div class="sepH_c">
+				<p>Show top menu on:</p>
+				<div class="clearfix">
+					<label class="radio-inline"><input name="ssw_menu" id="ssw_menu_click" value="" checked="" type="radio"> Click</label>
+					<label class="radio-inline"><input name="ssw_menu" id="ssw_menu_hover" value="menu_hover" type="radio"> Hover</label>
+				</div>
+			</div>
+
+			<div class="gh_button-group">
+				<a href="#" id="showCss" class="btn btn-primary btn-sm">Show CSS</a>
+				<a href="#" id="resetDefault" class="btn btn-default btn-sm">Reset</a>
+			</div>
+			<div class="hide">
+				<ul id="ssw_styles">
+					<li class="small ssw_mbColor sepH_a" style="display:none">body {<span class="ssw_mColor sepH_a" style="display:none"> color: #<span></span>;</span> <span class="ssw_bColor" style="display:none">background-color: #<span></span> </span>}</li>
+					<li class="small ssw_lColor sepH_a" style="display:none">a { color: #<span></span> }</li>
+				</ul>
+			</div>
+		</div>		<div id="maincontainer" class="clearfix">
+
+            <header>
+
+				<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+					<div class="navbar-inner">
+						<div class="container-fluid">
+							<a class="brand pull-left" href="dashboard.html">Gebo Admin</a>
+							<ul class="nav navbar-nav" id="mobile-nav">
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-list-alt"></span> Forms <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="form_elements.html">Form elements</a></li>
+										<li><a href="form_extended.html">Extended form elements</a></li>
+										<li><a href="form_validation.html">Form Validation</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-th"></span> Components <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="alerts_btns.html">Alerts &amp; Buttons</a></li>
+										<li><a href="icons.html">Icons</a></li>
+										<li><a href="notifications.html">Notifications</a></li>
+										<li><a href="tables.html">Tables</a></li>
+										<li><a href="tables_more.html">Tables (more examples)</a></li>
+										<li><a href="tabs_accordion.html">Tabs &amp; Accordion</a></li>
+										<li><a href="tooltips.html">Tooltips, Popovers</a></li>
+										<li><a href="typography.html">Typography</a></li>
+										<li><a href="widgets.html">Widget boxes</a></li>
+										<li class="dropdown">
+											<a href="#">Sub menu <b class="caret-right"></b></a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Sub menu 1.1</a></li>
+												<li><a href="#">Sub menu 1.2</a></li>
+												<li><a href="#">Sub menu 1.3</a></li>
+												<li>
+													<a href="#">Sub menu 1.4 <b class="caret-right"></b></a>
+													<ul class="dropdown-menu">
+														<li><a href="#">Sub menu 1.4.1</a></li>
+														<li><a href="#">Sub menu 1.4.2</a></li>
+														<li><a href="#">Sub menu 1.4.3</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-wrench"></span> Plugins <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="charts.html">Charts</a></li>
+										<li><a href="calendar.html">Calendar</a></li>
+										<li><a href="datatable.html">Datatable</a></li>
+										<li><a href="dynamic_tree.html">Dynamic tree</a></li>
+										<li><a href="editable_elements.html">Editable elements</a></li>
+										<li><a href="file_manager.html">File Manager</a></li>
+										<li><a href="floating_header.html">Floating List Header</a></li>
+										<li><a href="google_maps.html">Google Maps</a></li>
+										<li><a href="gallery.html">Gallery Grid</a></li>
+										<li><a href="wizard.html">Wizard</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-file"></span> Pages <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="blank.html"> Blank</a></li>
+										<li><a href="blog_page.html"> Blog Page</a></li>
+										<li><a href="chat.html"> Chat</a></li>
+										<li><a href="error_404.html"> Error 404</a></li>
+										<li><a href="invoice.html"> Invoice</a></li>
+										<li><a href="mailbox.html">Mailbox</a></li>
+										<li><a href="search_page.html">Search page</a></li>
+										<li><a href="user_profile.html">User profile</a></li>
+										<li><a href="user_static.html">User profile (static)</a></li>
+									</ul>
+								</li>
+							</ul>
+							<ul class="nav navbar-nav user_menu pull-right">
+								<li class="hidden-phone hidden-tablet">
+									<div class="nb_boxes clearfix">
+										<a data-toggle="modal" data-backdrop="static" href="#myMail" data-placement="bottom" data-container="body" class="label bs_ttip" title="New messages">25 <i class="splashy-mail_light"></i></a>
+										<a data-toggle="modal" data-backdrop="static" href="#myTasks" data-placement="bottom" data-container="body" class="label bs_ttip" title="New tasks">10 <i class="splashy-calendar_week"></i></a>
+									</div>
+								</li>
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle nav_condensed" data-toggle="dropdown"><i class="flag-gb"></i> <b class="caret"></b></a>
+									<ul class="dropdown-menu dropdown-menu-right">
+										<li><a href="javascript:void(0)"><i class="flag-de"></i> Deutsch</a></li>
+										<li><a href="javascript:void(0)"><i class="flag-fr"></i> Français</a></li>
+										<li><a href="javascript:void(0)"><i class="flag-es"></i> Español</a></li>
+										<li><a href="javascript:void(0)"><i class="flag-ru"></i> Pусский</a></li>
+									</ul>
+								</li>
+								<li class="divider-vertical hidden-sm hidden-xs"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="img/user_avatar.png" alt="" class="user_avatar">Johny Smith <b class="caret"></b></a>
+									<ul class="dropdown-menu dropdown-menu-right">
+										<li><a href="user_profile.html">My Profile</a></li>
+										<li><a href="javascrip:void(0)">Another action</a></li>
+										<li class="divider"></li>
+										<li><a href="login.html">Log Out</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+
+				<div class="modal fade" id="myMail">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h3 class="modal-title">New Messages</h3>
+							</div>
+							<div class="modal-body">
+								<table class="table table-condensed table-striped" data-provides="rowlink">
+									<thead>
+										<tr>
+											<th>Sender</th>
+											<th>Subject</th>
+											<th>Date</th>
+											<th>Size</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Declan Pamphlett</td>
+											<td><a href="javascript:void(0)">Lorem ipsum dolor sit amet</a></td>
+											<td>23/05/2015</td>
+											<td>25KB</td>
+										</tr>
+										<tr>
+											<td>Erin Church</td>
+											<td><a href="javascript:void(0)">Lorem ipsum dolor sit amet</a></td>
+											<td>24/05/2015</td>
+											<td>15KB</td>
+										</tr>
+										<tr>
+											<td>Koby Auld</td>
+											<td><a href="javascript:void(0)">Lorem ipsum dolor sit amet</a></td>
+											<td>25/05/2015</td>
+											<td>28KB</td>
+										</tr>
+										<tr>
+											<td>Anthony Pound</td>
+											<td><a href="javascript:void(0)">Lorem ipsum dolor sit amet</a></td>
+											<td>25/05/2015</td>
+											<td>33KB</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default">Go to mailbox</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal fade" id="myTasks">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h3 class="modal-title">New Tasks</h3>
+							</div>
+							<div class="modal-body">
+								<table class="table table-condensed table-striped" data-provides="rowlink">
+									<thead>
+										<tr>
+											<th>id</th>
+											<th>Summary</th>
+											<th>Updated</th>
+											<th>Priority</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>P-23</td>
+											<td><a href="javascript:void(0)">Admin should not break if URL…</a></td>
+											<td>23/05/2015</td>
+											<td><span class="label label-danger">High</span></td>
+											<td>Open</td>
+										</tr>
+										<tr>
+											<td>P-18</td>
+											<td><a href="javascript:void(0)">Displaying submenus in custom…</a></td>
+											<td>22/05/2015</td>
+											<td><span class="label label-warning">Medium</span></td>
+											<td>Reopen</td>
+										</tr>
+										<tr>
+											<td>P-25</td>
+											<td><a href="javascript:void(0)">Featured image on post types…</a></td>
+											<td>22/05/2015</td>
+											<td><span class="label label-success">Low</span></td>
+											<td>Updated</td>
+										</tr>
+										<tr>
+											<td>P-10</td>
+											<td><a href="javascript:void(0)">Multiple feed fixes and…</a></td>
+											<td>17/05/2015</td>
+											<td><span class="label label-warning">Medium</span></td>
+											<td>Open</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default">Go to task manager</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</header>
+            <div id="contentwrapper">
+                <div class="main_content">
+<div id="jCrumbs" class="breadCrumb module">
+    <ul>
+        <li>
+            <a href="#"><i class="glyphicon glyphicon-home"></i></a>
+        </li>
+        <li>
+            <a href="#">Sports & Toys</a>
+        </li>
+        <li>
+            <a href="#">Toys & Hobbies</a>
+        </li>
+        <li>
+            <a href="#">Learning & Educational</a>
+        </li>
+        <li>
+            <a href="#">Astronomy & Telescopes</a>
+        </li>
+        <li>
+            Telescope 3735SX 
+        </li>
+    </ul>
+</div>
+<div class="row search_page">
+    <div class="col-sm-12 col-md-12">
+        <h3 class="heading"><small>Search results for</small> Search term</h3>
+        <div class="well clearfix">
+			<div class="pull-left">Showing 1 - 20 of 204 Results</div>
+			<div class="pull-right">
+				<span class="sepV_c">
+					Sort by:
+					<select class="form-control input-sm">
+						<option>Name</option>
+						<option>Date</option>
+						<option>Relevance</option>
+					</select>
+				</span>
+				<span class="sepV_c">
+					View:
+					<select class="form-control input-sm">
+						<option>12</option>
+						<option>25</option>
+						<option>50</option>
+					</select>
+				</span>
+				<span class="result_view">
+					<a href="javascript:void(0)" class="box_trgr sepV_b"><i class="glyphicon glyphicon-th-large"></i></a>
+					<a href="javascript:void(0)" class="list_trgr"><i class="glyphicon glyphicon-align-justify"></i></a>
+				</span>
+			</div>
+        </div>
+        <div class="text-center">
+            <ul class="pagination">
+                <li><a href="#">Prev</a></li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="disabled"><a href="#">...</a></li>
+                <li><a href="#">10</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </div>
+        <div class="search_panel clearfix">
+                        <div class="search_item clearfix">
+                <span class="searchNb">1.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                                                                    </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                        <div class="search_item clearfix">
+                <span class="searchNb">2.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                        <span class="label label-info">Lorem ipsum</span>                                            </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                        <div class="search_item clearfix">
+                <span class="searchNb">3.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                                                                    </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                        <div class="search_item clearfix">
+                <span class="searchNb">4.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                                                                    </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                        <div class="search_item clearfix">
+                <span class="searchNb">5.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                                                                    </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                        <div class="search_item clearfix">
+                <span class="searchNb">6.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                                                <span class="label label-important">Lorem ipsum</span>                    </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                        <div class="search_item clearfix">
+                <span class="searchNb">7.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                                                                    </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                        <div class="search_item clearfix">
+                <span class="searchNb">8.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                                                                    </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                        <div class="search_item clearfix">
+                <span class="searchNb">9.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                                                                    </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                        <div class="search_item clearfix">
+                <span class="searchNb">10.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                                                                    </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                        <div class="search_item clearfix">
+                <span class="searchNb">11.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                                                                    </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                        <div class="search_item clearfix">
+                <span class="searchNb">12.</span>
+                
+                
+                <div class="thumbnail pull-left">
+                    <img alt="" src="http://placehold.it/80x80/efefef">
+                </div>
+                <div class="search_content">
+                    <h4>
+                        <a href="javascript:void(0)" class="sepV_a">Lorem ipsum dolor sit amet</a>
+                                                                    </h4>
+                    <p class="sepH_b item_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod commodo adipiscing. Nunc lobortis mauris sit amet lectus vulputate vitae porta nulla vehicula. Curabitur in fermentum dui. Integer lobortis odio in quam faucibus ornare. Vivamus sed nulla suscipit tortor volutpat aliquam. Ut a lorem in felis faucibus tincidunt. Duis consectetur pulvinar lacus non pulvinar. Phasellus tempor nisi at sem commodo id vehicula nisl aliquam.</p>
+                    <p class="sepH_a"><strong>Lorem ipsum:</strong> dolor sit amet</p>
+                    <small>Tag 1</small>, <small>Tag 2</small>
+                </div>
+            </div>
+                    </div>
+        <div class="text-center">
+            <ul class="pagination">
+                <li><a href="#">Prev</a></li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="disabled"><a href="#">...</a></li>
+                <li><a href="#">10</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </div>      
+    </div>
+</div>                </div>
+            </div>
+
+        </div>
+
+<a href="javascript:void(0)" class="sidebar_switch on_switch bs_ttip" data-placement="auto right" data-viewport="body" title="Hide Sidebar">Sidebar switch</a>
+<div class="sidebar">
+
+	<div class="sidebar_inner_scroll">
+		<div class="sidebar_inner">
+			<div class="sidebar_filters">
+				<h3>Keyword</h3>
+				<div class="filter_items">
+					<input class="input-sm form-control" type="text">
+				</div>
+				<h3>Lorem ipsum</h3>
+				<div class="filter_items">
+					<div class="checkbox"><label class="">
+						<input value="filter_item" name="filter_item" type="checkbox">
+						Lorem ipsum dolor sit
+					</label></div>
+					<div class="checkbox"><label class="">
+						<input value="filter_item" name="filter_item" type="checkbox">
+						Lorem ipsum dolor sit
+					</label></div>
+					<div class="checkbox"><label class="">
+						<input value="filter_item" name="filter_item" type="checkbox">
+						Lorem ipsum dolor sit
+					</label></div>
+					<div class="checkbox"><label class="">
+						<input value="filter_item" name="filter_item" type="checkbox">
+						Lorem ipsum dolor sit
+					</label></div>
+				</div>
+				<h3>Lorem ipsum</h3>
+				<div class="filter_items">
+					<div class="checkbox"><label class="">
+						<input value="filter_item" name="filter_item" type="checkbox">
+						Lorem ipsum dolor sit
+					</label></div>
+					<div class="checkbox"><label class="">
+						<input value="filter_item" name="filter_item" type="checkbox">
+						Lorem ipsum dolor sit
+					</label></div>
+					<div class="checkbox"><label class="">
+						<input value="filter_item" name="filter_item" type="checkbox">
+						Lorem ipsum dolor sit
+					</label></div>
+					<div class="checkbox"><label class="">
+						<input value="filter_item" name="filter_item" type="checkbox">
+						Lorem ipsum dolor sit
+					</label></div>
+				</div>
+				<h3>Lorem ipsum</h3>
+				<div class="filter_items">
+					<div class="checkbox"><label class="">
+						<input value="filter_item" name="filter_item" type="checkbox">
+						Under $25
+					</label></div>
+					<div class="checkbox"><label class="">
+						<input value="filter_item" name="filter_item" type="checkbox">
+						$25 to $50
+					</label></div>
+					<div class="checkbox"><label class="">
+						<input value="filter_item" name="filter_item" type="checkbox">
+						$100 to $200
+					</label></div>
+					<div class="form-inline">
+						<input placeholder="from" class="form-control sepH_a" type="text">
+						<input placeholder="to" class="form-control" type="text">
+					</div>
+				</div>
+				<a href="javascript:void(0)" class="btn btn-default">Search <i class="glyphicon glyphicon-chevron-right"></i></a>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate.min.js"></script>
+    <script src="lib/jquery-ui/jquery-ui-1.10.0.custom.min.js"></script>
+    <!-- touch events for jquery ui-->
+	<script src="js/forms/jquery.ui.touch-punch.min.js"></script>
+    <!-- easing plugin -->
+	<script src="js/jquery.easing.1.3.min.js"></script>
+    <!-- smart resize event -->
+	<script src="js/jquery.debouncedresize.min.js"></script>
+    <!-- js cookie plugin -->
+	<script src="js/jquery_cookie_min.js"></script>
+    <!-- main bootstrap js -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- bootstrap plugins -->
+	<script src="js/bootstrap.plugins.min.js"></script>
+	<!-- typeahead -->
+	<script src="lib/typeahead/typeahead.min.js"></script>
+    <!-- code prettifier -->
+	<script src="lib/google-code-prettify/prettify.min.js"></script>
+    <!-- sticky messages -->
+	<script src="lib/sticky/sticky.min.js"></script>
+    <!-- lightbox -->
+	<script src="lib/colorbox/jquery.colorbox.min.js"></script>
+    <!-- jBreadcrumbs -->
+	<script src="lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js"></script>
+	<!-- hidden elements width/height -->
+	<script src="js/jquery.actual.min.js"></script>
+	<!-- custom scrollbar -->
+	<script src="lib/slimScroll/jquery.slimscroll.js"></script>
+	<!-- fix for ios orientation change -->
+	<script src="js/ios-orientationchange-fix.js"></script>
+	<!-- to top -->
+	<script src="lib/UItoTop/jquery.ui.totop.min.js"></script>
+	<!-- mobile nav -->
+	<script src="js/selectNav.js"></script>
+    <!-- moment.js date library -->
+    <script src="lib/moment/moment.min.js"></script>
+
+	<!-- common functions -->
+	<script src="js/pages/gebo_common.js"></script>
+
+	<!-- search page functions -->
+    <script src="js/pages/gebo_search.js"></script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,84 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('pago_index') }}">Pago</a>
+    </li>
+
+
+{% endblock %}
+{% block contenido %}
+
+           
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Lista de Pagos</h3>
+                </div>
+            </div>
+            <div class="row" >
+        <div class="col-sm-12 col-md-12 menu-acciones">
+            <a class="btn btn-success" href="{{ path('pago_new') }}"><span class="glyphicon glyphicon-file"></span> Nuevo</a>
+        </div>
+    </div>
+             {% if pagos != null%}  
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>Número factura</th>
+                            <th>Cliente</th>
+                            <th>Fecha pago</th>
+                            <th>Fecha cancelación</th>
+                            <th>Total</th>
+                            <th>A cuenta</th>
+                            <th>Tiene deuda</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for pago in pagos %}
+                            <tr>
+                                <td>{{ pago.serie~ pago.numerofactura }}</td>
+                                <td>{{ pago.cliente }}</td>
+                                <td>{% if pago.fechapago %}{{ pago.fechapago|date('d/m/Y') }}{% endif %}</td>
+                                <td>{% if pago.fechacancelacion %}{{ pago.fechacancelacion|date('d/m/Y') }}{% endif %}</td>
+                                <td>{{ pago.totalapagar }}</td>
+                                <td>{{ pago.montopagado }}</td>
+                                <td>{% if pago.tienedeuda %}Sí{% else %}No{% endif %}</td>
+                                <td>
+                                    {#<a href="{{ path('pago_edit', { 'id': pago.id }) }}"
+                                       class="sepV_a" title="Editar">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>#}
+                                    <a href="{{ path('pago_show', { 'id': pago.id }) }}"
+                                       class="sepV_a" title="Ver Detalles">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a>
+                                    {#<a id="choicetwo" data-toggle="modal" data-target="#myModal" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>#}
+                                     <a href="{{ path('pago_delete', { 'id': pago.id }) }}" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">                
+                {% include 'global/paginator.html.twig' %}               
+            </div> 
+             {% endif %}
+
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            <a class="btn btn-default" href="{{ path('pago_export') }}">Exportar a Excel</a>
+        </div>
+    </div>
+
+
+{% endblock %}

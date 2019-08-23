@@ -1,0 +1,13 @@
+{% extends '::sistemadmin.html.twig' %}
+
+{% block titulo_cont_excep %}
+
+{% endblock %}
+
+{% block icono_error %} <i class="fa fa-unlock-alt text-yellow"></i> {% endblock %}
+
+{% block codigo_error %} <h1 class="headline text-yellow"> Error 403 </h1> {% endblock %}
+
+{% block mensaje_notif %} No tiene permiso para acceder a esta funcionalidad. {% endblock %}
+
+{% block mensaje_solucion %} Por favor pongáse en contacto con el administrador para que le otorgue los permisos necesarios o <a href="{{ path('main') }}"> vuelva a la portada.</a> {% endblock %}

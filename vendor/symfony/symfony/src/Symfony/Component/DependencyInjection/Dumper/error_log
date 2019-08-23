@@ -1,0 +1,2 @@
+[27-Feb-2018 16:10:41 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\DependencyInjection\Dumper\DumperInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Dumper/Dumper.php on line 22
+[24-Mar-2018 00:08:40 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\DependencyInjection\Dumper\Dumper' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/Dumper/GraphvizDumper.php on line 33

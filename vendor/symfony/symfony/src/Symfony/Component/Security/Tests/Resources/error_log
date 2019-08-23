@@ -1,0 +1,1 @@
+[01-Sep-2018 08:34:32 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Security/Tests/Resources/TranslationFilesTest.php on line 15

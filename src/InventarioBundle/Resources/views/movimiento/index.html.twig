@@ -1,0 +1,145 @@
+
+{% extends 'inventarioadmin.html.twig' %}
+{% block title %}Inventario | Movimiento{% endblock %}
+{% block title_section %}
+    Inventario
+    <small>Movimiento</small>
+{% endblock %}
+{% block movimiento_activo %}class="active"{% endblock %}
+{% block tree_mov %}active{% endblock %}
+{% block breadcrumb %}
+    <li class="">Inventario</li>
+    <li class="active">Movimiento</li>
+{% endblock %}
+{% block main_content %}
+    <div class="box">
+        <br>
+        <div class="box-header">
+            <h3 class="box-title">Lista de movimientos</h3>
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-print "></span>  Exportar
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a id="movbydate" href="{{ path('inv_bydate', { 'fini': 0 ,'ffin':0, 'sec':seccion,'art':articulo}) }}">Movimientos por fechas</a></li>
+                    </ul>
+                </div>
+                <a href="{{ path('movimientoinv_new') }}" title="Adicionar" id="btn_adicionar"
+                   class="btn  btn-primary">
+                    <span class="glyphicon glyphicon-file "></span> Adicionar</a>
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <div class="row" style="margin-bottom: 20px">
+                <div class="col-sm-6">
+                    <label for=""
+                           class="col-sm-4 control-label "> Fecha inicio:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="min" name="min" class="form-control datepicker">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for=""
+                           class="col-sm-4 control-label "> Fecha fin:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="max" name="max" class="form-control datepicker">
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-striped todasTablas hover">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Motivo</th>
+                        <th>Artículo</th>
+                        <th>Sección</th>
+                        <th>Cantidad</th>
+                        <th width="80">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for dat in movimientos %}
+                    <tr id="{{ dat.id }}">
+                        <td>{{ dat.fecha | date('d/m/Y') }}</td>
+                        <td>{{ dat.motivo }}</td>
+                        <td>{{ dat.articulo }}</td>
+                        <td>{{dat.seccion }}</td>
+                        <td align="center">{{ dat.cantidad }}</td>
+                        <td align="center">
+                            <a title="Mostrar detalle" class="text-black" href="{{ path('movimientoinv_show', { 'id': dat.id }) }}"><span
+                                        class="glyphicon glyphicon-eye-open"></span></a>&emsp;
+                          {% if dat.transferencia is null and dat.compra is null and dat.venta is null %}
+                            <a title="Editar elemento" class="text-blue" href="{{ path('movimientoinv_edit', { 'id': dat.id }) }}"><span
+                                        class="glyphicon glyphicon-pencil"></span></a>
+                            &emsp;
+                            <a title="Eliminar elemento"  href="#" class="text-red btn_eliminar"
+                               data-url="{{ path('movimientoinv_delete') }}"><span
+                                        class="glyphicon glyphicon-trash"></span></a>
+                            {% endif %}
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tfoot>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Motivo</th>
+                        <th>Artículo</th>
+                        <th>Sección</th>
+                        <th>Cantidad</th>
+                        <th width="80">Acciones</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    <script type="text/javascript">
+
+        $(document).ready(function () {            
+            window.getIntervalo=function(){
+                var min = $('#min').val().split('/');
+                var max = $('#max').val().split('/');
+                var minDate = new Date(min[2], parseInt(min[1]) - 1, parseInt(min[0]) + 1);
+                var maxDate = new Date(max[2], parseInt(max[1]) - 1, parseInt(max[0]) + 1);
+
+                return {'minDate':minDate,'maxDate':maxDate,'min':min,'max':max};
+            };
+            $.fn.dataTable.ext.search.push(
+                function (settings, data, dataIndex) {
+                    var dates=getIntervalo();
+                    var date = data[0].split('/');
+                    var fecha = new Date(date[2], parseInt(date[1]) - 1, parseInt(date[0]) + 1);
+                    if (dates.min.length === 1 && dates.max.length === 1)
+                        return true;
+                    else if (dates.min.length === 1)
+                        return fecha <= dates.maxDate;
+                    else if (dates.max.length === 1)
+                        return fecha >= dates.minDate;
+                    else
+                        return (fecha >= dates.minDate && fecha <= dates.maxDate);
+                }
+            );
+            function updUrl() {
+                var dates=getIntervalo();
+                var tfin=isNaN(dates.maxDate.getTime())?0:dates.maxDate.getTime();
+                var tini=isNaN(dates.minDate.getTime())?0:dates.minDate.getTime();
+                var href=$('a#movbydate').attr('href').split('/porfecha');
+                var art={{ articulo }};
+                var sec={{ seccion }};
+                $('a#movbydate').attr('href',href[0]+'/porfecha/'+tini+'/'+tfin+'/'+art+'/'+sec);
+            }
+            var table = $('.todasTablas').DataTable();
+            $('#min,#max').change(function () {
+                table.draw();
+                updUrl();
+            });            
+        });
+
+    </script>
+{% endblock %}

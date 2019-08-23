@@ -1,0 +1,68 @@
+{% extends '::inventariobase.html.twig' %}
+
+{% block body %}
+
+    <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+
+        {% block sidebar %}
+            <nav id="sidebar">
+                <div id="sidebar-scroll">
+                    <div class="sidebar-content">
+                        <div class="side-content">
+                            <ul class="nav-main">
+
+								<li>
+                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
+                                                class="fa fa-cog"></i><span
+                                                class="sidebar-mini-hide">Inicio</span></a>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('main') }}">Ventas</a>
+                                        </li>
+
+
+                                        
+                                    </ul>
+                                </li>
+								
+								<li>
+                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i
+                                                class="fa fa-cog"></i><span
+                                                class="sidebar-mini-hide">Inventario</span></a>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('articulogeneral') }}">General</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{ path('articulopordia') }}">Del Día</a>
+                                        </li>
+
+                                        
+                                    </ul>
+                                </li>
+								
+								 {% block menu %}
+								 
+								 
+                                 {% endblock %}
+	                           
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+        {% endblock %}
+        <main id="main-container">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+
+
+{% endblock %}
+
+
+

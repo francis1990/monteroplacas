@@ -1,0 +1,115 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('vendedor_index') }}">Vendedor</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+
+
+           
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Lista de vendedores</h3>
+                </div>
+            </div>
+           <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Venta de Vendedores por rango de fecha</h3>
+                    
+                    {#<div class="col-sm-6 col-md-4">
+                        <form action="{{ path('vendedor_vendido') }}" method="post" > 
+                            <div class="row">
+                                <div class="col-sm-3 col-md-6">
+                                    <button class="btn btn-default" type="submit">
+                                        Venta de Vendedores del Dia:
+                                    </button>
+                                </div>
+                                <div class="col-sm-3 col-md-5">
+                                    <input type="date" class="form-control" name="dailydate" required="true">  
+                                </div>
+                                <input class="hidden" id="daily" name="daily" value="day">
+                            </div>
+                        </form>
+                    </div>
+                            <vl/>#}
+                    <div class="col-sm-6 col-md-8">
+                        <form action="{{ path('vendedor_vendido') }}" method="post" > 
+                            <div class="row">
+                                <div class="col-sm-3 col-md-3">
+                                    <button class="btn btn-default" type="submit">
+                                        Venta de Vendedores. Rango:
+                                    </button>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="iniciodate" required="true">  
+                                </div>
+                              
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="finaldate" required="true">  
+                                </div>
+                                <input class="hidden" id="fechas" name="fechas" value="fechas">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+                            
+            <div class="row" >
+        <div class="col-sm-12 col-md-12 menu-acciones">
+            <a class="btn btn-success" href="{{ path('vendedor_new') }}"><span class="glyphicon glyphicon-file"></span> Nuevo</a>
+
+        </div>
+    </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>DNI</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for vendedor in vendedors %}
+                            <tr>    
+                                <td>{{ vendedor.dni }}</td>
+                                <td>{{ vendedor.nombre }}</td>
+                                <td>{{ vendedor.email }}</td>
+
+                                <td>
+                                    <a href="{{ path('vendedor_edit', { 'id': vendedor.id }) }}"
+                                       class="sepV_a" title="Editar">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+                                    <a href="{{ path('vendedor_show', { 'id': vendedor.id }) }}"
+                                       class="sepV_a" title="Ver Detalles">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    </a>
+                                    <a href="{{ path('vendedor_delete', { 'id': vendedor.id }) }}" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>
+                                    {#<a  href="#" id="eliminar_confirm" data-url="{{ path('vendedor_delete', { 'id': vendedor.id }) }}" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>#}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+              <div class="row">                
+                {% include 'global/paginator.html.twig' %}               
+            </div>             
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/sistemaadminbackend/js/montero.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" class="login_page">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Montero Placas</title>
+    <!-- Bootstrap framework -->
+    <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/bootstrap/css/bootstrap.min.css')}}" />
+
+    <!-- theme color-->
+    <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/css/dark.css')}}" />
+    <!-- tooltip -->
+    <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/lib/qtip2/jquery.qtip.min.css')}}" />
+
+    <!-- main styles -->
+    <link rel="stylesheet" href="{{asset('bundles/sistemaadminbackend/css/style.css')}}" />
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon.PNG" />
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+
+    <script src="{{asset('bundles/sistemaadminbackend/js/ie/html5.js')}}"></script>
+
+    <script src="{{asset('bundles/sistemaadminbackend/js/ie/respond.min.js')}}"></script>
+    <![endif]-->
+    <style rel="stylesheet" type="text/css">
+        .login_page .login_box {
+            top: 25%;
+        }
+    </style>
+</head>
+<body>
+<div class="login_box">
+
+    <form action="{{ path('check_path') }}" method="post" id="login_form">
+        <div class="top_b">Acceder al Sistema Montero Placas</div>
+        {% if error %}
+            <div class="alert alert-danger alert-login">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% else %}
+            <div class="alert alert-info alert-login">
+                Ingrese su usuario y clave para autenticarse.
+            </div>
+        {% endif%}
+
+        <div class="cnt_b">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon input-sm"><i class="glyphicon glyphicon-user"></i></span>
+                    <input class="form-control input-sm" type="text" id="username" name="_username" placeholder="Username" value="{{ last_username }}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon input-sm"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input class="form-control input-sm" type="password" id="password" name="_password" placeholder="Password" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox"><label><input type="checkbox" id="remember_me" name="_remember_me" checked/> Recordarme en esta m&aacute;quina</label></div>
+            </div>
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+            <input type="hidden" name="_target_path" value="account" />
+        </div>
+        <div class="btm_b clearfix">
+            <button class="btn btn-default btn-sm pull-right" type="submit" id="acceder">Acceder</button>
+            <!--span class="link_reg"><a href="#reg_form">Not registered? Sign up here</a></span-->
+        </div>
+    </form>
+
+</div>
+
+
+<script src="{{asset('bundles/sistemaadminbackend/js/jquery.min.js')}}"></script>
+<script src="{{asset('bundles/sistemaadminbackend/js/jquery.actual.min.js')}}"></script>
+
+<script src="{{asset('bundles/sistemaadminbackend/lib/validation/jquery.validate.js')}}"></script>
+
+<script src="{{asset('bundles/sistemaadminbackend/bootstrap/js/bootstrap.min.js')}}"></script>
+
+<script>
+    $(document).ready(function(){
+
+
+        //* validation
+        $('#login_form').validate({
+            onkeyup: false,
+            errorClass: 'error',
+            validClass: 'valid',
+            rules: {
+                username: { required: true, minlength: 3 },
+                password: { required: true, minlength: 3 }
+            },
+            highlight: function(element) {
+                $(element).closest('.form-group').addClass("f_error");
+                setTimeout(function() {
+                    boxHeight()
+                }, 200)
+            },
+            unhighlight: function(element) {
+                $(element).closest('.form-group').removeClass("f_error");
+                setTimeout(function() {
+                    boxHeight()
+                }, 200)
+            },
+            errorPlacement: function(error, element) {
+                $(element).closest('.form-group').append(error);
+            }
+        });
+    });
+</script>
+</body>
+</html>

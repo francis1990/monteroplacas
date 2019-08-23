@@ -1,0 +1,1 @@
+[27-Feb-2018 16:18:59 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Translation\Exception\ExceptionInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Translation/Exception/InvalidResourceException.php on line 20

@@ -1,0 +1,1 @@
+[09-Apr-2018 09:41:25 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Serializer\Normalizer\DenormalizerInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Serializer/Normalizer/ArrayDenormalizer.php on line 24

@@ -1,0 +1,2 @@
+[27-Feb-2018 15:59:57 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\HttpKernel\Bundle\Bundle' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/monolog-bundle/MonologBundle.php on line 27
+[27-Feb-2018 16:00:20 America/Chicago] PHP Fatal error:  Class 'Monolog\Handler\FingersCrossed\ErrorLevelActivationStrategy' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/monolog-bundle/NotFoundActivationStrategy.php on line 35

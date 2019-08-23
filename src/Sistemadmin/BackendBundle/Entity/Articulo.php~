@@ -1,0 +1,700 @@
+<?php
+
+namespace Sistemadmin\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Articulo
+ *
+ * @ORM\Table(name="articulo")
+ * @ORM\Entity(repositoryClass="Sistemadmin\BackendBundle\Repository\ArticuloRepository")
+ */
+class Articulo
+{
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Proveedor", inversedBy="articulo" )
+     * @ORM\JoinTable(name="nom_articulo_proveedor",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="articulo_id", referencedColumnName="id",onDelete="cascade")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="proveedor_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    protected $proveedor;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="TipoArticulo", inversedBy="articulo")
+     * @ORM\JoinColumn(name="tipoarticulo_id", referencedColumnName="id")
+     */
+    protected $tipoarticulo;    
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=255)
+     * @Assert\NotBlank(message = "Debe rellenar el nombre")
+     */
+    private $nombre;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=255, nullable=true)
+     */
+    private $path;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    protected $file;
+
+    /**
+     * @var boolean $enabled
+     *
+     * @ORM\Column(name="enabled", type="boolean", nullable=true)
+     */
+    protected $enabled;
+    
+    /**
+     * @var boolean $utilizado
+     *
+     * @ORM\Column(name="utilizado", type="boolean", nullable=true)
+     */
+    protected $utilizado;    
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion",  type="text", nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechainsercion", type="date", nullable=true)
+     */
+    private $fechainsercion;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="abreviatura", type="string", length=255, nullable=true)
+     */
+    private $abreviatura;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marca", type="string", length=255, nullable=true)
+     */
+    private $marca;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="medida", type="string", length=255, nullable=true)
+     */
+    private $medida;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="unidaddemedida", type="string", length=255, nullable=true)
+     */
+    private $unidaddemedida;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="modelo", type="string", length=255, nullable=true)
+     */
+    private $modelo;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="preciodeventa", type="float")
+     * @Assert\NotBlank(message = "Debe rellenar el precio de venta")
+     */
+    private $preciodeventa;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="preciodecompra", type="float")
+     * @Assert\NotBlank(message = "Debe rellenar el precio de compra")
+     */
+    private $preciodecompra;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="precioventalpormayor", type="float", nullable=true)
+     */
+    private $precioventalpormayor;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="preciocompralpormayor", type="float", nullable=true)
+     */
+    private $preciocompralpormayor;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="preciocompralpormayor2", type="float", nullable=true)
+     */
+    private $preciocompralpormayornumero2;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Foto
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Foto
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+   /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null) {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile() {
+        return $this->file;
+    }
+    
+    public function getAbsolutePath() {
+        return null === $this->path ? null : $this->getUploadRootDir() . '/gallery/articulo' ;
+    }
+
+    public function getWebPath() {
+        return null === $this->path ? null : $this->getUploadDir() . '/gallery/articulo' ;
+    }
+
+    protected function getUploadRootDir() {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+    }
+
+    protected function getUploadDir() {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'gallery/';
+    }     
+    
+    public function upload($finalname) {
+        
+//          ini_set('max_execution_time', 300);
+//          ini_set('memory_limit', '64M');
+          
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getFile()->move(
+                $this->getUploadRootDir(), $this->getFile()->getClientOriginalName()
+        );
+        
+        $origin = 'gallery/' . $this->getFile()->getClientOriginalName();   
+        $targetname1='gallery/' . $finalname . '.' . $this->getFile()->getClientOriginalExtension();
+        $finalname1 = 'gallery/articulo/' . $finalname . '.' . $this->getFile()->getClientOriginalExtension();
+        
+        $filesystem = new Filesystem();
+       // renombro la imagen con el nombre que recibo como argumento en filename
+         if (!$filesystem->exists($targetname1)) {
+        $filesystem->rename($origin, $targetname1); 
+        }
+        //verifico antes de copiar para mi carpeta destino que no exista y si lo hace elimino
+        if ($filesystem->exists($finalname1)) {
+            $filesystem->remove($finalname1);
+        }
+        $filesystem->copy($targetname1, $finalname1);
+        
+        $this->setPath($finalname . '.' .$this->getFile()->getClientOriginalExtension());
+        //elimino la que quedo en la carpeta original
+        if ($filesystem->exists($targetname1)) {
+             $filesystem->remove($targetname1);
+        }
+
+        // clean up the file property as you won't need it anymore
+        $this->file = null;
+    }    
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     * @return Slide
+     */
+    public function setEnabled($enabled) {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled() {
+        return $this->enabled;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return Foto
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $fechainsercion
+     * @return Fecha
+     */
+    public function setFechainsercion($fechainsercion)
+    {
+        $this->fechainsercion = $fechainsercion;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getFechainsercion()
+    {
+        return $this->fechainsercion;
+    }
+
+    public function __construct() {
+        $this->enabled = true;
+        $this->fechacompra = new \DateTime();
+
+    }
+
+    public function __toString() {
+        return $this->nombre;
+        //."-". $this->ruc
+    }
+
+
+    /**
+     * Set abreviatura
+     *
+     * @param string $abreviatura
+     * @return Articulo
+     */
+    public function setAbreviatura($abreviatura)
+    {
+        $this->abreviatura = $abreviatura;
+
+        return $this;
+    }
+
+    /**
+     * Get abreviatura
+     *
+     * @return string
+     */
+    public function getAbreviatura()
+    {
+        return $this->abreviatura;
+    }
+
+    /**
+     * Set marca
+     *
+     * @param string $marca
+     * @return Articulo
+     */
+    public function setMarca($marca)
+    {
+        $this->marca = $marca;
+
+        return $this;
+    }
+
+    /**
+     * Get marca
+     *
+     * @return string
+     */
+    public function getMarca()
+    {
+        return $this->marca;
+    }
+
+    /**
+     * Set medida
+     *
+     * @param string $medida
+     * @return Articulo
+     */
+    public function setMedida($medida)
+    {
+        $this->medida = $medida;
+
+        return $this;
+    }
+
+    /**
+     * Get medida
+     *
+     * @return string
+     */
+    public function getMedida()
+    {
+        return $this->medida;
+    }
+
+    /**
+     * Set modelo
+     *
+     * @param string $modelo
+     * @return Articulo
+     */
+    public function setModelo($modelo)
+    {
+        $this->modelo = $modelo;
+
+        return $this;
+    }
+
+    /**
+     * Get modelo
+     *
+     * @return string
+     */
+    public function getModelo()
+    {
+        return $this->modelo;
+    }
+
+    /**
+     * Set preciodeventa
+     *
+     * @param float $preciodeventa
+     * @return Articulo
+     */
+    public function setPreciodeventa($preciodeventa)
+    {
+        $this->preciodeventa = $preciodeventa;
+
+        return $this;
+    }
+
+    /**
+     * Get preciodeventa
+     *
+     * @return float
+     */
+    public function getPreciodeventa()
+    {
+        return $this->preciodeventa;
+    }
+
+    /**
+     * Set preciodecompra
+     *
+     * @param float $preciodecompra
+     * @return Articulo
+     */
+    public function setPreciodecompra($preciodecompra)
+    {
+        $this->preciodecompra = $preciodecompra;
+
+        return $this;
+    }
+
+    /**
+     * Get preciodecompra
+     *
+     * @return float
+     */
+    public function getPreciodecompra()
+    {
+        return $this->preciodecompra;
+    }
+
+    /**
+     * Set precioventalpormayor
+     *
+     * @param float $precioventalpormayor
+     * @return Articulo
+     */
+    public function setPrecioventalpormayor($precioventalpormayor)
+    {
+        $this->precioventalpormayor = $precioventalpormayor;
+
+        return $this;
+    }
+
+    /**
+     * Get precioventalpormayor
+     *
+     * @return float
+     */
+    public function getPrecioventalpormayor()
+    {
+        return $this->precioventalpormayor;
+    }
+
+    /**
+     * Set preciocompralpormayor
+     *
+     * @param float $preciocompralpormayor
+     * @return Articulo
+     */
+    public function setPreciocompralpormayor($preciocompralpormayor)
+    {
+        $this->preciocompralpormayor = $preciocompralpormayor;
+
+        return $this;
+    }
+
+    /**
+     * Get preciocompralpormayor
+     *
+     * @return float
+     */
+    public function getPreciocompralpormayor()
+    {
+        return $this->preciocompralpormayor;
+    }
+
+    /**
+     * Set tipoarticulo
+     *
+     * @param \Sistemadmin\BackendBundle\Entity\TipoArticulo $tipoarticulo
+     * @return Articulo
+     */
+    public function setTipoarticulo(\Sistemadmin\BackendBundle\Entity\TipoArticulo $tipoarticulo = null)
+    {
+        $this->tipoarticulo = $tipoarticulo;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoarticulo
+     *
+     * @return \Sistemadmin\BackendBundle\Entity\TipoArticulo 
+     */
+    public function getTipoarticulo()
+    {
+        return $this->tipoarticulo;
+    }
+
+    /**
+     * Set utilizado
+     *
+     * @param boolean $utilizado
+     * @return Articulo
+     */
+    public function setUtilizado($utilizado)
+    {
+        $this->utilizado = $utilizado;
+
+        return $this;
+    }
+
+    /**
+     * Get utilizado
+     *
+     * @return boolean 
+     */
+    public function getUtilizado()
+    {
+        return $this->utilizado;
+    }
+    
+        /**
+     * Add proveedor
+     *
+     * @param \Sistemadmin\BackendBundle\Entity\Proveedor $proveedor
+     * @return Articulo
+     */
+    public function addProvoodor(\Sistemadmin\BackendBundle\Entity\Proveedor $proveedor)
+    {
+        $this->proveedor[] = $proveedor;
+
+        return $this;
+    }
+
+    /**
+     * Remove proveedor
+     *
+     * @param \Sistemadmin\BackendBundle\Entity\Proveedor $proveedor
+     */
+    public function removeProvoodor(\Sistemadmin\BackendBundle\Entity\Proveedor $proveedor)
+    {
+        $this->proveedor->removeElement($proveedor);
+    }
+
+    /**
+     * Get proveedor
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProveedor()
+    {
+        return $this->proveedor;
+    }
+
+    /**
+     * Set unidaddemedida
+     *
+     * @param string $unidaddemedida
+     * @return Articulo
+     */
+    public function setUnidaddemedida($unidaddemedida)
+    {
+        $this->unidaddemedida = $unidaddemedida;
+
+        return $this;
+    }
+
+    /**
+     * Get unidaddemedida
+     *
+     * @return string 
+     */
+    public function getUnidaddemedida()
+    {
+        return $this->unidaddemedida;
+    }
+
+    /**
+     * Add proveedor
+     *
+     * @param \Sistemadmin\BackendBundle\Entity\Proveedor $proveedor
+     * @return Articulo
+     */
+    public function addProveedor(\Sistemadmin\BackendBundle\Entity\Proveedor $proveedor)
+    {
+        $this->proveedor[] = $proveedor;
+
+        return $this;
+    }
+
+    /**
+     * Remove proveedor
+     *
+     * @param \Sistemadmin\BackendBundle\Entity\Proveedor $proveedor
+     */
+    public function removeProveedor(\Sistemadmin\BackendBundle\Entity\Proveedor $proveedor)
+    {
+        $this->proveedor->removeElement($proveedor);
+    }
+}

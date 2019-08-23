@@ -1,0 +1,1 @@
+[27-Feb-2018 16:18:44 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Config\Resource\SelfCheckingResourceInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Config/Resource/DirectoryResource.php on line 19

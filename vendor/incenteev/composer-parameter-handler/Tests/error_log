@@ -1,0 +1,2 @@
+[27-Feb-2018 16:05:18 America/Chicago] PHP Fatal error:  Class 'Prophecy\PhpUnit\ProphecyTestCase' not found in /home1/mp/public_html/monteroplacas/vendor/incenteev/composer-parameter-handler/Tests/ScriptHandlerTest.php on line 9
+[27-Feb-2018 16:05:43 America/Chicago] PHP Fatal error:  Class 'Prophecy\PhpUnit\ProphecyTestCase' not found in /home1/mp/public_html/monteroplacas/vendor/incenteev/composer-parameter-handler/Tests/ProcessorTest.php on line 11

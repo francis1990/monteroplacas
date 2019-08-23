@@ -1,0 +1,119 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('compra_index') }}">Compra</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+
+    <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">{{ title }}</h3>
+                    <div class="col-sm-6 col-md-4">
+                        <form action="{{ path('compra_search') }}" method="post" >
+                            <div class="row">
+                                <div class="col-sm-3 col-md-6">
+                                    <button class="btn btn-default" type="submit">
+                                        Compras del Dia:
+                                    </button>
+                                </div>
+                                <div class="col-sm-3 col-md-5">
+                                    <input type="date" class="form-control" name="dailydate" required="true" value="{{ dailydate }}">
+                                </div>
+                                <input class="hidden" id="daily" name="daily" value="day">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-sm-6 col-md-8">
+                        <form action="{{ path('compra_search') }}" method="post" >
+                            <div class="row">
+                                <div class="col-sm-3 col-md-3">
+                                    <button class="btn btn-default" type="submit">
+                                        Compras por Rango:
+                                    </button>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="iniciodate"  value="{{ iniciodate }}"  required="true">
+                                </div>
+
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="finaldate"  value="{{ finaldate }}"  required="true">
+                                </div>
+                                <input class="hidden" id="fechas" name="fechas" value="fechas">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+    <div class="row" >
+        <div class="col-sm-12 col-md-12 menu-acciones">
+            <a class="btn btn-success" href="{{ path('compra_new') }}"><span class="glyphicon glyphicon-file"></span> Nuevo</a>			
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Proveedor</th>
+                    <th>Moneda</th>
+                    <th>No Artículos</th>
+                    <th>Importe</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for compra in compras %}
+                    <tr>
+
+                        <td>{% if compra.fechacompra %}{{ compra.fechacompra|date('d/m/Y') }}{% endif %}</td>
+                        <td>{{ compra.proveedor }}</td>
+                        <td>{{ compra.moneda }}</td>
+                        <td>{{ compra.cantidaddearticulo }}</td>
+                        <td>{{ compra.montototalpagado }}</td>
+
+                        <td>
+                            <a href="{{ path('compra_edit', { 'id': compra.id }) }}"
+                               class="sepV_a" title="Editar">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                            <a href="{{ path('compra_show', { 'id': compra.id }) }}"
+                               class="sepV_a" title="Ver Detalles">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </a>
+                           <a  href="#" class="eliminar_confirm" data-url="{{ path('compra_delete', { 'id': compra.id }) }}" title="Eliminar">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+	<div class="row">                
+                 {% include 'global/paginator.html.twig' %}
+            </div>
+   
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+             <a class="btn btn-default" href="{{ path('compra_export', {  'dailydate': dailydate, 'iniciodate': iniciodate, 'finaldate': finaldate}) }}">Exportar Informe a Excel</a>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

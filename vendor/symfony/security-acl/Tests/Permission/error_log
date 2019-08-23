@@ -1,0 +1,4 @@
+[28-Feb-2018 02:08:53 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/security-acl/Tests/Permission/BasicPermissionMapTest.php on line 17
+[15-Jun-2018 13:46:31 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/security-acl/Tests/Permission/BasicPermissionMapTest.php on line 17
+[25-Jun-2018 09:55:32 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/security-acl/Tests/Permission/MaskBuilderTest.php on line 17
+[25-Aug-2018 00:12:58 America/Chicago] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/security-acl/Tests/Permission/BasicPermissionMapTest.php on line 17

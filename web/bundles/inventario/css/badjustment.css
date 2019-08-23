@@ -1,0 +1,34 @@
+td.cazul {
+  background: blue;
+}
+
+td.crojo {
+  background: red;
+}
+
+td#cazul {
+  background: blue;
+}
+td#crojo {
+  background: blue;
+}
+#formbusqueda{
+  width: 100%;
+  height: 100%;
+}
+.inpbuscar {
+  border-radius: 10px;
+  width: 80%;
+  height: 30px;
+  margin-top: 25px;
+}
+.btnbuscar {
+
+  background: rgb(204, 0, 0);
+  color: rgb(255, 255, 255);
+  border-radius:5px;
+  box-shadow:3px 2px 3px #D1161F ;
+
+  height: 30px;
+  width: 70px;
+}

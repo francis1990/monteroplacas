@@ -1,0 +1,134 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('articulo_index') }}">Artículo</a>
+    </li>
+    <li class="active">
+        Editar
+    </li>
+{% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Editar Artículo</h3>
+        </div>
+    </div>
+    <div class="form_error">{{form_errors(edit_form)}}</div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            {{ form_start(edit_form,{'attr':{ 'class':'form-horizontal form_validation_reg'}}) }}
+            <div class="formSep">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">{{ form_label(edit_form.nombre) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.nombre) }}
+                                    {{ form_errors(edit_form.nombre) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Proveedores</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.proveedor) }}
+                                    {{ form_errors(edit_form.proveedor) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">{{ form_label(edit_form.abreviatura) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.abreviatura) }}
+                                    {{ form_errors(edit_form.abreviatura) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">{{ form_label(edit_form.fechainsercion) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.fechainsercion) }}
+                                    {{ form_errors(edit_form.fechainsercion) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">{{ form_label(edit_form.marca) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.marca) }}
+                                    {{ form_errors(edit_form.marca) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">{{ form_label(edit_form.medida) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.medida) }}
+                                    {{ form_errors(edit_form.medida) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                        <label class="control-label col-sm-2">Unidad de medida</label>
+                                        <div class="col-sm-8">
+                                            {{ form_widget(edit_form.unidaddemedida) }}
+                                            {{ form_errors(edit_form.unidaddemedida) }}
+                                        </div>
+                             </div> 
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">{{ form_label(edit_form.modelo) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.modelo) }}
+                                    {{ form_errors(edit_form.modelo) }}
+                                </div>
+                            </div><div class="form-group">
+                                <label class="control-label col-sm-2">{{ form_label(edit_form.preciodeventa) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.preciodeventa) }}
+                                    {{ form_errors(edit_form.preciodeventa) }}
+                                </div>
+                            </div><div class="form-group">
+                                <label class="control-label col-sm-2">{{ form_label(edit_form.preciodecompra) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.preciodecompra) }}
+                                    {{ form_errors(edit_form.preciodecompra) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">{{ form_label(edit_form.precioventalpormayor) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.precioventalpormayor) }}
+                                    {{ form_errors(edit_form.precioventalpormayor) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">{{ form_label(edit_form.preciocompralpormayor) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.preciocompralpormayor) }}
+                                    {{ form_errors(edit_form.preciocompralpormayor) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2"> Imagen</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.file) }}
+                                    {{ form_errors(edit_form.file) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">{{ form_label(edit_form.descripcion) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(edit_form.descripcion) }}
+                                    {{ form_errors(edit_form.descripcion) }}
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="formSep form-actions">
+                <button class="btn btn-primary" title="Aceptar" type="submit"><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
+                <a class="btn btn-default" title="Cerrar" href="{{ path('articulo_index') }}"><span class="glyphicon glyphicon-remove"></span> Cerrar</a>
+            </div>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+{% endblock %}

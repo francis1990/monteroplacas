@@ -1,0 +1,2 @@
+[20-Mar-2018 12:58:57 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Intl\DateFormatter\DateFormat\FullTransformer' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Locale/Stub/DateFormat/FullTransformer.php on line 28
+[20-Mar-2018 16:40:50 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Intl\DateFormatter\DateFormat\Hour1201Transformer' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Locale/Stub/DateFormat/Hour1201Transformer.php on line 28

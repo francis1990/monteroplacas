@@ -1,0 +1,1 @@
+[30-Aug-2018 11:04:54 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\HttpKernel\DependencyInjection\Extension' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Bridge/Doctrine/DependencyInjection/AbstractDoctrineExtension.php on line 27

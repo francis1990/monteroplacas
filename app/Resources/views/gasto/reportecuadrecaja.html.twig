@@ -1,0 +1,87 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('venta_index') }}">Venta</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+           
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Reporte Cuadre de caja desde {{fechainicio|date('d/m/Y')}} hasta {{fechafin|date('d/m/Y')}} </h3>     
+                    <h3 class="heading">Cuadre: {{cuadre}}</h3>  
+                </div>
+            </div>
+                       
+            <div class="row" >
+                <h3 class="heading">Pagos</h3>  
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>Factura</th>
+                            <th>Fecha</th>
+                            <th>Cantidad</th>                           
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for pago in pagos %}
+                            <tr>
+                                <td>{{ pago.serie ~'-'~pago.numerofactura }}</td>
+                                <td>{% if pago.fechapago %}{{ pago.fechapago|date('d/m/Y') }}{% endif %}</td>
+                                <td>{{ pago.montopagado }}</td>                                
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                                <td></td>
+                                <td>Total Pagos</td>
+                                <td>{{ sumapagos }}</td>
+                                                     
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+             
+              <div class="row" >
+                <h3 class="heading">Gastos</h3>  
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Fecha</th>
+                            <th>Cantidad</th>                           
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for gasto in gastos %}
+                            <tr>
+                                <td>{{ gasto.nombre }}</td>
+                                <td>{% if gasto.fecha %}{{ gasto.fecha|date('d/m/Y') }}{% endif %}</td>
+                                <td>{{ gasto.cantidad }}</td>                                
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                                <td></td>
+                                <td>Total Gastos</td>
+                                <td>{{ sumagastos }}</td>
+                                                     
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+             {#<div class="row">                
+                {% include 'global/paginator.html.twig' %}               
+            </div>#}              
+            
+{% endblock %}

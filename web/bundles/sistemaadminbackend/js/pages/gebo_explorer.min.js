@@ -1,0 +1,2 @@
+'use strict';$(document).ready(function(){$("textarea#wysiwg_full").tinymce({script_url:"lib/tinymce/tinymce.min.js",theme:"modern",plugins:"autoresize,table,image,link,emoticons,preview,media,contextmenu,paste,fullscreen,noneditable,template,advlist",file_browser_callback:function(a,d,b,c){tinyMCE.activeEditor.windowManager.open({file:"file-manager/browse.php?opener=tinymce&type="+b+"&dir=image/themeforest_assets",title:"KCFinder",width:700,height:500,resizable:"yes",inline:!0,close_previous:"no",
+popup_css:!1},{window:c,input:a});return!1}})});

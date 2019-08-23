@@ -1,0 +1,136 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('compra_index') }}">Compra</a>
+    </li>
+    <li class="active">
+        Nuevo
+    </li>
+{% endblock %}
+{% block contenido %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Compra</h3>
+        </div>
+    </div>
+    <div class="row" id="content">
+        <div class="col-sm-12 col-md-12">
+            {{ form_start(form,{'attr':{ 'class':'form-horizontal form_validation_reg','id':'#form-compra'}}) }}
+            <div class="formSep">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">{{ form_label(form.numerofactura) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.numerofactura) }}
+                                    {{ form_errors(form.numerofactura) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">{{ form_label(form.fechacompra) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.fechacompra) }}
+                                    {{ form_errors(form.fechacompra) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">{{ form_label(form.proveedor) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.proveedor) }}
+                                    {{ form_errors(form.proveedor) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">RUC</label>
+                                <div class="col-sm-8">
+                                    <input type="text" id="ruc_proveedor" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">{{ form_label(form.centrodecosto) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.centrodecosto) }}
+                                    {{ form_errors(form.centrodecosto) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">{{ form_label(form.formadepago) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.formadepago) }}
+                                    {{ form_errors(form.formadepago) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">{{ form_label(form.moneda) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.moneda) }}
+                                    {{ form_errors(form.moneda) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">{{ form_label(form.garantia) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.garantia) }}
+                                    {{ form_errors(form.garantia) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">{{ form_label(form.tiempoentrega) }}</label>
+                                <div class="col-sm-8">
+                                    {{ form_widget(form.tiempoentrega) }}
+                                    {{ form_errors(form.tiempoentrega) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Tipo Precio</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control chzn_b" name="" id="tipoprecio">
+                                        <option value="v">De compra</option>
+                                        <option value="m">Por Mayor</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            {% include 'articulo/add_articulocompra.html.twig' %}
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">{{ form_label(form.montototalpagado) }}</label>
+                                <div class="col-sm-4">
+                                    {{ form_widget(form.montototalpagado) }}
+                                    {{ form_errors(form.montototalpagado) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">{{ form_label(form.cantidaddearticulo) }}</label>
+                                <div class="col-sm-4">
+                                    {{ form_widget(form.cantidaddearticulo) }}
+                                    {{ form_errors(form.cantidaddearticulo) }}
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="formSep form-actions">
+                <a class="btn btn-default" href="{{ path('compra_index') }}"><span class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+                <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/sistemaadminbackend/js/app.js') }}"></script>
+    <script src="{{ asset('bundles/sistemaadminbackend/js/compra.js') }}"></script>
+
+{% endblock %}

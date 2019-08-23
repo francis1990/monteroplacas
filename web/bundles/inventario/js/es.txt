@@ -1,0 +1,11 @@
+{
+                        "sZeroRecords": "Sin datos a mostrar",
+                        "sEmptyTable": "Sin datos  a mostrar",
+                        "sInfo": "De un total de _TOTAL_ entradas mostrando de (_START_ a _END_)",
+                        "sInfoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                        "sInfoFiltered": "(Filtradas de _MAX_ total entradas)",
+                        "sLengthMenu": "Mostrar _MENU_ elementos",
+                        "sLoadingRecords": "Cargando...",
+                        "sProcessing": "Procesando...",
+                        "sSearch": "Buscar:"
+ }

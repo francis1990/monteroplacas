@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}Inventario{% endblock %}</title>
+    {% block css %}
+        <!-- Bootstrap 3.3.2 -->
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <!-- Theme style -->
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/dist/css/AdminLTE.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/font-awesome.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/ionicons.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/dist/css/skins/_all-skins.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}"
+              rel="stylesheet">
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datepicker/datepicker3.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/plugins/daterangepicker/daterangepicker-bs3.css') }}"
+              rel="stylesheet">
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}"
+              rel="stylesheet">
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/dataTables.bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/jquery.dataTables.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('bundles/inventario/tema/AdminLTE/plugins/chosen/chosen.css') }}"
+              rel="stylesheet">
+        <link href="{{ asset('bundles/inventario/css/inventario.css') }}"
+              rel="stylesheet">
+    {% endblock %}
+</head>
+<body class="{% block body_class %}skin-blue{% endblock %}" id="{% block id '' %}">
+{% block body %}
+    {% block js %}
+        <!-- jQuery 2.1.3 -->
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/jQuery/jQuery-2.1.3.min.js') }}"></script>
+               <!-- Bootstrap 3.3.2 JS -->
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
+        <!-- Sparkline -->
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
+        <!-- jvectormap -->
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+       <!-- daterangepicker -->
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/daterangepicker/daterangepicker.js') }}"></script>
+        <!-- datepicker -->
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datepicker/locales/bootstrap-datepicker.es.js') }}"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+       <!-- Slimscroll -->
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/dist/js/app.min.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/dataTables.bootstrap.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/jquery.dataTables.js') }}"></script>
+        <!-- Plugins de datatable para paginado -->
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/input.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/ellipses.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/extjs.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/four_button.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/full_numbers_no_ellipses.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/scrolling.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/select.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/simple_incremental_bootstrap.js') }}"></script>
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/datatable/simple_numbers_no_ellipses.js') }}"></script>
+        <!-- End Plugins de datatable para paginado -->
+
+        <!-- Chosen -->
+        <script src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/chosen/chosen.jquery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/inventario/tema/AdminLTE/plugins/bootbox/bootbox.min.js') }}"></script>
+
+        <script src="{{ asset('bundles/inventario/js/general.js') }}"></script>
+
+
+        <!-- Scripts de la APP -->
+
+        <!-- TreeGrid-->
+        <script type="text/javascript">
+
+        </script>
+
+    {% endblock %}
+{% endblock %}
+</body>
+</html>

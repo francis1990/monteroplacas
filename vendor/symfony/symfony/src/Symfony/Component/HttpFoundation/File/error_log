@@ -1,0 +1,1 @@
+[30-Aug-2018 00:55:41 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\HttpFoundation\File\File' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/HttpFoundation/File/UploadedFile.php on line 26

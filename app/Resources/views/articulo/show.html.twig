@@ -1,0 +1,169 @@
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('articulo_index') }}">Artículo</a>
+    </li>
+    <li class="active">
+        Detalles
+    </li>
+{% endblock %}
+{% block contenido %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h3 class="heading">Artículo</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+
+            <div class="formSep">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Nombre
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ articulo.nombre }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Tipo artículo
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                <img src="{{ asset(articulo.tipoarticulo) }}" alt=""/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Imagen
+                            </div>
+                            {% if articulo.path != 'initial' %}
+                            <div class="col-sm-4 col-md-4">
+                                <img src="{{ asset('gallery/articulo/' ~ articulo.path) }}" alt="" class="thumbnail col-sm-6"/>
+                            </div>
+                            {% else %}
+                             <div class="col-sm-4 col-md-4">
+                                Sin foto
+                            </div>   
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Fecha de inserción
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {% if articulo.fechainsercion %}{{ articulo.fechainsercion|date('Y-m-d') }}{% endif %}                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Abreviatura
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ articulo.abreviatura }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Marca
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ articulo.marca }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Medida
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ articulo.medida }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Modelo
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ articulo.modelo }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Proveedor
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {% for pro in articulo.proveedor %}
+                                    {{ pro.nombre }}
+                                    {% if  loop.index != articulo.proveedor|length %}   ,
+                                    {% endif %}
+                                {% endfor %}
+                                {#{{ articulo.proveedor }}#}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Precio de venta
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ articulo.preciodeventa }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Precio de venta por mayor
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ articulo.precioventalpormayor }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Precio de compra
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ articulo.preciodecompra }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Precio de compra
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ articulo.preciocompralpormayor }}
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2">
+                                Descripción
+                            </div>
+                            <div class="col-sm-4 col-md-4">
+                                {{ articulo.descripcion }}
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="formSep form-actions">
+
+                <a class="btn btn-default" href="{{ path('articulo_index') }}"><span
+                            class="glyphicon glyphicon-arrow-left"></span> Volver</a>
+
+                <a class="btn btn-default" href="{{ path('articulo_edit', { 'id': articulo.id }) }}"><span
+                            class="glyphicon glyphicon-pencil"></span> Editar</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends '::inventariobase.html.twig' %}
+{% block body %}
+    {{ parent() }}
+    <div id="wrapper">
+    <header class="main-header">
+        {% block header %}
+            <!-- Logo -->
+            <a href="#" class="logo"> <i class="fa fa-gears"></i> <b>Inventario</b></a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                {#<img src="#" class="user-image" alt="User Image"/>#}
+                                <i class="glyphicon glyphicon-user">&emsp;</i><span
+                                        class="hidden-xs">{{ app.user }}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+
+                                <li><a href="{{ path('usuario_show',{ 'id': app.user.id }) }}">Mi Perfil</a></li>
+                                <li><a href="{{ path('usuario_reset',{ 'id': app.user.id }) }}">Cambiar clave</a></li>
+                                <li class="divider"></li>
+                                <li class=""><a href="{{ path('main') }}">Volver a Montero Placas</a></li>
+                                <li><a href="{{ path('logout') }}">Salir</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        {% endblock %}
+    </header>
+    <aside class="main-sidebar">
+        {% block left_side %}
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    <li class="header"><h5>MENÚ</h5></li>
+
+                    <li class="{% block tree_mov %}{% endblock %} treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i> <span>Movimiento</span> <i
+                                    class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+
+                            <li {% block inve_activo %}class=""{% endblock %}><a
+                                        href="{{ path('inventario_main') }}"><i class="fa fa-folder-open"></i>
+                                    Inventario</a></li>
+
+                            <li {% block inve_diario_activo %}class=""{% endblock %}><a href="{{ path('inventario_diario_menu', {  'fecha':0,'seccion':0,'articulo':0}) }}"><i
+                                            class="fa fa-folder-open"></i>
+                                    Inventario diario</a></li>
+                            <li {% block inve_general_activo %}class=""{% endblock %}><a href="{{ path('inventario_general_menu', { 'fecha':0, 'seccion':0,'articulo':0}) }}"><i
+                                            class="fa fa-folder-open"></i>
+                                    Inventario general</a></li>
+
+                            <li {% block motivo_activo %}class=""{% endblock %}><a
+                                        href="{{ path('motivo_index') }}"><i class="fa fa-folder-open"></i>
+                                    Motivos de movimiento</a></li>
+
+                            <li {% block movimiento_activo %}class=""{% endblock %}><a
+                                        href="{{ path('movimientoinv_index') }}"><i
+                                            class="fa fa-folder-open"></i> Movimientos</a></li>
+                            <li {% block trans_activo %}class=""{% endblock %}><a
+                                        href="{{ path('transferencia_index') }}"><i
+                                            class="fa fa-folder-open"></i> Transferencia</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="{% block tree_alm %}{% endblock %} treeview">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>Almacén</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li {% block almacen_activo %}class=""{% endblock %}><a
+                                        href="{{ path('almacen_index') }}"><i
+                                            class="fa fa-folder-open"></i> Almacén</a></li>
+                            <li {% block seccion_activo %}class=""{% endblock %}><a
+                                        href="{{ path('seccion_index') }}"><i
+                                            class="fa fa-folder-open"></i>
+                                    Sección</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        {% endblock %}
+    </aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+    {% block content %}
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                {% block title_section %}
+                    Portada
+                {% endblock %}
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
+                {% block breadcrumb %}
+                {% endblock %}
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            {% block flash_message %}
+                {% for tipo, mensajes in app.session.flashbag.all() %}
+                    {% for mensaje in mensajes %}
+                        <div class="callout callout-{{ tipo }}  flash-mensage">
+                            <h4>Alerta</h4>
+                            <p>{{ mensaje }}</p>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endblock %}
+            {% block main_content %}
+
+            {% endblock %}
+        </section><!-- /.content -->
+
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,1 @@
+[01-Jul-2018 05:03:24 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\DependencyInjection\LazyProxy\PhpDumper\DumperInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/LazyProxy/PhpDumper/NullDumper.php on line 22

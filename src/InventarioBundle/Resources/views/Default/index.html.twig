@@ -1,0 +1,88 @@
+{% extends '::inventarioadmin.html.twig' %}
+{% block title %}Inventario{% endblock %}
+{% block title_section %}
+    Inventario
+{% endblock %}
+{% block inve_activo %}class="active"{% endblock %}
+{% block tree_mov %}active{% endblock %}
+{% block breadcrumb %}
+    <li class="">Inventario</li>
+{% endblock %}
+    {% block main_content %}
+        <div class="box">
+            <br>
+            <div class="box-header">
+                <h3 class="box-title">Inventario de artículos</h3>
+
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+                <div class="row">
+                    <div class="col-sm-5 pull-right">
+                        <div class="col-sm-3"> Sección</div>
+                        <div class="col-sm-9">   {{ render(controller(
+                                'InventarioBundle:Seccion:listado'
+                            )) }}</div>
+                    </div>
+                </div>
+                <table class="table-bordered table-striped todasTablas hover">
+                    <thead class="datatable_head">
+                        <tr>
+                            <th>Artículo</th>
+
+                            <th>Sección</th>
+                            <th>Existencia</th>
+                            <th width="80">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for dat in movimientos %}
+                        <tr>
+                            <td>{{ dat.anom }}</td>
+
+                            <td>{{ dat.alnom ~"-"~ dat.snom }}</td>
+                            <td align="center">{{ dat.existencia }}</td>
+                            <td align="center">
+                                <a title="Mostrar Movimientos" class="text-black"
+                                   href="{{ path('movimientoinv_index', { 'articulo': dat.aid ,'seccion':dat.sid}) }}"><span
+                                            class="fa fa-exchange"></span></a>&emsp;
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tfoot>
+                        <tr>
+                            <th>Artículo</th>
+
+                            <th>Sección</th>
+                            <th>Existencia</th>
+                            <th width="80">Acciones</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+    {% endblock %}
+{% block js %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.fn.dataTable.ext.search.push(
+                function (settings, data, dataIndex) {
+                    var seccion = $('#filtro-seccion option:selected').html();
+                    if (seccion === 'Seleccione...')
+                        return true;
+                    return data[1] === seccion;
+                }
+            );
+
+            var table = $('.todasTablas').DataTable();
+            $('#filtro-seccion').change(function () {
+                table.draw();
+            });
+        })
+
+    </script>
+{% endblock %}
+
+

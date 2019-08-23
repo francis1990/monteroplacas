@@ -1,0 +1,3 @@
+[27-Feb-2018 16:14:21 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Asset\Package' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Asset/PathPackage.php on line 28
+[27-Feb-2018 16:15:30 America/Chicago] PHP Fatal error:  Interface 'Symfony\Component\Asset\PackageInterface' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Asset/Package.php on line 25
+[27-Feb-2018 16:15:33 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Asset\Package' not found in /home1/mp/public_html/monteroplacas/vendor/symfony/symfony/src/Symfony/Component/Asset/UrlPackage.php on line 37

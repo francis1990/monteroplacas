@@ -1,0 +1,2 @@
+[28-Feb-2018 02:04:54 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Security\Core\Authorization\ExpressionLanguage' not found in /home1/mp/public_html/monteroplacas/vendor/sensio/framework-extra-bundle/Security/ExpressionLanguage.php on line 22
+[30-Aug-2018 01:00:00 America/Chicago] PHP Fatal error:  Class 'Symfony\Component\Security\Core\Authorization\ExpressionLanguage' not found in /home1/mp/public_html/monteroplacas/vendor/sensio/framework-extra-bundle/Security/ExpressionLanguage.php on line 22

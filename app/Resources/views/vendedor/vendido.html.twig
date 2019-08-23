@@ -1,0 +1,99 @@
+
+{% extends 'sistemadmin.html.twig' %}
+{% block breadCrumb %}
+    {{ parent() }}
+    <li>
+        <a href="{{ path('vendedor_index') }}">Vendedor</a>
+    </li>
+{% endblock %}
+{% block contenido %}
+
+
+           
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Lista de vendedores</h3>
+                </div>
+            </div>
+           <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h3 class="heading">Venta de Vendedores por rango de fecha</h3>
+                    
+                    {#<div class="col-sm-6 col-md-4">
+                        <form action="{{ path('vendedor_vendido') }}" method="post" > 
+                            <div class="row">
+                                <div class="col-sm-3 col-md-6">
+                                    <button class="btn btn-default" type="submit">
+                                        Venta de Vendedores del Dia:
+                                    </button>
+                                </div>
+                                <div class="col-sm-3 col-md-5">
+                                    <input type="date" class="form-control" name="dailydate" required="true">  
+                                </div>
+                                <input class="hidden" id="daily" name="daily" value="day">
+                            </div>
+                        </form>
+                    </div>#}
+                            <vl/>
+                    <div class="col-sm-6 col-md-8">
+                        <form action="{{ path('vendedor_vendido') }}" method="post" > 
+                            <div class="row">
+                                <div class="col-sm-3 col-md-3">
+                                    <button class="btn btn-default" type="submit">
+                                        Venta de Vendedores. Rango:
+                                    </button>
+                                </div>
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="iniciodate" required="true">  
+                                </div>
+                              
+                                <div class="col-sm-3 col-md-3">
+                                    <input type="date" class="form-control" name="finaldate" required="true">  
+                                </div>
+                                <input class="hidden" id="fechas" name="fechas" value="fechas">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row" >        
+    </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <table class="table table-bordered table-responsive table-striped table_vam" id="dt_a">
+                        <thead>
+                        <tr>
+                            <th>DNI</th>
+                            <th>Nombre</th>
+                            <th>Vendido</th>
+                            <th>Reporte de venta por vendedor</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for key,vendedor in vendedores %}
+                            <tr>    
+                                <td>{{ vendedor.dni }}</td>
+                                <td>{{ vendedor.nombre }}</td>
+                                <td>{{ vendido[key]}}</td>
+                                 <td><a href="{{ path('vendedores_export', { 'id': vendedor.id,'iniciodate': iniciodate,'finaldate': finaldate }) }}" title="Reporte">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </a>
+                                 </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>      
+           {# <div class="row">                
+                <div class="col-sm-3 col-md-3">
+                    <a class="btn btn-default" href="{{ path('vendedores_export', {  'dailydate': dailydate, 'iniciodate': iniciodate, 'finaldate': finaldate}) }}">Exportar Informe a Excel</a>
+                </div>                
+            </div>  #}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/sistemaadminbackend/js/montero.js') }}"></script>
+{% endblock %}
